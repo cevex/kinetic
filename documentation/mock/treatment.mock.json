@@ -1,44 +1,154 @@
 [
     {
-        "id": "etirement-rotation",
-        "name": "Etirement en rotation",
-        "info": null,
-        "videolink": "https://9gag.com/"
+        "id": "treatment-lombaire-barre",
+        "bodyArea": "lombaire-barre",
+        "task": {
+            "taskId": "exercise-posture-extension",
+            "type": "exercise",
+            "exerciseId": "posture-extension",
+            "choice": {
+                "less" : {
+                    "taskId": "exercise-mobilisation-extension",
+                    "type": "exercise",
+                    "exerciseId": "mobilisation-extension",
+                    "choice": {
+                        "less" : {
+                            "taskId": "diagnosis-lomb-chro-L5S1",
+                            "type": "diagnosis",
+                            "diagnosisId": "lomb-aigue-L5S1"
+                        },
+                        "equal" : {
+                            "taskId": "replug-exercise-mobilisation-extension-equal",
+                            "type": "replug",
+                            "linkedTaskId": "exercise-posture-extension"
+                        },
+                        "more" : {
+                            "taskId": "replug-exercise-mobilisation-extension-more",
+                            "type": "replug",
+                            "linkedTaskId": "exercise-posture-flexion"
+                        }
+                    }
+                },
+                "equal" : {
+                    "taskId": "replug-equal-exercise-posture-extension-equal",
+                    "type": "replug",
+                    "linkedTaskId": "exercise-posture-extension"
+                },
+                "more" : {
+                    "taskId": "exercise-posture-flexion",
+                    "type": "exercise",
+                    "exerciseId": "posture-flexion",
+                    "choice": {
+                        "less" : {
+                            "taskId": "diagnosis-lomb-chro-L3L4",
+                            "type": "diagnosis",
+                            "diagnosisId": "lomb-aigue-L3L4"
+                        },
+                        "equal" : {
+                            "taskId": "replug-exercise-posture-flexion-equal",
+                            "type": "replug",
+                            "linkedTaskId": "exercise-posture-extension"
+                        },
+                        "more" : {
+                            "taskId": "consult-exercise-posture-flexion",
+                            "type": "consult"
+                        }
+                    }
+                }
+            }
+        }
     },
     {
-        "id": "etirement-extension",
-        "name": "Etirement en extension",
-        "info": null,
-        "videolink": "https://9gag.com/"
-    },
-    {
-        "id": "etirement-flexion",
-        "name": "Etirement en flexion",
-        "info": null,
-        "videolink": "https://9gag.com/"
-    },
-    {
-        "id": "posture-evitement",
-        "name": "Posture d'évitement",
-        "info": null,
-        "videolink": "https://9gag.com/"
-    },
-    {
-        "id": "etirement-fessiers",
-        "name": "Etirement fessiers",
-        "info": null,
-        "videolink": "https://9gag.com/"
-    },
-    {
-        "id": "fente-arriere",
-        "name": "Fente arrière",
-        "info": null,
-        "videolink": "https://9gag.com/"
-    },
-    {
-        "id": "attitude",
-        "name": "Attitude",
-        "info": null,
-        "videolink": "https://9gag.com/"
+        "id": "treatment-lombaire-zone",
+        "bodyArea": "lombaire-zone",
+        "task": {
+            "taskId": "exercise-etirement-rotation",
+            "type": "exercise",
+            "exerciseId": "etirement-rotation",
+            "choice": {
+                "less" : {
+                    "taskId": "exercise-etirement-extension",
+                    "type": "exercise",
+                    "exerciseId": "etirement-extension",
+                    "choice": {
+                        "less" : {
+                            "taskId": "diagnosis-lomb-chro-L5S1",
+                            "type": "diagnosis",
+                            "diagnosisId": "lomb-chro-L5S1"
+                        },
+                        "equal" : {
+                            "taskId": "replug-exercise-etirement-extension-equal",
+                            "type": "replug",
+                            "linkedTaskId": "exercise-etirement-extension"
+                        },
+                        "more" : {
+                            "taskId": "exercise-etirement-flexion",
+                            "type": "exercise",
+                            "exerciseId": "etirement-flexion",
+                            "choice": {
+                                "less" : {
+                                    "taskId": "diagnosis-lomb-chro-L3L4",
+                                    "type": "diagnosis",
+                                    "diagnosisId": "lomb-chro-L3L4"
+                                },
+                                "equal" : {
+                                    "taskId": "replug-exercise-etirement-flexion-equal",
+                                    "type": "replug",
+                                    "linkedTaskId": "exercise-etirement-flexion"
+                                },
+                                "more" : {
+                                    "taskId": "change-location-exercise-etirement-flexion",
+                                    "type": "change-location",
+                                    "treatmentId": "treatment-lombaire-barre"
+                                }
+                            }
+                        }
+                    }
+                },
+                "equal" : {
+                    "taskId": "replug-exercise-etirement-rotation-equal",
+                    "type": "replug",
+                    "linkedTaskId": "exercise-etirement-rotation"
+                },
+                "more" : {
+                    "taskId": "exercise-posture-flexion",
+                    "type": "test-location",
+                    "bodyAreas" : [
+                        {
+                            "bodyArea": "lombaire-barre",
+                            "task": {
+                                "taskId": "change-location-exercise-etirement-flexion",
+                                "type": "change-location",
+                                "treatmentId": "treatment-lombaire-barre"
+                            }
+                        },
+                        {
+                            "bodyArea": "lombaire-unilateral",
+                            "task": {
+                                "taskId": "exercise-posture-evitement",
+                                "type": "exercise",
+                                "exerciseId": "posture-evitement",
+                                "choice": {
+                                    "less" : {
+                                        "taskId": "diagnosis-dechirure",
+                                        "type": "diagnosis",
+                                        "diagnosisId": "dechirure"
+                                    },
+                                    "equal" : {
+                                        "taskId": "replug-exercise-posture-evitement-equal",
+                                        "type": "replug",
+                                        "linkedTaskId": "exercise-posture-evitement"
+                                    },
+                                    "more" : {
+                                        "taskId": "consult-exercise-posture-evitement",
+                                        "type": "consult"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
     }
 ]

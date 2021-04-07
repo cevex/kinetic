@@ -1,0 +1,5 @@
+= Kinetic application
+
+== Data model
+
+image::images/domain.model.png[Domain model,200,100]

@@ -1,0 +1,19 @@
+{
+    "name": "@kinetic/root",
+    "version": "1.0.0",
+    "author": "cevex",
+    "license": "ISC",
+    "description": "Mobile application for physiotherapy",
+    "homepage": "https://github.com/cevex/kinetic#readme",
+    "bugs": {
+        "url": "https://github.com/cevex/kinetic/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cevex/kinetic.git"
+    },
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
