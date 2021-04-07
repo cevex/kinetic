@@ -1,0 +1,135 @@
+@startuml
+
+package domain {
+    package body {
+
+        class BodyArea {
+            type: BodyAreaType
+            name: string
+            position: BodyPosition
+        }
+
+        enum BodyAreaType {
+            + lombaire-barre
+            + lombaire-zone
+            + lombaire-unilateral
+            + fessiers
+            + sacro-illiaque
+        }
+
+        class BodyPosition {
+            x: number
+            y: number
+        }
+
+        BodyArea -r-> BodyAreaType
+        BodyArea --> BodyPosition
+    }
+
+    package pain {
+
+        class Pain {
+            name: BodyArea
+            scale: PainScale
+        }
+
+        enum PainScale {
+            + more
+            + less
+            + equals
+        }
+
+        Pain --> PainScale
+        Pain -r-> BodyArea
+    }
+
+    class Exercise {
+        name: string
+        info: Info
+        videolink: string
+        redoInfo: string
+    }
+
+    class Diagnosis {
+        title: string
+        name: string
+        info: string
+    }
+}
+
+package treatment {
+
+    class Treatment {
+        bodyArea: BodyAreaType
+        task: TreatmentTask;
+    }
+
+    class TreatmentTask {
+        taskId: string
+        type: TreatmentTaskType
+    }
+
+    enum TreatmentTaskType {
+        + exercise
+        + diagnosis
+        + consult
+        + replug
+        + test-location
+        + change-location
+        '+ pain-assessment
+    }
+
+    class ExerciseTreatmentTask {
+        exerciseId: string
+        choice: PainAssessmentChoice
+    }
+
+    class DiagnosisTreatmentTask {
+        diagnosisId: string
+    }
+
+    class ReplugTreatmentTask {
+        linkedTaskId: string
+    }
+
+    class ChangeLocationTreatmentTask {
+        treatmentId: string
+    }
+
+    class TestLocationTreatmentTask {
+        bodyAreas: PainAreaChoice[]
+    }
+
+    class PainAssessmentChoice {
+        name: string
+        bodyArea: BodyArea
+
+        less: TreatmentTask
+        equal: TreatmentTask
+        more: TreatmentTask
+    }
+
+    class PainAreaChoice {
+        bodyArea: BodyArea
+        more: TreatmentTask
+    }
+
+
+    Treatment --> "*" TreatmentTask
+
+    TreatmentTask -u-> TreatmentTaskType
+
+    TreatmentTask <|-- ExerciseTreatmentTask
+    TreatmentTask <|-- DiagnosisTreatmentTask
+    TreatmentTask <|-- ReplugTreatmentTask
+    TreatmentTask <|-- TestLocationTreatmentTask
+    TreatmentTask <|--  ChangeLocationTreatmentTask
+
+    ExerciseTreatmentTask -u-> PainAssessmentChoice
+    LocalizationTreatmentTask -u-> PainAreaChoice
+
+    PainAssessmentChoice -r-> TreatmentTask
+    PainAreaChoice -l-> TreatmentTask
+}
+
+@enduml
