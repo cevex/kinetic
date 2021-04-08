@@ -2,4 +2,4 @@
 
 == Data model
 
-image::images/domain.model.png[Domain model,200,100]
+image::images/domain.model.png[Domain model]
