@@ -13,6 +13,7 @@ package domain {
             + lombaire-barre
             + lombaire-zone
             + lombaire-unilateral
+
             + fessiers
             + sacro-illiaque
         }
