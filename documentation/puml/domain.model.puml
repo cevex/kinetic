@@ -111,6 +111,7 @@ package treatment {
     }
 
     class PainAreaChoice {
+        id: string
         bodyArea: BodyArea
         more: TreatmentTask
     }
