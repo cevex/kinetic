@@ -98,7 +98,7 @@ package treatment {
     }
 
     class TestLocationTreatmentTask {
-        bodyAreas: PainAreaChoice[]
+        painChoices: PainAreaChoice[]
     }
 
     class PainAssessmentChoice {
@@ -127,7 +127,7 @@ package treatment {
     TreatmentTask <|--  ChangeLocationTreatmentTask
 
     ExerciseTreatmentTask -u-> PainAssessmentChoice
-    LocalizationTreatmentTask -u-> PainAreaChoice
+    TestLocationTreatmentTask -u-> PainAreaChoice
 
     PainAssessmentChoice -r-> TreatmentTask
     PainAreaChoice -l-> TreatmentTask
