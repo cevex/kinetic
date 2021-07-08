@@ -60,17 +60,17 @@ package domain {
 
 package treatment {
 
-    class Treatment {
+    class Healthcheck {
         bodyArea: BodyAreaType
-        task: TreatmentTask;
+        task: HealthcheckTask;
     }
 
-    class TreatmentTask {
+    class HealthcheckTask {
         taskId: string
-        type: TreatmentTaskType
+        type: HealthcheckTaskType
     }
 
-    enum TreatmentTaskType {
+    enum HealthcheckTaskType {
         + exercise
         + diagnosis
         + consult
@@ -80,24 +80,24 @@ package treatment {
         '+ pain-assessment
     }
 
-    class ExerciseTreatmentTask {
+    class ExerciseHealthcheckTask {
         exerciseId: string
         choice: PainAssessmentChoice
     }
 
-    class DiagnosisTreatmentTask {
+    class DiagnosisHealthcheckTask {
         diagnosisId: string
     }
 
-    class ReplugTreatmentTask {
+    class ReplugHealthcheckTask {
         linkedTaskId: string
     }
 
-    class ChangeLocationTreatmentTask {
+    class ChangeLocationHealthcheckTask {
         treatmentId: string
     }
 
-    class TestLocationTreatmentTask {
+    class TestLocationHealthcheckTask {
         painChoices: PainAreaChoice[]
     }
 
@@ -105,33 +105,33 @@ package treatment {
         name: string
         bodyArea: BodyArea
 
-        less: TreatmentTask
-        equal: TreatmentTask
-        more: TreatmentTask
+        less: HealthcheckTask
+        equal: HealthcheckTask
+        more: HealthcheckTask
     }
 
     class PainAreaChoice {
         id: string
         bodyArea: BodyArea
-        more: TreatmentTask
+        more: HealthcheckTask
     }
 
 
-    Treatment --> "*" TreatmentTask
+    Healthcheck --> "*" HealthcheckTask
 
-    TreatmentTask -u-> TreatmentTaskType
+    HealthcheckTask -u-> HealthcheckTaskType
 
-    TreatmentTask <|-- ExerciseTreatmentTask
-    TreatmentTask <|-- DiagnosisTreatmentTask
-    TreatmentTask <|-- ReplugTreatmentTask
-    TreatmentTask <|-- TestLocationTreatmentTask
-    TreatmentTask <|--  ChangeLocationTreatmentTask
+    HealthcheckTask <|-- ExerciseHealthcheckTask
+    HealthcheckTask <|-- DiagnosisHealthcheckTask
+    HealthcheckTask <|-- ReplugHealthcheckTask
+    HealthcheckTask <|-- TestLocationHealthcheckTask
+    HealthcheckTask <|--  ChangeLocationHealthcheckTask
 
-    ExerciseTreatmentTask -u-> PainAssessmentChoice
-    TestLocationTreatmentTask -u-> PainAreaChoice
+    ExerciseHealthcheckTask -u-> PainAssessmentChoice
+    TestLocationHealthcheckTask -u-> PainAreaChoice
 
-    PainAssessmentChoice -r-> TreatmentTask
-    PainAreaChoice -l-> TreatmentTask
+    PainAssessmentChoice -r-> HealthcheckTask
+    PainAreaChoice -l-> HealthcheckTask
 }
 
 @enduml

@@ -14,7 +14,7 @@
     },
     "main": "index.js",
     "scripts": {
-        "startInit": "cd scripts && ./init-frontend-archi.sh",
+        "startInit": "cd scripts && ./init-frontend-archi2.sh",
         "test": "echo \"Error: no test specified\" && exit 1"
     }
 }

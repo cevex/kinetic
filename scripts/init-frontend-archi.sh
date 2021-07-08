@@ -13,7 +13,7 @@ echo "================================"
 mkdir src/app/modules/core
 
 
-echo "==========   Treatment  ============"
+echo "==========   Healthcheck  ============"
 mkdir src/app/modules/core/treatment
 
 ng g module ./modules/core/treatment/treatment --flat
