@@ -1,0 +1,145 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. You can learn more about the
+NativeScript core theme at https://github.com/nativescript/theme
+The imported CSS rules must precede all other types of rules.
+*/
+@import '@nativescript/theme/css/core.css';
+@import '@nativescript/theme/css/blue.css';
+
+
+.ns-root {
+    --font-xsmall: 12em;
+    --font-small: 16em;
+    --font-regular: 20em;
+    --font-big: 30px;
+    --font-xbig: 42px;
+
+    --padding-xsmall: 10em;
+    --padding-small: 15em;
+    --padding-regular: 20em;
+    --padding-big: 25em;
+    --padding-xbig: 40em;
+
+    --color-grey-bg: #F0F0F3;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-info: #17a2b8;
+
+    --family-light: "Open Sans Light", "OpenSans-Light";
+    --family-regular: "Open Sans Regular", "OpenSans-Regular";
+    --family-sbold: "Open Sans Bold", "OpenSans-SemiBold";
+    --family-bold: "Open Sans Bold", "OpenSans-Bold";
+    --family-xbold: "Open Sans ExtraBold", "OpenSans-ExtraBold";
+}
+
+/** -------------------------------------------- */
+/**                 Icon Font                    */
+/** -------------------------------------------- */
+
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+}
+
+/** -------------------------------------------- */
+/**                 Layout                       */
+/** -------------------------------------------- */
+
+.keep-width {
+    width: 100%;
+}
+
+.keep-height {
+    width: 100%;
+}
+
+/** -------------------------------------------- */
+/**                 Header                       */
+/** -------------------------------------------- */
+
+.healthcheck-header {
+    padding: 10vh 20vw;
+    flex-direction: row;
+    height: auto;
+}
+
+.healthcheck-header__title {
+    font-size: var(--font-big);
+    font-family: var(--family-light);
+    flex-grow: 1;
+}
+
+.healthcheck-header__icon {
+    width: 60px;
+}
+
+/** -------------------------------------------- */
+/**              Layout                          */
+/** -------------------------------------------- */
+
+.knt-page {
+    flex-direction: column;
+}
+
+.knt-page__center {
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    margin: var(--padding-regular);
+}
+
+.knt-page__controls {
+    flex-direction: row;
+}
+
+.knt-page__controls > * {
+    flex-grow: 1;
+}
+
+/** -------------------------------------------- */
+/**              Text                            */
+/** -------------------------------------------- */
+
+.knt-text {
+    text-wrap: true;
+    margin-bottom: 15px;
+    font-size: var(--font-small);
+    font-family: var(--family-light);
+}
+
+.knt-text__strong {
+    text-wrap: true;
+
+    font-size: var(--font-small);
+    font-family: var(--family-sbold);
+}
+
+.knt-text__advice {
+    color: var(--color-sky);
+    font-size: 16px;
+    font-style: italic;
+    text-wrap: true;
+    margin-top: 30vh;
+    text-align: center;
+}
+
+.btn-link {
+    border: 0;
+    color: var(--color-grey-dark);
+    font-size: 15px;
+    font-style: italic;
+}

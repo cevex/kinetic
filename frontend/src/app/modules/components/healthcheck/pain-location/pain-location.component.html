@@ -1,0 +1,31 @@
+<FlexboxLayout class="pain-location">
+
+    <FlexboxLayout class="healthcheck-header">
+        <Label class="healthcheck-header__title" [text]="'Bilan'"></Label>
+    </FlexboxLayout>
+
+    <Label class="pain-location__question" [text]="'Où se trouve votre douleur ?'"></Label>
+
+    <FlexboxLayout class="pain-location__map" *ngIf="testLocationTask.testType === 'body-map'">
+        <knt-body-map [bodyAreas]="bodyAreas"
+                      (choice)="chooseLocation($event)">
+        </knt-body-map>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="pain-location__image" *ngIf="testLocationTask.testType === 'list'">
+        <Image src="~/assets/img/exercice__ett-rot.png"
+               class="pain-location__image"
+               stretch="aspectFit"></Image>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="pain-location__controls" *ngIf="testLocationTask.testType === 'list'">
+        <Button *ngFor="let bodyArea of bodyAreas"
+                class="-primary"
+                [text]="bodyArea.name"
+                (tap)="chooseLocation(bodyArea, true)">
+            {{bodyArea.name}}
+        </Button>
+    </FlexboxLayout>
+
+</FlexboxLayout>
+

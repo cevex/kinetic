@@ -1,0 +1,24 @@
+<FlexboxLayout class="knt-page">
+
+    <FlexboxLayout class="healthcheck-header">
+        <Label class="healthcheck-header__title"
+               [text]="'Consulter un médecin'"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="knt-page__center">
+        <Label class="knt-text"
+               [text]="'L’évolution de votre douleur en fonction des exercices ou éducations proposées ne permet pas d’établir un diagnostique et nécessite des examens complémentaires.\n'"></Label>
+
+        <Label class="knt-text"
+               [text]="'Veuillez consulter un professionnel de santé.'"></Label>
+
+    </FlexboxLayout>
+
+    <FlexboxLayout class="knt-page__controls">
+        <Button text="OK" class="-primary"
+                (tap)="endHealthcheck()"></Button>
+
+    </FlexboxLayout>
+
+</FlexboxLayout>
+

@@ -1,0 +1,30 @@
+<FlexboxLayout class="user-home" flexDirection="column">
+
+    <!--====================================================================-->
+    <!--                        Header                                      -->
+    <!--====================================================================-->
+
+    <FlexboxLayout class="user-home__header" flexDirection="column">
+        <FlexboxLayout class="user-home__header-control" flexDirection="row">
+            <knt-icon-circle [size]="'small'"
+                             [userProfile]="user.userProfile"
+                             (tap)="goToUserList()"></knt-icon-circle>
+            <Label text="&#xf304;" class="fas user-home__header-control-icon"
+                   (tap)="editUser()"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="user-home__header-title" flexDirection="row">
+            <Label [text]="'Hello ' + user.userProfile.name"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+    <!--====================================================================-->
+    <!--                     Content                                        -->
+    <!--====================================================================-->
+
+    <FlexboxLayout class="user-home__content" flexDirection="column">
+        <knt-pathology-list [pathologies]="pathologies">
+        </knt-pathology-list>
+    </FlexboxLayout>
+
+</FlexboxLayout>

@@ -1,0 +1,25 @@
+<FlexboxLayout flexDirection="column" class="exercise" *ngIf="exercise">
+
+    <FlexboxLayout class="exercise__header">
+        <Label text="&#xf44b;" class="fas exercise__header-icon"></Label>
+        <Label class="exercise__header-title"
+               [text]="exercise.name"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="exercise__content">
+
+        <VideoPlayer #videoElement
+                     [src]="'~/assets/videos/' + exercise.videolink"
+                     autoplay="true"
+                     fill="true"
+                     controls="false"
+                     height="80%"
+                     class="video-player"></VideoPlayer>
+    </FlexboxLayout>
+
+    <FlexboxLayout class="exercise__controls">
+        <Button text="C'est fait !" class="-primary"
+                (tap)="goNext()"></Button>
+    </FlexboxLayout>
+</FlexboxLayout>
+

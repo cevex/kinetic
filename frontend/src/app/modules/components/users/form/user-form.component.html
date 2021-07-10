@@ -1,0 +1,50 @@
+<FlexboxLayout class="user-profile" flexDirection="column">
+
+    <Label class="user-profile__title" [text]="'Qui est-ce ?'"></Label>
+
+    <FlexboxLayout class="user-profile__form" flexDirection="column">
+
+        <knt-icon-circle class="user-profile__icon"
+                         [userProfile]="userProfile"></knt-icon-circle>
+
+        <Label class="user-profile__label" [text]="'Nom'"></Label>
+
+        <TextField class="user-profile__input"
+                   [text]="userProfile.name"
+                   hint="Saisir nom"
+                   secure="false"
+                   returnKeyType="done"
+                   autocorrect="false"
+                   maxLength="10"
+                   (textChange)="updateName($event)">
+        </TextField>
+
+        <Label class="user-profile__label" [text]="'Genre'"></Label>
+
+        <FlexboxLayout class="user-profile__gender">
+            <Label text="&#xf222;" class="fas user-profile__gender-icon"
+                   [ngClass]="{'user-profile__gender-male' : userProfile.gender === 'm'}"
+                   (tap)="selectGender('m')"></Label>
+            <Label text="&#xf221;" class="fas user-profile__gender-icon"
+                   [ngClass]="{'user-profile__gender-female' : userProfile.gender === 'f'}"
+                   (tap)="selectGender('f')"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+
+    <FlexboxLayout class="user-profile__controls" flexDirection="column">
+        <Button class="-primary"
+                text="Creer" *ngIf="creationMode"
+                (tap)="create()"></Button>
+        <Button class="-primary"
+                text="Valider" *ngIf="!creationMode"
+                (tap)="update()"></Button>
+        <Button class="delete" *ngIf="!creationMode"
+                text="Supprimer"
+                (tap)="delete()"></Button>
+        <Button class="-secondary"
+                text="Annuler"
+                (tap)="cancel()"></Button>
+    </FlexboxLayout>
+
+</FlexboxLayout>

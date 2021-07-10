@@ -1,0 +1,25 @@
+<StackLayout width="100%" height="100%" backgroundColor="#E9ECEF" #layoutElement>
+    <AbsoluteLayout backgroundColor="#E9ECEF">
+
+        <NSImg #imageView
+               left="0"
+               top="0"
+               width="100%"
+               height="100%"
+               verticalAlignment="center"
+               placeholderImageUri="res://ns_logo"
+               src="~/assets/img/map.png">
+        </NSImg>
+
+
+        <Label *ngFor="let bodyPosition of bodyPositions"
+               class="body-map__area"
+               [left]="bodyPosition.x"
+               [top]="bodyPosition.y"
+               [width]="bodyPosition.width"
+               [height]="bodyPosition.height"
+               (tap)="selectArea(bodyPosition)">
+        </Label>
+
+    </AbsoluteLayout>
+</StackLayout>

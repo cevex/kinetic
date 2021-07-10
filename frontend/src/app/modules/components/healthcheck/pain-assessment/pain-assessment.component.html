@@ -1,0 +1,41 @@
+<FlexboxLayout class="pain-assessment">
+
+    <FlexboxLayout class="pain-assessment__header">
+        <Label class="healthcheck-header__title"
+               [text]="'Bilan'"></Label>
+        <Label class="pain-assessment__header-question"
+               [text]="'Dans cette zone :'"></Label>
+
+    </FlexboxLayout>
+
+    <FlexboxLayout class="pain-assessment__map">
+        <knt-body-map [bodyAreas]="bodyAreas">
+        </knt-body-map>
+    </FlexboxLayout>
+
+    <!---------------------- Controls ------------------------------------------->
+
+    <FlexboxLayout class="pain-assessment__choice">
+        <Label class="pain-assessment__choice-label"
+               [text]="'Avez vous moins, autant ou plus mal ?'"></Label>
+
+        <FlexboxLayout class="pain-assessment__choice-controls">
+
+            <Label text="&#xf582;"
+                   class="fas pain-assessment__choice-control pain-assessment__choice-minus"
+                   (tap)="assessExercise('less')"
+            ></Label>
+
+            <Label text="&#xf11a;"
+                   class="fas pain-assessment__choice-control pain-assessment__choice-equals"
+                   (tap)="assessExercise('equal')"
+            ></Label>
+
+            <Label text="&#xf57a;"
+                   class="fas pain-assessment__choice-control pain-assessment__choice-plus"
+                   (tap)="assessExercise('more')"
+            ></Label>
+        </FlexboxLayout>
+
+    </FlexboxLayout>
+</FlexboxLayout>

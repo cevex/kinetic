@@ -1,0 +1,12 @@
+.pathology-list {
+
+    &__title {
+        font-size: var(--font-regular);
+        font-family: var(--family-regular);
+    }
+
+    &__container {
+        margin: 50px;
+        background: white;
+    }
+}

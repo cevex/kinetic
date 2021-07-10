@@ -1,0 +1,32 @@
+[
+    {
+        "id": "lomb-aigue-L5S1",
+        "name": "Lombalgie aigue racine L5 - S1",
+        "info": null
+    },
+    {
+        "id": "lomb-aigue-L3L4",
+        "name": "Lombalgie aigue racine L3 - L4",
+        "info": null
+    },
+    {
+        "id": "lomb-chro-L5S1",
+        "name": "Lombalgie chronique racine L5 - S1",
+        "info": null
+    },
+    {
+        "id": "lomb-chro-L3L4",
+        "name": "Lombalgie chronique racine L3 - L4",
+        "info": null
+    },
+    {
+        "id": "dechirure",
+        "name": "Déchirure musculaire",
+        "info": null
+    },
+    {
+        "id": "contracture-posturale",
+        "name": "Contracture attitude posturale",
+        "info": null
+    }
+]

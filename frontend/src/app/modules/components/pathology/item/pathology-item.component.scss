@@ -1,0 +1,39 @@
+.pathology-item {
+    padding: 15px;
+
+    &__image {
+        width: 200px;
+        height: 100px;
+    }
+
+    &__labels {
+        flex-grow: 1;
+        align-items: center;
+        margin: 5px 20px;
+
+        &-title {
+            font-size: var(--font-regular);
+            font-family: var(--family-regular);
+        }
+
+        &-date {
+            font-size: var(--font-small);
+            font-family: var(--family-light);
+        }
+
+    }
+
+    &__scored {
+        align-items: center;
+    }
+
+    &__star {
+        margin-right: 10px;
+        color: var(--color-grey-bg);
+        font-size: 20px;
+
+        &--activated {
+            color: var(--color-blue) !important;
+        }
+    }
+}

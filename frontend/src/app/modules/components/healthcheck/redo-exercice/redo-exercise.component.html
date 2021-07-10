@@ -1,0 +1,16 @@
+<FlexboxLayout class="knt-page">
+
+    <Label class="h1" [text]="'Exercice'"></Label>
+
+    <FlexboxLayout class="knt-page__center">
+        <Label class=" knt-text"
+               [text]="'Refaites l’exercice en faisant bien attention à la posture. Avez-vous bien XXXXX et XXXXX ?'"></Label>
+
+        <Label class="knt-text__advice text-primary"
+               [text]="'Aidez-vous d’une glace ou d’un proche pour corriger la posture si vous le pouvez'"></Label>
+    </FlexboxLayout>
+
+    <Button class="-primary"
+            text="Allons-y !"
+            (tap)="goNext()"></Button>
+</FlexboxLayout>

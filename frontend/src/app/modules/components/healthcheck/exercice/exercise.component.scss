@@ -1,0 +1,38 @@
+.exercise {
+    width: 100%;
+    height: 100%;
+
+    &__header {
+        align-items: center;
+        width: 100%;
+        margin: 25px;
+
+        &-icon {
+            margin-right: 15px;
+            font-size: var(--font-regular);
+        }
+
+        &-title {
+            font-size: var(--font-big);
+            font-family: var(--family-light);
+        }
+    }
+
+    &__content {
+        margin: 15px;
+        flex-grow: 1;
+        //margin: var(--padding-regular);
+    }
+
+    &__controls {
+        width: 100%;
+        margin: 15px;
+        //margin: var(--padding-regular);
+    }
+}
+
+.-primary {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

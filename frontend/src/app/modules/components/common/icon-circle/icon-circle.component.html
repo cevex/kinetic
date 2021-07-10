@@ -1,0 +1,8 @@
+<GridLayout rows="*" class="icon-circle"
+            [ngClass]="{'icon-circle--small': size === 'small', 'icon-circle--big': size !== 'small'}">
+
+    <Image class="icon-circle__icon" row="0"
+           [src]="getAvatar()"
+           stretch="aspectFill"></Image>
+
+</GridLayout>

@@ -1,0 +1,21 @@
+<DockLayout *ngIf="loadingApp">
+    <ActivityIndicator busy="true" width="100" height="100"></ActivityIndicator>
+</DockLayout>
+
+<FlexboxLayout *ngIf="!loadingApp" flexDirection="column">
+
+    <StackLayout class="home__title">
+        <Image src="~/assets/img/kinetic-logo.png" width="50%" stretch="aspectFit"></Image>
+        <Label class="home__title-text" [text]="'KINETIC®'"></Label>
+    </StackLayout>
+
+    <knt-welcome-guide class="home__guide"></knt-welcome-guide>
+
+    <FlexboxLayout class="home__controls">
+        <Button class="-primary"
+                text="Allons-y !"
+                pageTransition="slide"
+                (tap)="startHealthcheck()"></Button>
+    </FlexboxLayout>
+
+</FlexboxLayout>
