@@ -48,6 +48,15 @@ ng g module ./modules/core/diagnosis/diagnosis --flat
 ng g service ./modules/core/diagnosis/diagnosis --flat
 ng g class ./modules/core/diagnosis/diagnosis --type model --skip-tests
 
+
+echo "==========   diagnosis  ============"
+
+mkdir src/app/modules/components/common/icon-circle
+ng g module ./modules/components/common/icon-circle --flat
+ng g service ./modules/components/common/icon-circle --flat
+ng g class ./modules/components/common/icon-circle --type model --skip-tests
+
+
 echo "==========   body  ============"
 mkdir src/app/modules/core/body
 ng g module ./modules/core/body/body --flat
