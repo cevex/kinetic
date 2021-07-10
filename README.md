@@ -1,2 +1,3 @@
 # kinetic
-Mobile application for physiotherapy
+
+Kinetic is a nativescript application for physiotherapy
