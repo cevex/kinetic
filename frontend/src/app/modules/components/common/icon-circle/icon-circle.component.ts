@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserProfile } from '../../../core/domain/user/user.model';
+import { BodyArea } from "~/app/modules/core/domain/body/body-area-data.model";
 
 export declare type IconCircleSize = 'small' | 'medium' | 'big';
 
@@ -13,6 +14,8 @@ export class IconCircleComponent implements OnInit {
 
     @Input() userProfile: UserProfile;
     @Input() size: IconCircleSize;
+
+    @Output() selected = new EventEmitter<BodyArea>();
 
     private static index: number = 0;
 

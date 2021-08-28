@@ -117,6 +117,7 @@ export class UserRouterService {
         const currentState = this.storeService.getStore();
         const updatedUserEvent = this.usersDataService.deleteUser(currentState.users, user);
         this.applyInStore(currentState, updatedUserEvent);
+        this.goToUserList();
     }
 
     // =======================================================================

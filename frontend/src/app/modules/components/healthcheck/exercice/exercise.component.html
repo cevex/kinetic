@@ -9,13 +9,16 @@
     <FlexboxLayout class="exercise__content">
 
         <VideoPlayer #videoElement
-                     [src]="'~/assets/videos/' + exercise.videolink"
+                     [src]="'~/assets/videos/etirement_extension.mp4'"
                      autoplay="true"
                      fill="true"
                      controls="false"
                      height="80%"
                      class="video-player"></VideoPlayer>
     </FlexboxLayout>
+
+
+    <!--    [src]="'~/assets/videos/' + exercise.videolink"-->
 
     <FlexboxLayout class="exercise__controls">
         <Button text="C'est fait !" class="-primary"

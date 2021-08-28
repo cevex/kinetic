@@ -9,7 +9,7 @@ import { HealthcheckTask, HealthcheckTaskType } from './healthcheck-task.model';
 })
 export class HealthcheckTaskDataService {
 
-    private TREATMENT_URL = '~/assets/mock/treatment-tasks2.mock.json';
+    private TREATMENT_URL = '~/assets/mock/treatment-tasks.mock.json';
 
     constructor(
         private http: HttpClient

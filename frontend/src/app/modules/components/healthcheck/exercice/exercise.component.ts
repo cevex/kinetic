@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NativescriptViewService } from '~/app/modules/core/common/nativescript-view.service';
 import { ExerciseDataServiceCache } from '~/app/modules/core/domain/exercices/exercise-data.service.cache';
 import { ExerciseData } from '../../../core/domain/exercices/exercise-data.model';
 import { ExerciseHealthcheckTask } from '../../../core/domain/healthcheck-task/specific/exercise-healthcheck-task.model';
