@@ -19,7 +19,6 @@ export class HealthcheckTaskServiceCache extends CacheService<HealthcheckTask[]>
         return this.healthcheckTaskService.getTasks();
     }
 
-
     // =======================================================================
     //                Find
     // =======================================================================

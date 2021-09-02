@@ -48,8 +48,8 @@ export class HealthcheckRouterService {
 
     private getHealthcheckPath(healthcheck: Healthcheck) {
         const currentTask = this.healthcheckTaskServiceCache.findTask(healthcheck.taskId);
-        // console.log('[router-healthcheck] ROOTing with healthcheck: ', healthcheck);
-        // console.log('[router-healthcheck] ROOTing to task: ', currentTask);
+        console.log('[router-healthcheck] ROOTing with healthcheck: ', healthcheck);
+        console.log('[router-healthcheck] ROOTing to task: ', currentTask);
 
         if (!healthcheck.bodyArea) {
             return HealthcheckRouterService.HEALTHCHECK_ROOT.painLocation;

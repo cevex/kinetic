@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { HealthcheckRouterService } from '~/app/modules/core/router/healthcheck-router.service';
 import { Pathology } from '../../../core/domain/pathology/pathology.model';
 
 @Component({
@@ -11,7 +12,9 @@ export class PathologyListComponent implements OnInit {
 
     @Input() pathologies: Pathology[];
 
-    constructor() {
+    constructor(
+        private healthcheckRouterService: HealthcheckRouterService
+    ) {
     }
 
     ngOnInit(): void {
@@ -25,6 +28,8 @@ export class PathologyListComponent implements OnInit {
     private initData() {
     }
 
-    public goNext() {
+
+    public add() {
+        this.healthcheckRouterService.startHealthcheck()
     }
 }

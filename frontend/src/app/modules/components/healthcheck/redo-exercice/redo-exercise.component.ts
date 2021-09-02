@@ -40,7 +40,7 @@ export class RedoExerciseComponent implements OnInit {
     private initData() {
         this.redoTask = <RedoHealthcheckTask>this.healthcheckRouterService.getCurrentTask();
         this.exercise = this.exerciseDataServiceCache.getFlat()
-            .find(exercise => exercise.id === this.redoTask.exerciseId);
+            .find(exercise => exercise.id === this.redoTask.exerciseTaskToRedo);
     }
 
     public goNext() {

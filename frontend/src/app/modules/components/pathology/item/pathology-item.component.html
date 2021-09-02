@@ -1,11 +1,11 @@
 <FlexboxLayout class="pathology-item" flexDirection="row">
 
     <Image class="pathology-item__image" row="0"
-           [src]="'~/assets/img/body-location/f-back.jpeg'"
+           [src]="pathology.bodyArea.imgPath"
            stretch="aspectFill"></Image>
 
     <FlexboxLayout class="pathology-item__labels" flexDirection="column">
-        <Label class="pathology-item__labels-title" [text]="'Douleur Lombaire'"></Label>
+        <Label class="pathology-item__labels-title" [text]="pathology.bodyArea.name"></Label>
         <Label class="pathology-item__labels-date" [text]="'10/15/2021'"></Label>
     </FlexboxLayout>
 

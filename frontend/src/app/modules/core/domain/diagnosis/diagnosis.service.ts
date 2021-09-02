@@ -9,7 +9,7 @@ import { Diagnosis } from './diagnosis.model';
 })
 export class DiagnosisDataService {
 
-    private DIAGNOSIS_URL = '~/assets/mock/diagnosis.mock.json';
+    private DIAGNOSIS_URL = '~/assets/data/diagnosis.data.json';
 
     constructor(private http: HttpClient) {
     }

@@ -4,7 +4,8 @@
         "name": "Lombaire",
         "place": "back",
         "range": "zone",
-        "side": "center"
+        "side": "center",
+        "image": ""
     },
     {
         "type": "lombaire-barre",
@@ -16,6 +17,13 @@
     {
         "type": "lombaire-zone",
         "name": "Lombaire en zone",
+        "place": "back",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "lombaire-zone-unilateral",
+        "name": "Lombaire en zone Unilateral",
         "place": "back",
         "range": "zone",
         "side": "center"

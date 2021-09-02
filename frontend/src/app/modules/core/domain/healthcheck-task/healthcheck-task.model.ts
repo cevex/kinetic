@@ -1,12 +1,13 @@
 export declare type HealthcheckTaskType =
-    'exercise' |
-    'diagnosis' |
+    'change-location' |
     'consult' |
+    'diagnosis' |
+    'exercise' |
+    'pain-choice' |
+    'pain-assessment' |
     'replug' |
     'redo' |
-    'test-location' |
-    'change-location' |
-    'pain-assessment';
+    'test-location';
 
 export class HealthcheckTask {
     id: string;

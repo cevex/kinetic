@@ -53,7 +53,7 @@ export class HealthcheckDataService {
 
     public redoExercise(healthcheck: Healthcheck): Healthcheck {
         const redoTask = <RedoHealthcheckTask>this.taskServiceCache.findTask(healthcheck.taskId);
-        return this.addTask(healthcheck, redoTask.exerciseId);
+        return this.addTask(healthcheck, redoTask.exerciseTaskToRedo);
     }
 
     public chooseLocation(healthcheck: Healthcheck, choice: PainAreaChoice): Healthcheck {

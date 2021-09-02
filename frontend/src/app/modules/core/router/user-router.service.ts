@@ -112,7 +112,6 @@ export class UserRouterService {
         this.rootHome(updatedUserEvent.updatedEntry);
     }
 
-
     public deleteUser(user: User) {
         const currentState = this.storeService.getStore();
         const updatedUserEvent = this.usersDataService.deleteUser(currentState.users, user);

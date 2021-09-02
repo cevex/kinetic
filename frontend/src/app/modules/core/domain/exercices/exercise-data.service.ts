@@ -9,7 +9,7 @@ import { ExerciseData } from './exercise-data.model';
 })
 export class ExerciseDataService {
 
-    private EXERCISE_URL = '~/assets/mock/exercises.mock.json';
+    private EXERCISE_URL = '~/assets/data/exercises.data.json';
 
     constructor(private http: HttpClient) {
     }

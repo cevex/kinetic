@@ -12,27 +12,13 @@ export declare type IconCircleSize = 'small' | 'medium' | 'big';
 })
 export class IconCircleComponent implements OnInit {
 
-    @Input() userProfile: UserProfile;
+    @Input() imgPath: string;
     @Input() size: IconCircleSize;
-
     @Output() selected = new EventEmitter<BodyArea>();
-
-    private static index: number = 0;
 
     constructor() {
     }
 
     ngOnInit(): void {
     }
-
-    public getAvatar(): string {
-        this.iterate();
-        return '~/assets/img/avatar/avatar-' + (IconCircleComponent.index) + '.jpeg';
-    }
-
-    private iterate() {
-        IconCircleComponent.index++;
-        if (IconCircleComponent.index === 5) IconCircleComponent.index = 0;
-    }
-
 }

@@ -1,12 +1,20 @@
 .pathology-list {
 
     &__title {
+        margin-left: 10px;
         font-size: var(--font-regular);
         font-family: var(--family-regular);
     }
 
     &__container {
-        margin: 50px;
         background: white;
+    }
+
+    &__item {
+        background: white;
+    }
+
+    &__item:not(:last-child) {
+        border-bottom: 1px solid grey;
     }
 }

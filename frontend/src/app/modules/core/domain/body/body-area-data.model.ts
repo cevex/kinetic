@@ -19,6 +19,7 @@ export declare type BodyAreaSide = 'left' | 'right' | 'center';
 export class BodyArea {
     type: BodyAreaType;
     name: string;
+    imgPath: string;
 
     place: BodyAreaPlace;
     range: BodyAreaRange;

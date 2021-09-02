@@ -1,0 +1,53 @@
+[
+    {
+        "id": "pain-choice__sacro",
+        "type": "pain-choice",
+        "bodyArea": "sacro-illiaque",
+        "more": "sacro__exercise-fente-arriere"
+    },
+    {
+        "id": "sacro__exercise-fente-arriere",
+        "type": "exercise",
+        "exerciseId": "fente-arriere",
+        "choice": {
+            "less": "sacro__exercise-attitude-fessier",
+            "equal": "sacro__exercise-fente-arriere__redo",
+            "more": "sacro__exercise-fente-arriere__change-location"
+        }
+    },
+    {
+        "id": "sacro__exercise-fente-arriere__redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "exercise-etirement-flexion"
+    },
+    {
+        "id": "sacro__exercise-fente-arriere__change-location",
+        "type": "change-location",
+        "painChoice": "pain-choice__fessier"
+    },
+    {
+        "id": "sacro__exercise-attitude-fessier",
+        "type": "exercise",
+        "exerciseId": "attitude-fessier",
+        "choice": {
+            "less": "sacro__diagnosis-contracture-posturale",
+            "equal": "sacro__exercise-attitude-fessier__redo",
+            "more": "exercise-posture-flexion"
+        }
+    },
+    {
+        "id": "sacro__diagnosis-contracture-posturale",
+        "type": "diagnosis",
+        "diagnosisId": "contracture-posturale"
+    },
+    {
+        "id": "sacro__exercise-attitude-fessier__redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "exercise-etirement-flexion"
+    },
+    {
+        "id": "sacro__exercise-attitude-fessier__change-location",
+        "type": "change-location",
+        "painChoice": "pain-choice__fessier"
+    }
+]

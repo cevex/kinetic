@@ -7,7 +7,7 @@
     <FlexboxLayout class="user-home__header" flexDirection="column">
         <FlexboxLayout class="user-home__header-control" flexDirection="row">
             <knt-icon-circle [size]="'small'"
-                             [userProfile]="user.userProfile"
+                             [imgPath]="user.userProfile.avatar"
                              (selected)="goToUserList()"></knt-icon-circle>
             <Label text="&#xf304;" class="fas user-home__header-control-icon"
                    (tap)="editUser()"></Label>

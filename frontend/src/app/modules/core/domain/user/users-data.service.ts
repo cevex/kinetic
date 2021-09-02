@@ -15,6 +15,8 @@ export interface UserUpdateEvent {
 })
 export class UsersDataService {
 
+    private iconIndex: number = 0;
+
     constructor(
         private userRepository: UsersRepository,
         private healthcheckDataService: HealthcheckDataService
@@ -40,6 +42,7 @@ export class UsersDataService {
             userProfile: {
                 name: userProfile.name,
                 gender: userProfile.gender,
+                avatar: userProfile.avatar,
             },
             showGuide: true,
             healthcheckList: [],
@@ -51,7 +54,19 @@ export class UsersDataService {
         return {
             name: '',
             gender: 'm',
+            avatar: this.getAvatar()
         };
+    }
+
+    public getAvatar(): string {
+        const path = '~/assets/img/avatar/avatar-' + (this.iconIndex) + '.jpeg';
+        this.iconIndex++;
+        if (this.iconIndex === 5) this.iconIndex = 0;
+        return path;
+    }
+
+    private iterate() {
+
     }
 
     // =======================================================================

@@ -36,6 +36,10 @@ export class ExerciseComponent implements OnInit {
         this.exerciseTask = <ExerciseHealthcheckTask>this.healthcheckRouterService.getCurrentTask();
         this.exercise = this.exerciseDataServiceCache.getFlat()
             .find(exercise => exercise.id === this.exerciseTask.exerciseId);
+        console.log('loaded exerciseTask', this.exerciseTask);
+        console.log('loaded exerciseDataServiceCache', this.exerciseDataServiceCache.getFlat());
+        console.log('loaded exercises', this.exercise);
+        console.log('loaded exercises', this.exercise);
     }
 
     public goNext() {

@@ -2,23 +2,37 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BodyArea, BodyAreaPlace, BodyAreaType } from './body-area-data.model';
+import { BodyArea, BodyAreaType } from './body-area-data.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BodyAreaDataService {
 
-    private BODY_AREA_URL = '~/assets/mock/body-area.mock.json';
+    private BODY_AREA_URL = '~/assets/data/body-area.data.json';
+    private BODY_AREA_IMG = '~/assets/img/body-location/';
 
     constructor(private http: HttpClient) {
     }
 
     public getBodyAreas(): Observable<BodyArea[]> {
-        return this.http.get<BodyArea[]>(this.BODY_AREA_URL);
+        return this.http.get<BodyArea[]>(this.BODY_AREA_URL).pipe(
+            map((bodyAreas: BodyArea[]) => {
+                return bodyAreas.map(bodyArea => {
+                    bodyArea.imgPath = this.BODY_AREA_IMG + this.getPainImage(bodyArea.type);
+                    return bodyArea;
+                });
+            })
+        );
     }
 
-    public getBodyArea(): BodyAreaType[] {
+    public getPainImage(bodyAreaType: BodyAreaType): string {
+        if (bodyAreaType.includes('lombaire')) return 'm-back.jpeg';
+        if (bodyAreaType.includes('sacro-illiaque')) return 'sacro-iliaque.jpeg';
+        if (bodyAreaType.includes('fessiers')) return 'm-fesse.jpeg';
+    }
+
+    public getBodyAreaTypes(): BodyAreaType[] {
         return [
             'lombaire',
             'lombaire-barre',

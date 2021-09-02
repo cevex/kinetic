@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ExerciseHealthcheckTask } from '~/app/modules/core/domain/healthcheck-task/specific/exercise-healthcheck-task.model';
 import { HealthcheckTask, HealthcheckTaskType } from './healthcheck-task.model';
 
@@ -9,7 +10,14 @@ import { HealthcheckTask, HealthcheckTaskType } from './healthcheck-task.model';
 })
 export class HealthcheckTaskDataService {
 
-    private TREATMENT_URL = '~/assets/mock/treatment-tasks.mock.json';
+    private TREATMENT_URL = {
+        root: '~/assets/data/healthcheck/healthcheck-tasks-root.data.json',
+        backBar: '~/assets/data/healthcheck/healthcheck-tasks-back-bar.data.json',
+        backZone: '~/assets/data/healthcheck/healthcheck-tasks-back-zone.data.json',
+        buttock: '~/assets/data/healthcheck/healthcheck-tasks-buttock.data.json',
+        sacro: '~/assets/data/healthcheck/healthcheck-tasks-sacro.data.json',
+    };
+
 
     constructor(
         private http: HttpClient
@@ -17,7 +25,19 @@ export class HealthcheckTaskDataService {
     }
 
     public getTasks(): Observable<HealthcheckTask[]> {
-        return this.http.get<HealthcheckTask[]>(this.TREATMENT_URL);
+        const calls$ = Object.keys(this.TREATMENT_URL)
+            .map(urlName => this.http.get<HealthcheckTask[]>(this.TREATMENT_URL[urlName]));
+
+        return forkJoin(calls$).pipe(
+            map(tasksList => this.mergeTasks(tasksList))
+        );
+    }
+
+    private mergeTasks(tasksList: HealthcheckTask[][]): HealthcheckTask[] {
+        if (!tasksList) return [];
+        return tasksList.reduce((alltasks, tasks) => {
+            return tasks ? alltasks.concat(tasks) : alltasks;
+        }, []);
     }
 
     public filterTaskByType(tasks: HealthcheckTask[], type: HealthcheckTaskType): HealthcheckTask[] {
@@ -29,7 +49,7 @@ export class HealthcheckTaskDataService {
     }
 
     public filterTaskByExercises(tasks: HealthcheckTask[], exerciseId: string): HealthcheckTask[] {
-        return this.filterTaskByType(tasks,'exercise')
+        return this.filterTaskByType(tasks, 'exercise')
             .filter(task => (<ExerciseHealthcheckTask>task).exerciseId === exerciseId);
     }
 }
