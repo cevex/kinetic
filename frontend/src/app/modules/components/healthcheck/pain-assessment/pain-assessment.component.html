@@ -1,15 +1,15 @@
 <FlexboxLayout class="pain-assessment">
+    <knt-user-header [title]="'Bilan'">
+    </knt-user-header>
 
     <FlexboxLayout class="pain-assessment__header">
-        <Label class="healthcheck-header__title"
-               [text]="'Bilan'"></Label>
         <Label class="pain-assessment__header-question"
                [text]="'Dans cette zone :'"></Label>
 
     </FlexboxLayout>
 
     <FlexboxLayout class="pain-assessment__map">
-        <knt-body-map [bodyAreas]="bodyAreas">
+        <knt-body-map [bodyAreas]="bodyArea ? [bodyArea]: []">
         </knt-body-map>
     </FlexboxLayout>
 

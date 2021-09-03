@@ -35,7 +35,7 @@ export class BodyAreaDataService {
     public getBodyAreaTypes(): BodyAreaType[] {
         return [
             'lombaire',
-            'lombaire-barre',
+            'lombaire-bar',
             'lombaire-zone__left',
             'lombaire-zone__right',
             'fessiers',

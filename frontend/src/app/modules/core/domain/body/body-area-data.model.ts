@@ -1,6 +1,6 @@
 export declare type BodyAreaType =
     'lombaire' |
-    'lombaire-barre' |
+    'lombaire-bar' |
     'lombaire-zone__left' |
     'lombaire-zone__right' |
 
@@ -16,7 +16,7 @@ export declare type BodyAreaPlace = 'lombaire' | 'fessiers' | 'sacro';
 export declare type BodyAreaRange = 'zone' | 'local';
 export declare type BodyAreaSide = 'left' | 'right' | 'center';
 
-export class BodyArea {
+export interface BodyArea {
     type: BodyAreaType;
     name: string;
     imgPath: string;

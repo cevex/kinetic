@@ -9,7 +9,7 @@ export declare type HealthcheckTaskType =
     'redo' |
     'test-location';
 
-export class HealthcheckTask {
+export interface HealthcheckTask {
     id: string;
     root?: boolean;
     type: HealthcheckTaskType;

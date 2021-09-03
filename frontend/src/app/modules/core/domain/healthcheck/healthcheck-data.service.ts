@@ -4,6 +4,7 @@ import { BodyAreaType } from '~/app/modules/core/domain/body/body-area-data.mode
 import { PainAssessmentChoiceType } from '~/app/modules/core/domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { HealthcheckTaskDataService } from '~/app/modules/core/domain/healthcheck-task/healthcheck-task-data.service';
 import { HealthcheckTaskServiceCache } from '~/app/modules/core/domain/healthcheck-task/healthcheck-task-data.service.cache';
+import { ChangeLocationHealthcheck } from '~/app/modules/core/domain/healthcheck-task/specific/change-location-healthcheck-task.model';
 import { ExerciseHealthcheckTask } from '~/app/modules/core/domain/healthcheck-task/specific/exercise-healthcheck-task.model';
 import { RedoHealthcheckTask } from '~/app/modules/core/domain/healthcheck-task/specific/redo-healthcheck-task.model';
 import { PainAreaChoice } from '../healthcheck-task/choice/pain-area-choice.model';
@@ -38,12 +39,22 @@ export class HealthcheckDataService {
 
         const choiceToApply = this.validateAssessmentChoice(healthcheck, exerciseTask, choiceType);
         const newTaskId = exerciseTask.choice[choiceToApply];
-
-        healthcheck.treatmentStart = true;
-        return this.addTask(healthcheck, newTaskId);
+        const newTask = this.taskServiceCache.findTask(newTaskId);
+        console.log('choiceToApply', choiceToApply);
+        console.log('newTaskId', newTaskId);
+        console.log('newTask', newTask);
+        if (newTask.type === 'change-location') {
+            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>newTask);
+        } else {
+            const newHealthcheck = this.addTask(healthcheck, newTaskId);
+            newHealthcheck.treatmentStart = true;
+            return newHealthcheck;
+        }
     }
 
-    private validateAssessmentChoice(healthcheck: Healthcheck, exerciseTask: ExerciseHealthcheckTask, choiceType: PainAssessmentChoiceType) {
+    private validateAssessmentChoice(healthcheck: Healthcheck,
+                                     exerciseTask: ExerciseHealthcheckTask,
+                                     choiceType: PainAssessmentChoiceType): PainAssessmentChoiceType {
         if (choiceType !== 'equal') return choiceType;
         const healthcheckTasks = this.taskServiceCache.filterTaskById(healthcheck.previousTaskId);
         const exerciseTries = this.taskDataService.filterTaskByExercises(healthcheckTasks, exerciseTask.exerciseId);
@@ -57,9 +68,15 @@ export class HealthcheckDataService {
     }
 
     public chooseLocation(healthcheck: Healthcheck, choice: PainAreaChoice): Healthcheck {
-        const newHealthcheck = this.addTask(healthcheck, choice.more);
-        newHealthcheck.bodyArea = choice.bodyArea;
-        return newHealthcheck;
+        const moreTask = this.taskServiceCache.findTask(choice.more);
+        console.log('moreTask', moreTask);
+        if (moreTask.type === 'change-location') {
+            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>moreTask);
+        } else {
+            const newHealthcheck = this.addTask(healthcheck, choice.more);
+            newHealthcheck.bodyArea = choice.bodyArea;
+            return newHealthcheck;
+        }
     }
 
     public seeHealthcheckGuide(healthcheck: Healthcheck): Healthcheck {

@@ -1,23 +1,24 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserHeaderModule } from '~/app/modules/components/users/header/user-header.module';
-import { DiagnosisComponent } from './diagnosis.component';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptModule, NativeScriptRouterModule } from '@nativescript/angular';
+import { IconCircleModule } from '../../common/icon-circle/icon-circle.module';
+import { UserHeaderComponent } from './user-header.component';
 
 @NgModule({
     declarations: [
-        DiagnosisComponent
+        UserHeaderComponent
     ],
     exports: [
-        DiagnosisComponent
+        UserHeaderComponent
     ],
     imports: [
         CommonModule,
         NativeScriptModule,
         NativeScriptRouterModule,
-        UserHeaderModule,
+
+        IconCircleModule
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })
-export class DiagnosisModule {
+export class UserHeaderModule {
 }

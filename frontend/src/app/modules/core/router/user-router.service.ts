@@ -30,7 +30,7 @@ export class UserRouterService {
     //                Routing
     // =======================================================================
 
-    public rootHome(user: User) {
+    public openHome(user: User) {
         user.healthcheckList && user.healthcheckList.length ?
             this.goToUserHome() :
             this.healthcheckRouterService.startHealthcheck();
@@ -71,7 +71,7 @@ export class UserRouterService {
         newState.selectedUser = user;
         this.storeService.setStore(newState);
 
-        this.rootHome(user);
+        this.openHome(user);
     }
 
     public unselectUser() {
@@ -98,7 +98,7 @@ export class UserRouterService {
         const updatedUserEvent = this.usersDataService.updateUserProfile(currentState.users, userProfile);
         this.applyInStore(currentState, updatedUserEvent);
 
-        this.rootHome(updatedUserEvent.updatedEntry);
+        this.openHome(updatedUserEvent.updatedEntry);
     }
 
     public saveUserHealthcheck() {
@@ -109,7 +109,7 @@ export class UserRouterService {
             currentState.onGoingHealthcheck);
         this.applyInStore(currentState, updatedUserEvent);
 
-        this.rootHome(updatedUserEvent.updatedEntry);
+        this.openHome(updatedUserEvent.updatedEntry);
     }
 
     public deleteUser(user: User) {

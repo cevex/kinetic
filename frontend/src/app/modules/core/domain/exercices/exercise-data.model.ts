@@ -1,9 +1,7 @@
-import { InfoDetail } from '../info-detail.model';
-
-export class ExerciseData {
+export interface ExerciseData {
     id: string;
     name: string;
-    info: InfoDetail;
+    advice: string;
     videolink: string;
     redoInfo: string;
 }

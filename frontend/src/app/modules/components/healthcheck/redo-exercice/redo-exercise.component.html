@@ -1,12 +1,18 @@
 <FlexboxLayout class="knt-page">
 
-    <Label class="h1" [text]="'Exercice'"></Label>
+    <knt-user-header [title]="'Bilan : ' + bodyArea.name">
+    </knt-user-header>
 
     <FlexboxLayout class="knt-page__center">
         <Label class=" knt-text"
-               [text]="'Refaites l’exercice en faisant bien attention à la posture. Avez-vous bien XXXXX et XXXXX ?'"></Label>
+               [text]="'Refaites l’exercice en faisant bien attention à la posture.'"></Label>
 
-        <Label class="knt-text__advice text-primary"
+        <FlexboxLayout class="knt-page__center">
+            <Label class="knt-text"
+                   [text]="getText()"></Label>
+        </FlexboxLayout>
+
+        <Label class="knt-text"
                [text]="'Aidez-vous d’une glace ou d’un proche pour corriger la posture si vous le pouvez'"></Label>
     </FlexboxLayout>
 

@@ -1,8 +1,8 @@
 [
     {
         "id": "pain-choice__lombaire-bar",
-        "type": "pain-choice",
-        "bodyArea": "lombaire-bare",
+        "type": "change-location",
+        "bodyArea": "lombaire-bar",
         "more": "back-bar__exercise-posture-extension"
     },
 

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BodyArea } from '~/app/modules/core/domain/body/body-area-data.model';
 import { DiagnosisDataServiceCache } from '~/app/modules/core/domain/diagnosis/diagnosis-data.service.cache';
 import { Diagnosis } from '~/app/modules/core/domain/diagnosis/diagnosis.model';
 import { DiagnosisHealthcheckTask } from '~/app/modules/core/domain/healthcheck-task/specific/diagnosis-healthcheck-task.model';
@@ -15,6 +16,7 @@ export class ConsultComponent implements OnInit {
 
     public diagnosisTask: DiagnosisHealthcheckTask;
     public diagnosis: Diagnosis;
+    public bodyArea: BodyArea;
 
     constructor(
         private healthcheckRouterService: HealthcheckRouterService,

@@ -24,11 +24,28 @@ export class AppRouterService {
     public rootApp() {
         const store = this.storeService.getStore();
         if (store.selectedUser) {
-            this.userRouterService.rootHome(store.selectedUser);
+            this.userRouterService.openHome(store.selectedUser);
         }
         if (store.users && store.users.length) {
             this.userRouterService.goToUserList();
         }
         // stay on landing page
+    }
+
+    public goToHome() {
+        const store = this.storeService.getStore();
+        const user = store.selectedUser;
+        if (user && user.healthcheckList && user.healthcheckList.length) {
+            this.userRouterService.openHome(store.selectedUser);
+        }
+        this.goToUserList();
+    }
+
+    public goToUserList() {
+        const store = this.storeService.getStore();
+        if (store.users && store.users.length) {
+            this.userRouterService.goToUserList();
+        }
+        this.routerExtensions.navigate([UserRouterService.USER_ROOT.home]);
     }
 }

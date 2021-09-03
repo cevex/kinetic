@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HealthcheckTask } from '~/app/modules/core/domain/healthcheck-task/healthcheck-task.model';
 import { CacheService } from '../../common/cache/cache.service';
 import { BodyArea } from './body-area-data.model';
 import { BodyAreaDataService } from './body-area-data.service';

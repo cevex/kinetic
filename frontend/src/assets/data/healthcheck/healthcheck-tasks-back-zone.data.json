@@ -1,7 +1,7 @@
 [
     {
         "id": "pain-choice__lombaire-zone",
-        "type": "pain-choice",
+        "type": "change-location",
         "bodyArea": "lombaire-zone",
         "more": "back-zone__exercise-etirement-rotation"
     },
@@ -12,7 +12,7 @@
         "choice": {
             "less": "back-zone__exercise-etirement-extension",
             "equal": "back-zone__exercise-etirement-rotation-redo",
-            "more": "pain-choices__barre-uni"
+            "more": "pain-choices__bar-uni"
         }
     },
     {
@@ -61,11 +61,11 @@
         "diagnosisId": "lomb-chro-L3L4"
     },
     {
-        "id": "pain-choices__barre-uni",
+        "id": "pain-choices__bar-uni",
         "type": "test-location",
         "testType": "list",
         "painChoices": [
-            "pain-choice__lombaire-barre",
+            "pain-choice__lombaire-bar",
             "pain-choice__lombaire-zone-unilateral"
         ]
     },

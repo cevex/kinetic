@@ -31,12 +31,4 @@ export class NativescriptViewService {
             take(1)
         );
     }
-
-    public logScreen() {
-        console.log('[screen] scale ', Screen.mainScreen.scale);
-        console.log('[screen] widthDIPs ', Screen.mainScreen.widthDIPs);
-        console.log('[screen] widthPixels ', Screen.mainScreen.widthPixels);
-        console.log('[screen] heightDIPs ', Screen.mainScreen.heightDIPs);// DIPs === pixels/scale (e.g 1024 pixels / 2x scale = 512 DIPs)
-        console.log('[screen] heightPixels  ', Screen.mainScreen.heightPixels);
-    }
 }

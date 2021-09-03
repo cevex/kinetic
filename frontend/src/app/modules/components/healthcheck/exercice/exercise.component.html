@@ -1,24 +1,34 @@
 <FlexboxLayout flexDirection="column" class="exercise" *ngIf="exercise">
 
-    <FlexboxLayout class="exercise__header">
-        <Label text="&#xf44b;" class="fas exercise__header-icon"></Label>
-        <Label class="exercise__header-title"
-               [text]="exercise.name"></Label>
-    </FlexboxLayout>
+    <knt-user-header [title]="'Bilan : ' + bodyArea.name">
+    </knt-user-header>
 
-    <FlexboxLayout class="exercise__content">
+    <FlexboxLayout flexDirection="column" class="exercise__content">
 
-        <VideoPlayer #videoElement
+        <VideoPlayer #videoElement class="exercise__video"
                      [src]="'~/assets/videos/etirement_extension.mp4'"
                      autoplay="true"
                      fill="true"
                      controls="false"
-                     height="80%"
-                     class="video-player"></VideoPlayer>
+                     height="40%"></VideoPlayer>
+
+        <FlexboxLayout class="exercise__details-main">
+            <Label class="exercise__details-title-main"
+                   [text]="exercise.name"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="exercise__details">
+            <Label text="&#xf129;" class="fas exercise__details-icon-info text-primary"></Label>
+            <Label class="exercise__details-title-info text-primary"
+                   [text]="exercise.advice"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="exercise__details">
+            <Label text="&#xf03d;" class="fas exercise__details-icon"></Label>
+            <Label class="exercise__details-title"
+                   [text]="exercise.videolink"></Label>
+        </FlexboxLayout>
     </FlexboxLayout>
-
-
-    <!--    [src]="'~/assets/videos/' + exercise.videolink"-->
 
     <FlexboxLayout class="exercise__controls">
         <Button text="C'est fait !" class="-primary"

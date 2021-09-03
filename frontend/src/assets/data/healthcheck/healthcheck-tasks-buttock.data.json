@@ -1,28 +1,29 @@
 [
     {
         "id": "pain-choice__fessiers",
-        "type": "pain-choice",
+        "type": "change-location",
         "bodyArea": "fessiers",
         "more": "buttock__exercise-etirement-fessiers"
     },
     {
         "id": "buttock__exercise-etirement-fessiers",
         "type": "exercise",
-        "exerciseId": "fente-arriere",
+        "exerciseId": "etirement-fessiers",
         "choice": {
             "less": "buttock__exercise-attitude-fessier",
             "equal": "buttock__exercise-etirement-fessiers__redo",
-            "more": "buttock__exercise-etirement-fessiers__change-location"
+            "more": "pain-choice__lombaire-zone"
         }
     },
     {
         "id": "buttock__exercise-etirement-fessiers__redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-etirement-fessiers"
+        "exerciseTaskToRedo": "buttock__exercise-etirement-fessiers"
     },
     {
         "id": "buttock__exercise-etirement-fessiers__change-location",
         "type": "change-location",
+        "bodyArea": "lombaire-zone",
         "painChoice": "pain-choice__lombaire-zone"
     },
     {
@@ -32,7 +33,7 @@
         "choice": {
             "less": "buttock__diagnosis-contracture-posturale",
             "equal": "buttock__exercise-attitude-fessier__redo",
-            "more": "exercise-posture-flexion"
+            "more": "pain-choice__lombaire-zone"
         }
     },
     {
@@ -43,11 +44,6 @@
     {
         "id": "buttock__exercise-attitude-fessier__redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-etirement-flexion"
-    },
-    {
-        "id": "buttock__exercise-attitude-fessier__change-location",
-        "type": "change-location",
-        "painChoice": "pain-choice__lombaire-zone"
+        "exerciseTaskToRedo": "buttock__exercise-attitude-fessier"
     }
 ]

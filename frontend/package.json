@@ -43,6 +43,7 @@
         "@nativescript/theme": "~3.0.1",
         "@triniwiz/nativescript-couchbase": "^1.2.5",
         "lodash-es": "^4.17.21",
+        "nativescript-ui-calendar": "^8.0.0",
         "nativescript-videoplayer": "^5.0.1",
         "reflect-metadata": "~0.1.13",
         "rxjs": "~6.6.7",

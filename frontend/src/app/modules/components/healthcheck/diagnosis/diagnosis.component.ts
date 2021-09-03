@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BodyArea } from '~/app/modules/core/domain/body/body-area-data.model';
 import { DiagnosisDataServiceCache } from '~/app/modules/core/domain/diagnosis/diagnosis-data.service.cache';
 import { HealthcheckRouterService } from '~/app/modules/core/router/healthcheck-router.service';
 import { UserRouterService } from '~/app/modules/core/router/user-router.service';
@@ -16,6 +17,7 @@ export class DiagnosisComponent implements OnInit {
 
     public diagnosisTask: DiagnosisHealthcheckTask;
     public diagnosis: Diagnosis;
+    public bodyArea: BodyArea;
 
     constructor(
         private treatmentDataService: HealthcheckDataService,
@@ -33,6 +35,7 @@ export class DiagnosisComponent implements OnInit {
         this.diagnosisTask = <DiagnosisHealthcheckTask>this.healthcheckRouterService.getCurrentTask();
         this.diagnosis = this.diagnosisServiceCache.getFlat()
             .find(diagnosis => diagnosis.id === this.diagnosisTask.diagnosisId);
+        this.bodyArea = this.healthcheckRouterService.getBodyArea();
     }
 
     public endHealthcheck() {

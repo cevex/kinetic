@@ -1,7 +1,7 @@
 import { BodyArea, BodyAreaType } from '../../body/body-area-data.model';
 import { HealthcheckTask } from '../healthcheck-task.model';
 
-export class PainAreaChoice {
+export interface PainAreaChoice {
     bodyArea: BodyAreaType;
     more: string;
 }

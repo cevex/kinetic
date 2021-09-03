@@ -1,0 +1,16 @@
+<FlexboxLayout flexDirection="row" rowSpan="2" class="user-header">
+
+    <knt-icon-circle [size]="'small'"
+                     [imgPath]="user.userProfile.avatar"
+                     (selected)="goToUserList()"></knt-icon-circle>
+
+    <Label class="user-header__title"
+           [text]="title"></Label>
+
+    <Label *ngIf="icon" class="fas"
+           text="{{getIcon()}}"
+           (tap)="iconClicked.next()">
+
+    </Label>
+</FlexboxLayout>
+

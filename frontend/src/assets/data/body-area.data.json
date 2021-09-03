@@ -8,7 +8,7 @@
         "image": ""
     },
     {
-        "type": "lombaire-barre",
+        "type": "lombaire-bar",
         "name": "Lombaire en barre",
         "place": "back",
         "range": "zone",

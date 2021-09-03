@@ -1,6 +1,6 @@
 export declare type PainAssessmentChoiceType = 'less' | 'equal' | 'more';
 
-export class PainAssessmentChoice {
+export interface PainAssessmentChoice {
     less: string;
     equal: string;
     more: string;

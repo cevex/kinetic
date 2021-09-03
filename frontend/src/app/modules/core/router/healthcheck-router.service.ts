@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { RouterExtensions } from '@nativescript/angular';
 import { cloneDeep } from 'lodash-es';
+import { BodyArea } from '~/app/modules/core/domain/body/body-area-data.model';
+import { BodyAreaDataServiceCache } from '~/app/modules/core/domain/body/body-area-data.service.cache';
 import { PainAreaChoice } from '~/app/modules/core/domain/healthcheck-task/choice/pain-area-choice.model';
 import { PainAssessmentChoiceType } from '~/app/modules/core/domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { HealthcheckTaskServiceCache } from '~/app/modules/core/domain/healthcheck-task/healthcheck-task-data.service.cache';
@@ -28,6 +30,7 @@ export class HealthcheckRouterService {
         private healthcheckDataService: HealthcheckDataService,
         private healthcheckTaskServiceCache: HealthcheckTaskServiceCache,
         private routerExtensions: RouterExtensions,
+        private bodyAreaDataServiceCache: BodyAreaDataServiceCache,
         private storeService: KineticStoreService,
     ) {
     }
@@ -38,7 +41,7 @@ export class HealthcheckRouterService {
 
     public rootHealthcheck(healthcheck: Healthcheck) {
         const path = this.getHealthcheckPath(healthcheck);
-        console.log('[router-healthcheck] ROOTed : ', path);
+        console.log('[router-healthcheck] ROOT path : ', path);
         this.routerExtensions.navigate([path]);
     }
 
@@ -48,7 +51,6 @@ export class HealthcheckRouterService {
 
     private getHealthcheckPath(healthcheck: Healthcheck) {
         const currentTask = this.healthcheckTaskServiceCache.findTask(healthcheck.taskId);
-        console.log('[router-healthcheck] ROOTing with healthcheck: ', healthcheck);
         console.log('[router-healthcheck] ROOTing to task: ', currentTask);
 
         if (!healthcheck.bodyArea) {
@@ -117,8 +119,13 @@ export class HealthcheckRouterService {
     //                Store Utils
     // =======================================================================
 
-    public getHealthcheck() {
+    public getHealthcheck(): Healthcheck {
         return this.storeService.getStore().onGoingHealthcheck;
+    }
+
+    public getBodyArea(): BodyArea {
+        const healthcheck = this.getHealthcheck();
+        return this.bodyAreaDataServiceCache.findBodyArea(healthcheck.bodyArea);
     }
 
     public getCurrentTask() {

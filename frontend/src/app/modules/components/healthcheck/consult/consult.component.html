@@ -1,9 +1,7 @@
 <FlexboxLayout class="knt-page">
 
-    <FlexboxLayout class="healthcheck-header">
-        <Label class="healthcheck-header__title"
-               [text]="'Consulter un médecin'"></Label>
-    </FlexboxLayout>
+    <knt-user-header [title]="'Consultation : ' + bodyArea.name">
+    </knt-user-header>
 
     <FlexboxLayout class="knt-page__center">
         <Label class="knt-text"

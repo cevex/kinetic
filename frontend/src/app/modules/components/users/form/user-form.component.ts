@@ -81,7 +81,7 @@ export class UserFormComponent implements OnInit {
     public cancel() {
         this.creationMode ?
             this.userRouterService.goToUserList() :
-            this.userRouterService.rootHome(this.store.getSelectedUser());
+            this.userRouterService.openHome(this.store.getSelectedUser());
 
     }
 }

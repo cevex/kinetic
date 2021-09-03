@@ -15,11 +15,11 @@ The imported CSS rules must precede all other types of rules.
 
 
 .ns-root {
-    --font-xsmall: 12em;
-    --font-small: 16em;
-    --font-regular: 20em;
-    --font-big: 30px;
-    --font-xbig: 42px;
+    --font-xsmall: 9em;
+    --font-small: 13em;
+    --font-regular: 16em;
+    --font-big: 20px;
+    --font-xbig: 26px;
 
     --padding-xsmall: 10em;
     --padding-small: 15em;
@@ -27,6 +27,7 @@ The imported CSS rules must precede all other types of rules.
     --padding-big: 25em;
     --padding-xbig: 40em;
 
+    --color-primary: #13A9EA;
     --color-grey-bg: #F0F0F3;
     --color-success: #28a745;
     --color-danger: #dc3545;
@@ -117,22 +118,22 @@ The imported CSS rules must precede all other types of rules.
 .knt-text {
     text-wrap: true;
     margin-bottom: 15px;
-    font-size: var(--font-small);
+    font-size: var(--font-regular);
     font-family: var(--family-light);
 }
 
 .knt-text__strong {
     text-wrap: true;
+    text-align: center;
 
-    font-size: var(--font-small);
-    font-family: var(--family-sbold);
+    font-size: var(--font-big);
+    font-family: var(--family-bold);
 }
 
 .knt-text__advice {
     color: var(--color-sky);
     font-size: 16px;
     font-style: italic;
-    text-wrap: true;
     margin-top: 30vh;
     text-align: center;
 }

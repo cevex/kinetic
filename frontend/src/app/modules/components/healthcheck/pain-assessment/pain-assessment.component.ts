@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BodyArea } from '~/app/modules/core/domain/body/body-area-data.model';
-import { BodyAreaDataServiceCache } from '~/app/modules/core/domain/body/body-area-data.service.cache';
 import { ExerciseDataServiceCache } from '~/app/modules/core/domain/exercices/exercise-data.service.cache';
 import { HealthcheckTaskServiceCache } from '~/app/modules/core/domain/healthcheck-task/healthcheck-task-data.service.cache';
 import { HealthcheckRouterService } from '~/app/modules/core/router/healthcheck-router.service';
@@ -22,7 +21,7 @@ export class PainAssessmentComponent implements OnInit {
 
     public exerciseTask: ExerciseHealthcheckTask;
     public exercise: ExerciseData;
-    public bodyAreas: BodyArea[];
+    public bodyArea: BodyArea;
 
     // =======================================================================
     //                          Constructor
@@ -32,8 +31,6 @@ export class PainAssessmentComponent implements OnInit {
         private healthcheckRouterService: HealthcheckRouterService,
         private healthcheckTaskServiceCache: HealthcheckTaskServiceCache,
         private exerciseDataServiceCache: ExerciseDataServiceCache,
-        private bodyAreaService: BodyAreaDataServiceCache,
-        private cdr: ChangeDetectorRef,
     ) {
     }
 
@@ -46,31 +43,10 @@ export class PainAssessmentComponent implements OnInit {
     // =======================================================================
 
     private initData() {
-        this.initExercises();
-        this.initBodyArea();
-    }
-
-    private initExercises() {
         this.exerciseTask = <ExerciseHealthcheckTask>this.healthcheckRouterService.getCurrentTask();
         this.exercise = this.exerciseDataServiceCache.getFlat()
             .find(exercise => exercise.id === this.exerciseTask.exerciseId);
-
-        // Mock
-        // this.exerciseDataServiceCache.get().subscribe(exercises => {
-        //     this.exercise = exercises[0];
-        //     this.cdr.detectChanges();
-        // });
-    }
-
-    private initBodyArea() {
-        const healthcheck = this.healthcheckRouterService.getHealthcheck();
-        this.bodyAreas = this.bodyAreaService.getFlat()
-            .filter(bodyArea => bodyArea.type === healthcheck.bodyArea);
-        // Mock
-        // this.bodyAreaService.get().subscribe(bodyAreas => {
-        //     this.bodyAreas = [bodyAreas[0]];
-        //     this.cdr.detectChanges();
-        // });
+        this.bodyArea = this.healthcheckRouterService.getBodyArea();
     }
 
     public assessExercise(choiceType: PainAssessmentChoiceType) {

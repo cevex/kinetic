@@ -1,10 +1,10 @@
 <FlexboxLayout class="pain-location">
 
-    <FlexboxLayout class="healthcheck-header">
-        <Label class="healthcheck-header__title" [text]="'Bilan'"></Label>
-    </FlexboxLayout>
+    <knt-user-header [title]="'Bilan : '">
+    </knt-user-header>
 
-    <Label class="pain-location__question" [text]="'Où se trouve votre douleur ?'"></Label>
+    <Label class="pain-location__question"
+           [text]="'Où se trouve votre douleur ?'"></Label>
 
     <FlexboxLayout class="pain-location__map" *ngIf="testLocationTask.testType === 'body-map'">
         <knt-body-map [bodyAreas]="bodyAreas"

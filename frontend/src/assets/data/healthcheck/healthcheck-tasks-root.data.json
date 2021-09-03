@@ -12,7 +12,7 @@
     },
     {
         "id": "pain-choice__lombaire",
-        "type": "pain-choice",
+        "type": "change-location",
         "bodyArea": "lombaire",
         "more": "test-location__lombaire"
     },
@@ -21,7 +21,7 @@
         "type": "test-location",
         "testType": "list",
         "painChoices": [
-            "pain-choice__lombaire-barre",
+            "pain-choice__lombaire-bar",
             "pain-choice__lombaire-zone"
         ]
     }

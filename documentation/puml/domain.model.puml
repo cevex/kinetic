@@ -10,7 +10,7 @@ package domain {
         }
 
         enum BodyAreaType {
-            + lombaire-barre
+            + lombaire-bar
             + lombaire-zone
             + lombaire-unilateral
 

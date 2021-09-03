@@ -1,16 +1,14 @@
 <FlexboxLayout class="knt-page">
 
-    <FlexboxLayout class="healthcheck-header">
-        <Label class="healthcheck-header__title"
-               [text]="'Diagnostique'"></Label>
-    </FlexboxLayout>
+    <knt-user-header [title]="'Diagnostique'">
+    </knt-user-header>
 
     <FlexboxLayout class="knt-page__center">
 
         <Label class="knt-text"
                [text]="'L’évolution de votre douleur en fonction des exercices ou éducations proposées sont caractéristiques de :'"></Label>
 
-        <Label class="knt-text__strong"
+        <Label class="knt-text__strong diagnosis-value"
                [text]="diagnosis.name"></Label>
 
         <Label class="knt-text__advice"

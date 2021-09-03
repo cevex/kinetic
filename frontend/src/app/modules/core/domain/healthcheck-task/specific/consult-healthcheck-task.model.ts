@@ -1,5 +1,5 @@
 import { HealthcheckTask } from '../healthcheck-task.model';
 
-export class ConsultHealthcheckTask extends HealthcheckTask {
+export interface ConsultHealthcheckTask extends HealthcheckTask {
     somethings?: string;
 }
