@@ -1,0 +1,28 @@
+[
+    {
+        "id": "test-location__main",
+        "type": "test-location",
+        "root": "true",
+        "testType": "body-map",
+        "painChoices": [
+            "pain-choice__lombaire",
+            "pain-choice__fessiers",
+            "pain-choice__sacro"
+        ]
+    },
+    {
+        "id": "pain-choice__lombaire",
+        "type": "change-location",
+        "bodyArea": "lombaire",
+        "more": "test-location__lombaire"
+    },
+    {
+        "id": "test-location__lombaire",
+        "type": "test-location",
+        "testType": "list",
+        "painChoices": [
+            "pain-choice__lombaire-bar",
+            "pain-choice__lombaire-zone"
+        ]
+    }
+]

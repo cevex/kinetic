@@ -1,0 +1,102 @@
+[
+    {
+        "id": "pain-choice__lombaire-zone",
+        "type": "change-location",
+        "bodyArea": "lombaire-zone",
+        "more": "back-zone__exercise-etirement-rotation"
+    },
+    {
+        "id": "back-zone__exercise-etirement-rotation",
+        "type": "exercise",
+        "exerciseId": "etirement-rotation",
+        "choice": {
+            "less": "back-zone__exercise-etirement-extension",
+            "equal": "back-zone__exercise-etirement-rotation-redo",
+            "more": "pain-choices__bar-uni"
+        }
+    },
+    {
+        "id": "back-zone__exercise-etirement-rotation-redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "back-zone__exercise-etirement-rotation"
+    },
+    {
+        "id": "back-zone__exercise-etirement-extension",
+        "type": "exercise",
+        "exerciseId": "etirement-extension",
+        "choice": {
+            "less": "back-zone__diagnosis-lomb-chro-L5S1",
+            "equal": "back-zone__exercise-etirement-extension-redo",
+            "more": "back-zone__exercise-etirement-flexion"
+        }
+    },
+    {
+        "id": "back-zone__exercise-etirement-extension-redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "exercise-etirement-extension"
+    },
+    {
+        "id": "back-zone__diagnosis-lomb-chro-L5S1",
+        "type": "diagnosis",
+        "diagnosisId": "lomb-chro-L5S1"
+    },
+    {
+        "id": "back-zone__exercise-etirement-flexion",
+        "type": "exercise",
+        "exerciseId": "etirement-flexion",
+        "choice": {
+            "less": "back-zone__diagnosis-lomb-chro-L3L4",
+            "equal": "back-zone__exercise-etirement-flexion-redo",
+            "more": "pain-choice__lombaire-bar"
+        }
+    },
+    {
+        "id": "back-zone__exercise-etirement-flexion-redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "exercise-etirement-flexion"
+    },
+    {
+        "id": "back-zone__diagnosis-lomb-chro-L3L4",
+        "type": "diagnosis",
+        "diagnosisId": "lomb-chro-L3L4"
+    },
+    {
+        "id": "pain-choices__bar-uni",
+        "type": "test-location",
+        "testType": "list",
+        "painChoices": [
+            "pain-choice__lombaire-bar",
+            "pain-choice__lombaire-zone-unilateral"
+        ]
+    },
+    {
+        "id": "pain-choice__lombaire-zone-unilateral",
+        "type": "pain-choice",
+        "bodyArea": "lombaire-zone-unilateral",
+        "more": "exercise-posture-evitement"
+    },
+    {
+        "id": "back-zone__exercise-posture-evitement",
+        "type": "exercise",
+        "exerciseId": "posture-evitement",
+        "choice": {
+            "less": "back-zone__diagnosis-dechirure",
+            "equal": "back-zone__exercise-posture-evitement-redo",
+            "more": "back-zone__exercise-posture-evitement-consult"
+        }
+    },
+    {
+        "id": "back-zone__exercise-posture-evitement-redo",
+        "type": "redo",
+        "exerciseTaskToRedo": "exercise-posture-evitement"
+    },
+    {
+        "id": "back-zone__exercise-posture-evitement-consult",
+        "type": "consult"
+    },
+    {
+        "id": "back-zone__diagnosis-dechirure",
+        "type": "diagnosis",
+        "diagnosisId": "dechirure"
+    }
+]

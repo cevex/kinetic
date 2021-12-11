@@ -1,0 +1,87 @@
+[
+    {
+        "type": "lombaire",
+        "name": "Lombaire",
+        "place": "back",
+        "range": "zone",
+        "side": "center",
+        "image": ""
+    },
+    {
+        "type": "lombaire-bar",
+        "name": "Lombaire en barre",
+        "place": "back",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "lombaire-zone",
+        "name": "Lombaire en zone",
+        "place": "back",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "lombaire-zone-unilateral",
+        "name": "Lombaire en zone Unilateral",
+        "place": "back",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "lombaire-zone__left",
+        "name": "Lombaire en zone - Gauche",
+        "place": "back",
+        "range": "local",
+        "side": "left"
+    },
+    {
+        "type": "lombaire-zone__right",
+        "name": "Lombaire en zone - Droite",
+        "place": "back",
+        "range": "local",
+        "side": "right"
+    },
+    {
+        "type": "sacro-illiaque",
+        "name": "Sacro illialique",
+        "place": "sacro",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "sacro-illiaque__left",
+        "name": "Sacro illialique - Gauche",
+        "place": "sacro",
+        "range": "local",
+        "side": "left"
+    },
+    {
+        "type": "sacro-illiaque__right",
+        "name": "Sacro illialique - Droite",
+        "place": "sacro",
+        "range": "local",
+        "side": "right"
+    },
+    {
+        "type": "fessiers",
+        "name": "Fessiers",
+        "place": "buttock",
+        "range": "zone",
+        "side": "center"
+    },
+    {
+        "type": "fessiers__left",
+        "name": "Fessiers gauche",
+        "place": "buttock",
+        "range": "local",
+        "side": "left"
+    },
+    {
+        "type": "fessiers__right",
+        "name": "Fessiers droit",
+        "place": "buttock",
+        "range": "local",
+        "side": "right"
+    }
+]
