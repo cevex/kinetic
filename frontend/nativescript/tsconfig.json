@@ -18,7 +18,7 @@
             "es2017",
             "dom"
         ],
-        "baseUrl": ".",
+        "baseUrl": "..",
         "paths": {
             "~/*": [
                 "src/*"
@@ -29,13 +29,13 @@
         }
     },
     "include": [
-        "src/tests/**/*.ts",
-        "src/**/*.ios.ts",
-        "src/**/*.android.ts"
+      "nativescript/src/tests/**/*.ts",
+      "nativescript/src/**/*.ios.ts",
+      "nativescript/src/**/*.android.ts"
     ],
     "files": [
-        "./src/main.ts",
-        "./references.d.ts"
+      "./src/main.ts",
+      "./references.d.ts"
     ],
     "exclude": [
         "node_modules",

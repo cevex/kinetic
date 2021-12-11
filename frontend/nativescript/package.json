@@ -17,12 +17,12 @@
     "files": [
         "App_Resources",
         "hooks",
-        "src",
+      "src",
         "tools",
         "!tools/assets",
         ".editorconfig",
-        "references.d.ts",
-        "tsconfig.json"
+      "references.d.ts",
+      "tsconfig.json"
     ],
     "repository": "<fill-your-repository-here>",
     "bugs": {
