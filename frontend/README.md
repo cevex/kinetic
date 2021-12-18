@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Kinetic - React Native App</h1>
+  <h1>Kinetic - React Native AppComponent</h1>
   <br />
   <p align="center">
     <a href="#-intro"><b>What is this?</b></a>
@@ -54,7 +54,7 @@ npx react-native run-ios --simulator="iPhone 11"
 ```bash
 # Start in the Android Simulator
 #  - Note: open Android Studio > Tools > AVD > Run a device
-#  - Example device specs: https://medium.com/pvtl/react-native-android-development-on-mac-ef7481f65e47#d5da
+#  - ExampleScreenComponent device specs: https://medium.com/pvtl/react-native-android-development-on-mac-ef7481f65e47#d5da
 npx react-native run-android
 ```
 
