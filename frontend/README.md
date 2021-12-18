@@ -1,24 +1,12 @@
 <div align="center">
-  <h1>Kinetic - React Native AppComponent</h1>
-  <br />
-  <p align="center">
-    <a href="#-intro"><b>What is this?</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
-    <a href="#-getting-started"><b>Usage</b></a>
-    &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
-    <a href="#-docs"><b>Docs</b></a>
-  </p>
-  <br />
+  <h1>Kinetic - React Native</h1>
+ <hr/>
 </div>
 
----
-
-## 👋 Intro
+## 👋 What is this?
 
 This project in the [React Native](https://reactnative.dev/) application which aim to provide a modern mobile app for
 physiotherapy.
-
----
 
 ## 🚀 Getting Started
 

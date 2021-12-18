@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { globalVariables } from '../../styles/styles';
+import { globalVariables } from '../../styles';
 
 export declare type ButtonType = 'primary' | 'secondary' | 'accentuate';
 
