@@ -7,6 +7,10 @@
         "ios": "react-native run-ios",
         "start": "react-native start",
         "test": "jest",
+        "clean:all": "npm run clean:lib && npm run clean:dist",
+        "clean:lib": "rimraf -rf yarn.lock package-lock.json node_modules",
+        "clean:dist": "npm run clean:android",
+        "clean:android": "rimraf -rf android/app/build",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "dependencies": {
@@ -14,6 +18,7 @@
         "@react-navigation/native-stack": "^6.2.5",
         "react": "17.0.2",
         "react-native": "0.66.3",
+        "react-native-i18n": "^2.0.15",
         "react-native-safe-area-context": "^3.3.2",
         "react-native-screens": "^3.10.1"
     },

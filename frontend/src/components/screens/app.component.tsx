@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreenComponent } from './home-screen.component';
-import { ExampleScreenComponent } from './example-screen.component';
+import HomeScreen from './home-screen.component';
+import PainLocationScreen from './pain-location-screen.component';
+import WelcomeScreen from './welcome-screen.component';
 
 const Stack = createNativeStackNavigator();
 
-export class AppComponent extends Component {
+class AppComponent extends Component {
     render() {
         return (
             <NavigationContainer>
@@ -14,10 +15,13 @@ export class AppComponent extends Component {
                     screenOptions={{
                         headerShown: false
                     }}>
-                    <Stack.Screen name="Home" component={HomeScreenComponent} />
-                    <Stack.Screen name="Example" component={ExampleScreenComponent} />
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="PainLocation" component={PainLocationScreen} />
+                    <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         );
     }
 }
+
+export default AppComponent;
