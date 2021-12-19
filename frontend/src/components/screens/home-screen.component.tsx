@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { ScreenProp } from '../common/navigation/navigable-screen-prop.model';
-import { KntButton } from '../common/ui/button.component';
-import { globalVariables } from '../styles';
+import KntButton from '../common/ui/button.component';
 import I18n from '../i18n';
+import { globalVariables } from '../styles';
 
 class HomeScreen extends Component<ScreenProp> {
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>{I18n.t('welcome')}</Text>
+                    <Text style={styles.title}>{I18n.t('welcome.title')}</Text>
                     <Image source={require('../../assets/images/kinetic-name.png')} />
                     <Image source={require('../../assets/images/kinetic-logo.png')} />
                 </View>
                 <View style={styles.controls}>
                     <KntButton
-                        label={I18n.t('treatmentOpen')}
+                        label={I18n.t('treatment.open')}
                         type="secondary"
+                        fitWith={true}
                         onPress={() => this.props.navigation.navigate('PainLocation')}
                     />
                     <KntButton
-                        label={I18n.t('treatmentNew')}
-                        onPress={() => this.props.navigation.navigate('Welcome')}
+                        label={I18n.t('treatment.new')}
+                        fitWith={true}
+                        onPress={() => {
+                            console.log('treatment.new');
+                            this.props.navigation.navigate('Welcome');
+                        }}
                     />
                 </View>
             </View>

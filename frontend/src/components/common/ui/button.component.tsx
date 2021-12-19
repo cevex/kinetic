@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { globalVariables } from '../../styles';
 
-export declare type ButtonType = 'primary' | 'secondary' | 'accentuate';
+export declare type ButtonType = 'primary' | 'secondary' | 'accentuate' | 'link';
 
 interface ButtonProp {
     label: string;
     type?: ButtonType;
+    fitWith?: boolean;
     onPress: ((event?: GestureResponderEvent) => void) | undefined;
 }
 
@@ -16,7 +17,7 @@ interface ButtonState {
     borderColor?: string;
 }
 
-export class KntButton extends Component<ButtonProp, ButtonState> {
+class KntButton extends Component<ButtonProp, ButtonState> {
     constructor(props: ButtonProp) {
         super(props);
         this.state = this.initState();
@@ -36,6 +37,12 @@ export class KntButton extends Component<ButtonProp, ButtonState> {
                     textColor: globalVariables.color.primary,
                     borderColor: globalVariables.color.primary
                 };
+            case 'link':
+                return {
+                    backgroundColor: globalVariables.color.bg,
+                    textColor: globalVariables.color.primary,
+                    borderColor: globalVariables.color.bg
+                };
             case 'primary':
             default:
                 return {
@@ -49,11 +56,14 @@ export class KntButton extends Component<ButtonProp, ButtonState> {
     render() {
         return (
             <TouchableOpacity
-                style={{
-                    ...styles.buttonContainer,
-                    ...{ backgroundColor: this.state.backgroundColor },
-                    ...{ borderColor: this.state.borderColor }
-                }}
+                style={[
+                    styles.buttonContainer,
+                    {
+                        backgroundColor: this.state.backgroundColor,
+                        borderColor: this.state.borderColor
+                    },
+                    this.props.fitWith ? { width: '100%' } : {}
+                ]}
                 onPress={this.props.onPress}>
                 <Text
                     style={{
@@ -69,7 +79,7 @@ export class KntButton extends Component<ButtonProp, ButtonState> {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        width: '100%',
+        height: 45,
         alignItems: 'center',
         margin: 10,
 
