@@ -37,10 +37,72 @@ export default {
             front: 'Zone avant',
             previous: 'Zone précedente',
             next: 'Zone suivante',
-            selectAdvice: 'Sélectionner la zone',
+            select: 'Sélectionner la zone',
             touchAdvice: 'Touchez une zone pour l’activer',
-            select: 'Selectionnez les zones de douleurs',
-            remove: 'Enlever cette zone'
+            selectPain: 'Selectionnez les zones de douleurs',
+            remove: 'Enlever cette zone',
+            list: {
+                back: {
+                    title: 'Lombaire',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                backBar: {
+                    title: 'Lombaire en bar',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                backZone: {
+                    title: 'Lombaire en zone',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                backZoneUni: {
+                    title: 'Lombaire en zone Unilateral',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                backZoneLeft: {
+                    title: 'Lombaire en zone - Gauche',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                backZoneRight: {
+                    title: 'Lombaire en zone - Droite',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                sacro: {
+                    title: 'Sacro illialique',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                sacroLeft: {
+                    title: 'Sacro illialique - Gauche',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                sacroRight: {
+                    title: 'Sacro illialique - Droite',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                buttock: {
+                    title: 'Fessiers',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                buttockLeft: {
+                    title: 'Fessiers gauche',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                },
+                buttockRight: {
+                    title: 'Fessiers droit',
+                    details:
+                        'La douleur dans cette zone est caractérisé par un effet de noeud. La douleur disparaît en position allongée.'
+                }
+            }
         }
     }
 };

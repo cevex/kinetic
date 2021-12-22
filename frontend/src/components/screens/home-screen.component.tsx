@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { ScreenProp } from '../common/navigation/navigable-screen-prop.model';
-import KntButton from '../common/ui/button.component';
+import KntButton from '../common/ui/button/button.component';
 import I18n from '../i18n';
 import { globalVariables } from '../styles';
 

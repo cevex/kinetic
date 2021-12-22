@@ -1,7 +1,8 @@
 [
     {
         "type": "lombaire",
-        "name": "Lombaire",
+        "name": "pain.area.list.back.title",
+        "details": "pain.area.list.back.details",
         "place": "back",
         "range": "zone",
         "side": "center",
@@ -9,77 +10,88 @@
     },
     {
         "type": "lombaire-bar",
-        "name": "Lombaire en barre",
+        "name": "pain.area.list.backBar.title",
+        "details": "pain.area.list.backBar.details",
         "place": "back",
         "range": "zone",
         "side": "center"
     },
     {
         "type": "lombaire-zone",
-        "name": "Lombaire en zone",
+        "name": "pain.area.list.backZone.title",
+        "details": "pain.area.list.backZone.details",
         "place": "back",
         "range": "zone",
         "side": "center"
     },
     {
         "type": "lombaire-zone-unilateral",
-        "name": "Lombaire en zone Unilateral",
+        "name": "pain.area.list.backZoneUni.title",
+        "details": "pain.area.list.backZoneUni.details",
         "place": "back",
         "range": "zone",
         "side": "center"
     },
     {
         "type": "lombaire-zone__left",
-        "name": "Lombaire en zone - Gauche",
+        "name": "pain.area.list.backZoneLeft.title",
+        "details": "pain.area.list.backZoneLeft.details",
         "place": "back",
         "range": "local",
         "side": "left"
     },
     {
         "type": "lombaire-zone__right",
-        "name": "Lombaire en zone - Droite",
+        "name": "pain.area.list.backZoneRight.title",
+        "details": "pain.area.list.backZoneRight.details",
         "place": "back",
         "range": "local",
         "side": "right"
     },
     {
         "type": "sacro-illiaque",
-        "name": "Sacro illialique",
+        "name": "pain.area.list.sacro.title",
+        "details": "pain.area.list.sacro.details",
         "place": "sacro",
         "range": "zone",
         "side": "center"
     },
     {
         "type": "sacro-illiaque__left",
-        "name": "Sacro illialique - Gauche",
+        "name": "pain.area.list.sacroLeft.title",
+        "details": "pain.area.list.sacroLeft.details",
         "place": "sacro",
         "range": "local",
         "side": "left"
     },
     {
         "type": "sacro-illiaque__right",
-        "name": "Sacro illialique - Droite",
+        "name": "pain.area.list.sacroRight.title",
+        "details": "pain.area.list.sacroRight.details",
         "place": "sacro",
         "range": "local",
         "side": "right"
     },
     {
         "type": "fessiers",
-        "name": "Fessiers",
+        "name": "pain.area.list.buttock.title",
+        "details": "pain.area.list.buttock.details",
         "place": "buttock",
         "range": "zone",
         "side": "center"
     },
     {
         "type": "fessiers__left",
-        "name": "Fessiers gauche",
+        "name": "pain.area.list.buttockLeft.title",
+        "details": "pain.area.list.buttockLeft.details",
         "place": "buttock",
         "range": "local",
         "side": "left"
     },
     {
         "type": "fessiers__right",
-        "name": "Fessiers droit",
+        "name": "pain.area.list.buttockRight.title",
+        "details": "pain.area.list.buttockRight.details",
         "place": "buttock",
         "range": "local",
         "side": "right"

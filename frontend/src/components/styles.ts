@@ -5,7 +5,11 @@ export const globalVariables = {
         bg: 'white',
         primary: '#432C81',
         primaryLight: '#82799D',
-        accent: '#CF35A4'
+        accent: '#CF35A4',
+        grey: {
+            light: '#e1e1e1',
+            medium: '#d2d2d2'
+        }
     },
     fontSize: {
         small: 13,

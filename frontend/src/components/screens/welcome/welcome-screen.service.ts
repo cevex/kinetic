@@ -1,3 +1,4 @@
+import { PaginatorService } from '../../../core/common/paginator.service';
 import I18n from '../../i18n';
 import { GuideMessage, WelcomeScreenState } from './welcome-screen.model';
 
@@ -34,39 +35,20 @@ export class WelcomeScreenService {
             nbSteps: this.guideMessages.length,
             showPrevious: index > 0 && index < this.guideMessages.length,
             showNext: index < this.guideMessages.length - 1,
-            showStart: this.isLastMessage(index)
+            showStart: PaginatorService.isLastIndex(this.guideMessages, index)
         };
     }
 
     public static goNext(currentState: WelcomeScreenState): WelcomeScreenState {
-        const newIndex = this.incrementIndex(currentState.stepIndex);
+        const newIndex = PaginatorService.incrementIndex(
+            this.guideMessages,
+            currentState.stepIndex
+        );
         return this.initWelcomeScreen(newIndex);
     }
 
     public static goPrevious(currentState: WelcomeScreenState): WelcomeScreenState {
-        const newIndex = this.decrementIndex(currentState.stepIndex);
+        const newIndex = PaginatorService.decrementIndex(currentState.stepIndex);
         return this.initWelcomeScreen(newIndex);
-    }
-
-    // ===============================================================
-    //              Index management
-    // ===============================================================
-
-    private static incrementIndex(index: number): number {
-        if (this.isLastMessage(index)) return index;
-        return index + 1;
-    }
-
-    private static decrementIndex(index: number): number {
-        if (this.isFirstMessage(index)) return index;
-        return index - 1;
-    }
-
-    private static isFirstMessage(index: number) {
-        return !index || index === 0;
-    }
-
-    private static isLastMessage(index: number) {
-        return index === this.guideMessages.length - 1;
     }
 }

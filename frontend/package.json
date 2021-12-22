@@ -1,5 +1,5 @@
 {
-    "name": "kinetic",
+    "name": "@kinetic/react-native",
     "version": "0.0.1",
     "private": true,
     "scripts": {
@@ -23,7 +23,8 @@
         "react-native": "0.66.3",
         "react-native-i18n": "^2.0.15",
         "react-native-safe-area-context": "^3.3.2",
-        "react-native-screens": "^3.10.1"
+        "react-native-screens": "^3.10.1",
+        "rxjs": "^7.4.0"
     },
     "devDependencies": {
         "@babel/core": "^7.12.9",
