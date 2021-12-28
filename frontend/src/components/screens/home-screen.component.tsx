@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { ScreenProp } from '../common/navigable-screen-prop.model';
-import KntButton from '../ui/button/button.component';
 import I18n from '../i18n';
 import { globalVariables } from '../styles';
+import KntButton from '../ui/button/button.component';
 
 class HomeScreen extends Component<ScreenProp> {
     render() {
@@ -19,7 +19,7 @@ class HomeScreen extends Component<ScreenProp> {
                         label={I18n.t('treatment.open')}
                         type="secondary"
                         fitWith={true}
-                        onPress={() => this.props.navigation.navigate('PainLocation')}
+                        onPress={() => this.props.navigation.navigate('PathologyDashboard')}
                     />
                     <KntButton
                         label={I18n.t('treatment.new')}

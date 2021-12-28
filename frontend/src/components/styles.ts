@@ -26,7 +26,9 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: globalVariables.color.white,
         borderRadius: 6,
         padding: 10,
-        margin: 15,
+        width: '90%',
+        marginTop: 15,
+        marginBottom: 15,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
@@ -49,6 +51,13 @@ export const globalStyles = StyleSheet.create({
         margin: 15,
         textAlign: 'center',
         fontSize: globalVariables.fontSize.medium,
+        fontWeight: '600'
+    },
+    cardMessageHighlighted: {
+        color: globalVariables.color.primary,
+        margin: 15,
+        textAlign: 'center',
+        fontSize: globalVariables.fontSize.big,
         fontWeight: '600'
     }
 });

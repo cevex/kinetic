@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
-import KntButton from '../../ui/button/button.component';
 import I18n from '../../i18n';
 import { globalStyles, globalVariables } from '../../styles';
+import KntButton from '../../ui/button/button.component';
 
 class HealthcheckGuideScreen extends Component<ScreenProp> {
     render() {
@@ -25,7 +25,7 @@ class HealthcheckGuideScreen extends Component<ScreenProp> {
                     label={I18n.t('exercice.start')}
                     type="primary"
                     style={styles.controls}
-                    onPress={() => this.props.navigation.navigate('PainLocation')}
+                    onPress={() => this.props.navigation.navigate('Exercise')}
                 />
             </View>
         );

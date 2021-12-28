@@ -9,6 +9,11 @@ export default {
         next: 'suivant',
         close: 'Fermer'
     },
+    diagnosis: {
+        open: 'Le bilan est terminé !',
+        explain:
+            'L’évolution de votre douleur en fonction des exercices ou éducations proposées sont caractéristiques d’une'
+    },
     exercice: {
         start: 'Start exercise',
         done: 'L’exercice est terminé, indiquez l’état de votre douleur',
@@ -16,8 +21,9 @@ export default {
         advice: 'Lancez la vidéo, à la fin de l’exercice indiquez l’état si les variations de douleur correspond à celle décrite dans la vidéo'
     },
     treatment: {
-        open: 'Mes traitements',
-        new: 'Nouveau traitement'
+        mine: 'Mes traitements',
+        new: 'Nouveau traitement',
+        open: 'Accéder au traitement'
     },
     healthcheck: {
         start: 'Démarrer le bilan',

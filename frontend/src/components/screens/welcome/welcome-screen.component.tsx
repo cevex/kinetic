@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { GestureResponderEvent, Image, StyleSheet, Text, View } from 'react-native';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
+import I18n from '../../i18n';
+import { globalVariables } from '../../styles';
 import KntBreadcrumb from '../../ui/breadcrumb.component';
 import KntButton from '../../ui/button/button.component';
 import { ButtonType } from '../../ui/button/button.model';
-import I18n from '../../i18n';
-import { globalVariables } from '../../styles';
 import { WelcomeScreenState } from './welcome-screen.model';
 import { WelcomeScreenService } from './welcome-screen.service';
 

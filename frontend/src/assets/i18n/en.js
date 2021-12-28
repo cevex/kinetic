@@ -9,13 +9,19 @@ export default {
         previous: 'previous',
         close: 'Close'
     },
+    diagnosis: {
+        open: 'Health check is over !',
+        explain:
+            'L’évolution de votre douleur en fonction des exercices ou éducations proposées sont caractéristiques d’une'
+    },
     exercise: {
         start: 'Start exercise',
         advice: 'Lancez la vidéo, à la fin de l’exercice indiquez l’état si les variations de douleur correspond à celle décrite dans la vidéo'
     },
     treatment: {
-        open: 'My treatments',
-        new: 'New treatment'
+        mine: 'My treatments',
+        new: 'New treatment',
+        open: 'Start treatment'
     },
     healthcheck: {
         start: 'Start health check',
