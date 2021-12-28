@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import KntButton from '../../common/ui/button/button.component';
+import KntButton from '../../ui/button/button.component';
 import I18n from '../../i18n';
 import { globalVariables } from '../../styles';
 import { PainLocationChoiceScreenState } from './pain-location-choice-screen.model';
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: globalVariables.color.bg
+        backgroundColor: globalVariables.color.white
     },
     imagesContainer: {
         flex: 1,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 5,
         padding: 15,
-        backgroundColor: globalVariables.color.bg
+        backgroundColor: globalVariables.color.white
     },
     modalTitle: {
         color: globalVariables.color.primary,

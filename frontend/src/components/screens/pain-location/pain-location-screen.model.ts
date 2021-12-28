@@ -1,4 +1,4 @@
-import { UiItem } from '../../common/ui/core/ui-item.model';
+import { UiItem } from '../../ui/core/ui-item.model';
 
 export declare type SideType = 'front' | 'back';
 

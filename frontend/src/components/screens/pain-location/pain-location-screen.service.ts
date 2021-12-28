@@ -1,4 +1,4 @@
-import { UiItem } from '../../common/ui/core/ui-item.model';
+import { UiItem } from '../../ui/core/ui-item.model';
 import I18n from '../../i18n';
 import { PainLocationScreenState, SideType } from './pain-location-screen.model';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { ScreenProp } from '../common/navigation/navigable-screen-prop.model';
-import KntButton from '../common/ui/button/button.component';
+import { ScreenProp } from '../common/navigable-screen-prop.model';
+import KntButton from '../ui/button/button.component';
 import I18n from '../i18n';
 import { globalVariables } from '../styles';
 
@@ -37,7 +37,7 @@ class HomeScreen extends Component<ScreenProp> {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: globalVariables.color.bg,
+        backgroundColor: globalVariables.color.white,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'

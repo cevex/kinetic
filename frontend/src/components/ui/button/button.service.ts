@@ -1,8 +1,8 @@
-import { globalVariables } from '../../../styles';
+import { globalVariables } from '../../styles';
 import { ButtonState, ButtonType } from './button.model';
 
 export class ButtonService {
-    public static initState(buttonType: ButtonType | undefined): ButtonState {
+    public static initState(buttonType: ButtonType): ButtonState {
         switch (buttonType) {
             case 'secondary':
                 return this.getSecondaryButton();
@@ -19,14 +19,14 @@ export class ButtonService {
     private static getPrimaryButton() {
         return {
             backgroundColor: globalVariables.color.primary,
-            textColor: globalVariables.color.bg,
+            textColor: globalVariables.color.white,
             borderColor: globalVariables.color.primary
         };
     }
 
     private static getSecondaryButton() {
         return {
-            backgroundColor: globalVariables.color.bg,
+            backgroundColor: globalVariables.color.white,
             textColor: globalVariables.color.primary,
             borderColor: globalVariables.color.primary
         };
@@ -35,16 +35,16 @@ export class ButtonService {
     private static getAccentButton() {
         return {
             backgroundColor: globalVariables.color.accent,
-            textColor: globalVariables.color.bg,
-            borderColor: globalVariables.color.bg
+            textColor: globalVariables.color.white,
+            borderColor: globalVariables.color.white
         };
     }
 
     private static getLinkButton() {
         return {
-            backgroundColor: globalVariables.color.bg,
+            backgroundColor: globalVariables.color.white,
             textColor: globalVariables.color.primary,
-            borderColor: globalVariables.color.bg
+            borderColor: globalVariables.color.white
         };
     }
 }

@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     ViewStyle
 } from 'react-native';
-import { globalVariables } from '../../../styles';
+import { globalVariables } from '../../styles';
 import { ButtonState, ButtonType } from './button.model';
 import { ButtonService } from './button.service';
 
@@ -15,6 +15,7 @@ interface ButtonProp {
     label: string;
     type?: ButtonType;
     fitWith?: boolean;
+    disabled?: boolean;
     style?: StyleProp<ViewStyle>;
     onPress?: (event?: GestureResponderEvent) => void;
 }
@@ -30,17 +31,19 @@ class KntButton extends Component<ButtonProp, ButtonState> {
             <TouchableOpacity
                 style={[
                     this.props.style, // Allow parent to custom component
-                    buttonStyles.buttonContainer,
+                    buttonStyles.container,
                     {
                         backgroundColor: this.state.backgroundColor,
                         borderColor: this.state.borderColor
                     },
-                    this.props.fitWith && { width: '100%' }
+                    this.props.fitWith && buttonStyles.fullWidth,
+                    this.props.disabled && buttonStyles.disabled
                 ]}
+                disabled={this.props.disabled}
                 onPress={this.props.onPress}>
                 <Text
                     style={{
-                        ...buttonStyles.buttonText,
+                        ...buttonStyles.text,
                         ...{ color: this.state.textColor }
                     }}>
                     {this.props.label}
@@ -51,7 +54,7 @@ class KntButton extends Component<ButtonProp, ButtonState> {
 }
 
 const buttonStyles = StyleSheet.create({
-    buttonContainer: {
+    container: {
         height: 45,
         alignItems: 'center',
         margin: 5,
@@ -60,8 +63,14 @@ const buttonStyles = StyleSheet.create({
         padding: 10,
         borderRadius: 8
     },
-    buttonText: {
+    text: {
         fontSize: globalVariables.fontSize.medium
+    },
+    disabled: {
+        opacity: 0.5
+    },
+    fullWidth: {
+        width: '100%'
     }
 });
 

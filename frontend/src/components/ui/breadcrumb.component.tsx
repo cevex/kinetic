@@ -1,7 +1,7 @@
 import { range } from 'lodash-es';
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { globalVariables } from '../../styles';
+import { globalVariables } from '../styles';
 
 interface BreadcrumbProp {
     nbStep: number;
@@ -11,15 +11,15 @@ interface BreadcrumbProp {
 class KntBreadcrumb extends Component<BreadcrumbProp> {
     render() {
         return (
-            <View style={styles.breadcrumbContainer}>
+            <View style={breadcrumbStyles.breadcrumbContainer}>
                 {range(this.props.nbStep).map(step => (
                     <View
                         key={step}
                         style={[
-                            styles.breadcrumbItem,
+                            breadcrumbStyles.breadcrumbItem,
                             this.props.selectedIndex === step
-                                ? styles.breadcrumbItemSelected
-                                : styles.breadcrumbItemUnselected
+                                ? breadcrumbStyles.breadcrumbItemSelected
+                                : breadcrumbStyles.breadcrumbItemUnselected
                         ]}
                     />
                 ))}
@@ -28,7 +28,7 @@ class KntBreadcrumb extends Component<BreadcrumbProp> {
     }
 }
 
-const styles = StyleSheet.create({
+const breadcrumbStyles = StyleSheet.create({
     breadcrumbContainer: {
         flexDirection: 'row'
     },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     breadcrumbItemUnselected: {
         borderColor: globalVariables.color.primary,
-        backgroundColor: globalVariables.color.bg
+        backgroundColor: globalVariables.color.white
     },
     breadcrumbItemSelected: {
         borderColor: globalVariables.color.primary,

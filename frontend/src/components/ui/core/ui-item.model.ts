@@ -1,5 +1,6 @@
 export interface UiItem {
     id: string;
     label: string;
-    image: any;
+    image?: any;
+    icon?: string;
 }

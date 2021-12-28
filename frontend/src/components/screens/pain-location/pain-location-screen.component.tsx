@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import KntButton from '../../common/ui/button/button.component';
-import { UiItem } from '../../common/ui/core/ui-item.model';
-import KntSelectSwitch from '../../common/ui/select-switch.component';
+import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
 import { globalVariables } from '../../styles';
+import KntButton from '../../ui/button/button.component';
+import { UiItem } from '../../ui/core/ui-item.model';
+import KntSelectSwitch from '../../ui/selects/select-switch.component';
 import { PainLocationScreenState, SideType } from './pain-location-screen.model';
 import { PainLocationScreenService } from './pain-location-screen.service';
 
-class PainLocationScreen extends Component<any, PainLocationScreenState> {
-    constructor(props: void) {
+class PainLocationScreen extends Component<ScreenProp, PainLocationScreenState> {
+    constructor(props: ScreenProp) {
         super(props);
         this.state = PainLocationScreenService.initScreen('back');
     }
@@ -37,7 +38,12 @@ class PainLocationScreen extends Component<any, PainLocationScreenState> {
 
                 <View style={styles.controls}>
                     <Text style={styles.adviceText}>{I18n.t('pain.area.touchAdvice')}</Text>
-                    <KntButton label={I18n.t('healthcheck.start')} type="primary" fitWith={true} />
+                    <KntButton
+                        label={I18n.t('healthcheck.start')}
+                        type="primary"
+                        fitWith={true}
+                        onPress={_ => this.props.navigation.navigate('HealthcheckGuide')}
+                    />
                 </View>
             </View>
         );
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: globalVariables.color.bg
+        backgroundColor: globalVariables.color.white
     },
     messageContainer: {
         flex: 2,

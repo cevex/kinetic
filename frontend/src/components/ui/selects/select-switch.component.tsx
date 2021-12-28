@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { globalVariables } from '../../styles';
-import { UiItem } from './core/ui-item.model';
+import { UiItem } from '../core/ui-item.model';
+import { SelectProp } from './select-prop.model';
 
-interface SelectSwitchProp {
-    items: UiItem[];
-    selectedItemId?: string;
-    onSelected: ((item: UiItem) => void) | undefined;
-}
-
-class KntSelectSwitch extends Component<SelectSwitchProp> {
+class KntSelectSwitch extends Component<SelectProp> {
     render() {
         return (
             <View style={styles.switchContainer}>
@@ -22,6 +17,7 @@ class KntSelectSwitch extends Component<SelectSwitchProp> {
                                 ? styles.switchButtonSelected
                                 : styles.switchButtonUnselected
                         ]}
+                        disabled={this.props.disabled}
                         onPress={() => {
                             this.props.onSelected && this.props.onSelected(item);
                         }}>
@@ -50,7 +46,7 @@ const styles = StyleSheet.create({
         margin: 1
     },
     switchButtonSelected: {
-        backgroundColor: globalVariables.color.bg,
+        backgroundColor: globalVariables.color.white,
         borderRadius: 8,
         borderWidth: 1,
         borderColor: globalVariables.color.grey.light,
