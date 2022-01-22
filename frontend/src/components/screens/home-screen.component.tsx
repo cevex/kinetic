@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import { KntStore } from '../../core/store/knt.store';
 import { ScreenProp } from '../common/navigable-screen-prop.model';
 import I18n from '../i18n';
 import { globalVariables } from '../styles';
@@ -15,17 +16,20 @@ class HomeScreen extends Component<ScreenProp> {
                     <Image source={require('../../assets/images/kinetic-logo.png')} />
                 </View>
                 <View style={styles.controls}>
-                    <KntButton
-                        label={I18n.t('treatment.open')}
-                        type="secondary"
-                        fitWith={true}
-                        onPress={() => this.props.navigation.navigate('PathologyDashboard')}
-                    />
+                    {KntStore.read().healthCheck && (
+                        <KntButton
+                            label={I18n.t('treatment.open')}
+                            type="secondary"
+                            fitWith={true}
+                            onPress={() => this.props.navigation.navigate('PathologyDashboard')}
+                        />
+                    )}
+
                     <KntButton
                         label={I18n.t('treatment.new')}
                         fitWith={true}
                         onPress={() => {
-                            console.log('treatment.new');
+                            console.log('[nav] starting new treatment');
                             this.props.navigation.navigate('Welcome');
                         }}
                     />

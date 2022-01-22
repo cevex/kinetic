@@ -2,7 +2,6 @@ import { cloneDeep } from 'lodash-es';
 import { BodyAreaType } from '../body/body-area-data.model';
 import { PainAreaChoice } from '../healthcheck-task/choice/pain-area-choice.model';
 import { PainAssessChoiceTripleType } from '../healthcheck-task/choice/pain-assessment-choice.model';
-import { HealthcheckTask } from '../healthcheck-task/healthcheck-task.model';
 import { HealthcheckTaskService } from '../healthcheck-task/healthcheck-task.service';
 import { ChangeLocationHealthcheck } from '../healthcheck-task/specific/change-location-healthcheck-task.model';
 import { ExerciseHealthcheckTask } from '../healthcheck-task/specific/exercise-healthcheck-task.model';
@@ -12,11 +11,11 @@ import { Healthcheck } from './healthcheck.model';
 export class HealthcheckService {
     constructor() {}
 
-    public startHealthcheck(allTasks: HealthcheckTask[]): Healthcheck {
+    public startHealthcheck(): Healthcheck {
         return {
             treatmentStart: false,
             showDisclaimer: true,
-            taskId: HealthcheckTaskService.findRootTask(allTasks).id,
+            taskId: HealthcheckTaskService.findRootTask().id,
             previousTaskId: []
         };
     }
@@ -26,24 +25,18 @@ export class HealthcheckService {
      */
     public assessExercise(
         healthcheck: Healthcheck,
-        choiceType: PainAssessChoiceTripleType,
-        allTasks: HealthcheckTask[]
+        choiceType: PainAssessChoiceTripleType
     ): Healthcheck {
         const exerciseTask = <ExerciseHealthcheckTask>(
-            HealthcheckTaskService.findTaskById(allTasks, healthcheck.taskId)
+            HealthcheckTaskService.findTaskById(healthcheck.taskId)
         );
 
-        const choiceToApply = this.validateAssessmentChoice(
-            healthcheck,
-            exerciseTask,
-            choiceType,
-            allTasks
-        );
+        const choiceToApply = this.validateAssessmentChoice(healthcheck, exerciseTask, choiceType);
         const newTaskId = exerciseTask.choice[choiceToApply];
-        const newTask = HealthcheckTaskService.findTaskById(allTasks, newTaskId);
+        const newTask = HealthcheckTaskService.findTaskById(newTaskId);
 
         if (newTask.type === 'change-location') {
-            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>newTask, allTasks);
+            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>newTask);
         } else {
             const newHealthcheck = this.addTask(healthcheck, newTaskId);
             newHealthcheck.treatmentStart = true;
@@ -54,14 +47,10 @@ export class HealthcheckService {
     private validateAssessmentChoice(
         healthcheck: Healthcheck,
         exerciseTask: ExerciseHealthcheckTask,
-        choiceType: PainAssessChoiceTripleType,
-        allTasks: HealthcheckTask[]
+        choiceType: PainAssessChoiceTripleType
     ): PainAssessChoiceTripleType {
         if (choiceType !== 'equal') return choiceType;
-        const healthcheckTasks = HealthcheckTaskService.filterTaskByIds(
-            allTasks,
-            healthcheck.previousTaskId
-        );
+        const healthcheckTasks = HealthcheckTaskService.filterTaskByIds(healthcheck.previousTaskId);
         const exerciseTries = HealthcheckTaskService.filterTaskByExercises(
             healthcheckTasks,
             exerciseTask.exerciseId
@@ -70,21 +59,17 @@ export class HealthcheckService {
         return exerciseTries.length > 0 ? 'more' : choiceType;
     }
 
-    public redoExercise(healthcheck: Healthcheck, allTasks: HealthcheckTask[]): Healthcheck {
+    public redoExercise(healthcheck: Healthcheck): Healthcheck {
         const redoTask = <RedoHealthcheckTask>(
-            HealthcheckTaskService.findTaskById(allTasks, healthcheck.taskId)
+            HealthcheckTaskService.findTaskById(healthcheck.taskId)
         );
         return this.addTask(healthcheck, redoTask.exerciseTaskToRedo);
     }
 
-    public chooseLocation(
-        healthcheck: Healthcheck,
-        choice: PainAreaChoice,
-        allTasks: HealthcheckTask[]
-    ): Healthcheck {
-        const moreTask = HealthcheckTaskService.findTaskById(allTasks, choice.more);
+    public chooseLocation(healthcheck: Healthcheck, choice: PainAreaChoice): Healthcheck {
+        const moreTask = HealthcheckTaskService.findTaskById(choice.more);
         if (moreTask.type === 'change-location') {
-            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>moreTask, allTasks);
+            return this.chooseLocation(healthcheck, <ChangeLocationHealthcheck>moreTask);
         } else {
             const newHealthcheck = this.addTask(healthcheck, choice.more);
             newHealthcheck.bodyArea = choice.bodyArea;
@@ -98,11 +83,8 @@ export class HealthcheckService {
         return newHealthcheck;
     }
 
-    public shouldShowHealthcheckGuide(
-        healthcheck: Healthcheck,
-        allTasks: HealthcheckTask[]
-    ): boolean {
-        const currentTask = HealthcheckTaskService.findTaskById(allTasks, healthcheck.taskId);
+    public shouldShowHealthcheckGuide(healthcheck: Healthcheck): boolean {
+        const currentTask = HealthcheckTaskService.findTaskById(healthcheck.taskId);
         return (
             currentTask.type === 'exercise' &&
             !healthcheck.treatmentStart &&

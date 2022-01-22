@@ -1,99 +1,203 @@
 [
     {
-        "type": "lombaire",
+        "type": "back",
         "name": "pain.area.list.back.title",
         "details": "pain.area.list.back.details",
+        "direction": [
+            "back"
+        ],
         "place": "back",
-        "range": "zone",
+        "range": "zoneH",
         "side": "center",
         "image": ""
     },
     {
-        "type": "lombaire-bar",
+        "type": "back-bar",
         "name": "pain.area.list.backBar.title",
         "details": "pain.area.list.backBar.details",
-        "place": "back",
-        "range": "zone",
+        "direction": [
+            "back"
+        ],
+        "place": "backBar",
+        "range": "zoneH",
         "side": "center"
     },
     {
-        "type": "lombaire-zone",
+        "type": "back-zone",
         "name": "pain.area.list.backZone.title",
         "details": "pain.area.list.backZone.details",
-        "place": "back",
-        "range": "zone",
+        "direction": [
+            "back"
+        ],
+        "place": "backZone",
+        "range": "zoneH",
         "side": "center"
     },
     {
-        "type": "lombaire-zone-unilateral",
+        "type": "back-zone-unilateral",
         "name": "pain.area.list.backZoneUni.title",
         "details": "pain.area.list.backZoneUni.details",
-        "place": "back",
-        "range": "zone",
+        "direction": [
+            "back"
+        ],
+        "place": "backZone",
+        "range": "zoneH",
         "side": "center"
     },
     {
-        "type": "lombaire-zone__left",
+        "type": "back-zone__left",
         "name": "pain.area.list.backZoneLeft.title",
         "details": "pain.area.list.backZoneLeft.details",
-        "place": "back",
+        "direction": [
+            "back"
+        ],
+        "place": "backZone",
         "range": "local",
         "side": "left"
     },
     {
-        "type": "lombaire-zone__right",
+        "type": "back-zone__right",
         "name": "pain.area.list.backZoneRight.title",
         "details": "pain.area.list.backZoneRight.details",
-        "place": "back",
+        "direction": [
+            "back"
+        ],
+        "place": "backZone",
         "range": "local",
         "side": "right"
     },
     {
-        "type": "sacro-illiaque",
+        "type": "sacro",
         "name": "pain.area.list.sacro.title",
         "details": "pain.area.list.sacro.details",
+        "direction": [
+            "back"
+        ],
         "place": "sacro",
-        "range": "zone",
+        "range": "zoneH",
         "side": "center"
     },
     {
-        "type": "sacro-illiaque__left",
+        "type": "sacro__left",
         "name": "pain.area.list.sacroLeft.title",
         "details": "pain.area.list.sacroLeft.details",
+        "direction": [
+            "back"
+        ],
         "place": "sacro",
         "range": "local",
-        "side": "left"
+        "side": "leftSm"
     },
     {
-        "type": "sacro-illiaque__right",
+        "type": "sacro__right",
         "name": "pain.area.list.sacroRight.title",
         "details": "pain.area.list.sacroRight.details",
+        "direction": [
+            "back"
+        ],
         "place": "sacro",
         "range": "local",
-        "side": "right"
+        "side": "rightSm"
     },
     {
-        "type": "fessiers",
-        "name": "pain.area.list.buttock.title",
-        "details": "pain.area.list.buttock.details",
-        "place": "buttock",
-        "range": "zone",
+        "type": "groin",
+        "name": "pain.area.list.groin.title",
+        "details": "pain.area.list.groin.details",
+        "direction": [
+            "back"
+        ],
+        "place": "groin",
+        "range": "zoneH",
         "side": "center"
     },
     {
-        "type": "fessiers__left",
-        "name": "pain.area.list.buttockLeft.title",
-        "details": "pain.area.list.buttockLeft.details",
-        "place": "buttock",
+        "type": "groin__left",
+        "name": "pain.area.list.groinLeft.title",
+        "details": "pain.area.list.groinLeft.details",
+        "direction": [
+            "back"
+        ],
+        "place": "groin",
         "range": "local",
-        "side": "left"
+        "side": "leftSm"
     },
     {
-        "type": "fessiers__right",
-        "name": "pain.area.list.buttockRight.title",
-        "details": "pain.area.list.buttockRight.details",
+        "type": "groin__right",
+        "name": "pain.area.list.groinRight.title",
+        "details": "pain.area.list.groinRight.details",
+        "direction": [
+            "back"
+        ],
+        "place": "groin",
+        "range": "local",
+        "side": "rightSm"
+    },
+    {
+        "type": "buttock__left",
+        "name": "pain.area.list.buttockLeft.title",
+        "details": "pain.area.list.buttockLeft.details",
+        "direction": [
+            "back"
+        ],
         "place": "buttock",
         "range": "local",
-        "side": "right"
+        "side": "leftBig"
+    },
+    {
+        "type": "buttock__right",
+        "name": "pain.area.list.buttockRight.title",
+        "details": "pain.area.list.buttockRight.details",
+        "direction": [
+            "back"
+        ],
+        "place": "buttock",
+        "range": "local",
+        "side": "rightBig"
+    },
+    {
+        "type": "thigh__left",
+        "name": "pain.area.list.thighLeft.title",
+        "details": "pain.area.list.thighLeft.details",
+        "direction": [
+            "front",
+            "back"
+        ],
+        "place": "thigh",
+        "range": "zoneV",
+        "side": "leftBig"
+    },
+    {
+        "type": "thigh__right",
+        "name": "pain.area.list.thighRight.title",
+        "details": "pain.area.list.thighRight.details",
+        "direction": [
+            "front",
+            "back"
+        ],
+        "place": "thigh",
+        "range": "zoneV",
+        "side": "rightBig"
+    },
+    {
+        "type": "calf__left",
+        "name": "pain.area.list.calfLeft.title",
+        "details": "pain.area.list.calfLeft.details",
+        "direction": [
+            "back"
+        ],
+        "place": "calf",
+        "range": "zoneV",
+        "side": "leftBig"
+    },
+    {
+        "type": "calf__right",
+        "name": "pain.area.list.calfRight.title",
+        "details": "pain.area.list.calfRight.details",
+        "direction": [
+            "back"
+        ],
+        "place": "calf",
+        "range": "zoneV",
+        "side": "rightBig"
     }
 ]

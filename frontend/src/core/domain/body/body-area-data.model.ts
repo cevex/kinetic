@@ -1,18 +1,31 @@
 export declare type BodyAreaType =
-    | 'lombaire'
-    | 'lombaire-bar'
-    | 'lombaire-zone__left'
-    | 'lombaire-zone__right'
-    | 'fessiers'
-    | 'fessiers__left'
-    | 'fessiers__right'
-    | 'sacro-illiaque'
-    | 'sacro-illiaque__left'
-    | 'sacro-illiaque__right';
+    | 'back'
+    | 'back-bar'
+    | 'back-zone__left'
+    | 'back-zone__right'
+    | 'sacro__left'
+    | 'sacro__right'
+    | 'groin__left'
+    | 'groin__right'
+    | 'buttock'
+    | 'buttock__left'
+    | 'buttock__right'
+    | 'thigh__left'
+    | 'thigh__right'
+    | 'calf__left'
+    | 'calf__right';
 
-export declare type BodyAreaPlace = 'lombaire' | 'fessiers' | 'sacro';
-export declare type BodyAreaRange = 'zone' | 'local';
-export declare type BodyAreaSide = 'left' | 'right' | 'center';
+export declare type BodyDirection = 'front' | 'back';
+export declare type BodyAreaPlace = 'back' | 'sacro' | 'buttock' | 'thigh' | 'calf';
+export declare type BodyAreaRange = 'zoneH' | 'zoneV' | 'local';
+export declare type BodyAreaSide =
+    | 'left'
+    | 'leftSm'
+    | 'leftBig'
+    | 'right'
+    | 'rightSm'
+    | 'rightBig'
+    | 'center';
 
 export interface BodyArea {
     type: BodyAreaType;
@@ -23,4 +36,5 @@ export interface BodyArea {
     place: BodyAreaPlace;
     range: BodyAreaRange;
     side: BodyAreaSide;
+    direction: BodyDirection[];
 }

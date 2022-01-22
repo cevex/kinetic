@@ -7,6 +7,7 @@ export const globalVariables = {
         primary: '#432C81',
         primaryLight: '#82799D',
         accent: '#CF35A4',
+        accent2: '#19E15D',
         grey: {
             xlight: '#efefef',
             light: '#e1e1e1',

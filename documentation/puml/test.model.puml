@@ -1,0 +1,3 @@
+@startuml
+PainAreaChoice -l-> HealthcheckTask
+@enduml

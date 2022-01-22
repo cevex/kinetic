@@ -1,9 +1,8 @@
+import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
 import { UiItem } from '../../ui/core/ui-item.model';
 
-export declare type SideType = 'front' | 'back';
-
 export interface PainLocationScreenState {
-    sideOptions: UiItem[];
-    selectedSideId?: string;
-    image: any;
+    directionOptions: UiItem[];
+    selectedDirection: BodyDirection;
+    selectedAreas: BodyAreaType[];
 }

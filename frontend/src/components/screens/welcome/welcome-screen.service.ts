@@ -12,8 +12,8 @@ export class WelcomeScreenService {
         },
         {
             id: 'second',
-            title: I18n.t('welcome.guide.third.title'),
-            label: I18n.t('welcome.guide.third.label'),
+            title: I18n.t('welcome.guide.second.title'),
+            label: I18n.t('welcome.guide.second.label'),
             icon: require('../../../assets/images/guide2.png')
         },
         {

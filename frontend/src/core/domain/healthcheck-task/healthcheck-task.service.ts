@@ -4,7 +4,6 @@ import buttockTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-
 import rootTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-root.data.json';
 import sacroTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-sacro.data.json';
 import { HealthcheckTask, HealthcheckTaskType } from './healthcheck-task.model';
-import { DiagnosisHealthcheckTask } from './specific/diagnosis-healthcheck-task.model';
 import { ExerciseHealthcheckTask } from './specific/exercise-healthcheck-task.model';
 
 export class HealthcheckTaskService {
@@ -40,44 +39,30 @@ export class HealthcheckTaskService {
     //                Find
     // =======================================================================
 
-    public static findRootTask(tasks: HealthcheckTask[]): HealthcheckTask {
-        return tasks.find(task => task.root);
+    public static findRootTask(): HealthcheckTask {
+        return this.getTasks().find(task => task.root);
     }
 
-    public static findTaskById(tasks: HealthcheckTask[], taskIds: string): HealthcheckTask {
-        return tasks.find(task => taskIds.includes(task.id));
+    public static findTaskById(taskIds: string): HealthcheckTask {
+        return this.getTasks().find(task => taskIds.includes(task.id));
     }
 
     // =======================================================================
     //                Filter
     // =======================================================================
 
-    public static filterTaskByType(
-        tasks: HealthcheckTask[],
-        type: HealthcheckTaskType
-    ): HealthcheckTask[] {
-        return tasks.filter(task => task.type === type);
+    public static filterTaskByType(type: HealthcheckTaskType): HealthcheckTask[] {
+        return this.getTasks().filter(task => task.type === type);
     }
 
-    public static filterTaskByIds(tasks: HealthcheckTask[], taskIds: string[]): HealthcheckTask[] {
-        return tasks.filter(task => taskIds.includes(task.id));
+    public static filterTaskByIds(taskIds: string[]): HealthcheckTask[] {
+        return this.getTasks().filter(task => taskIds.includes(task.id));
     }
 
     public static filterTaskByExercises(
         tasks: HealthcheckTask[],
         exerciseId: string
     ): HealthcheckTask[] {
-        return this.filterTaskByType(tasks, 'exercise').filter(
-            task => (<ExerciseHealthcheckTask>task).exerciseId === exerciseId
-        );
-    }
-
-    public static filterTaskByDiagnosis(
-        tasks: HealthcheckTask[],
-        diagnosisId: string
-    ): HealthcheckTask[] {
-        return this.filterTaskByType(tasks, 'diagnosis').filter(
-            task => (<DiagnosisHealthcheckTask>task).diagnosisId === diagnosisId
-        );
+        return tasks.filter(task => (<ExerciseHealthcheckTask>task).exerciseId === exerciseId);
     }
 }

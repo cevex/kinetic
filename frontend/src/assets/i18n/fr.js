@@ -18,6 +18,7 @@ export default {
         start: 'Start exercise',
         done: 'L’exercice est terminé, indiquez l’état de votre douleur',
         next: 'Exercie suivant',
+        redo: 'Redo the exercise. Take care of how you stand.',
         advice: 'Lancez la vidéo, à la fin de l’exercice indiquez l’état si les variations de douleur correspond à celle décrite dans la vidéo'
     },
     treatment: {

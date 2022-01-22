@@ -7,4 +7,3 @@ image::images/domain.model.png[Domain model]
 
 == Checkout full ns version
 
- git checkout fb30089c65ed544ae6f1ce7a1b3097bc5d9a7528

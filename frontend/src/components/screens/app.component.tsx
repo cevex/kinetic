@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
+import { KntStore } from '../../core/store/knt.store';
 import DiagnosisScreen from './healtcheck/diagnosis-screen.component';
 import ExerciseScreen from './healtcheck/exercices/exercise-screen.component';
 import HealthcheckGuideScreen from './healtcheck/healthcheck-guide-screen.component';
@@ -13,11 +14,16 @@ import WelcomeScreen from './welcome/welcome-screen.component';
 const Stack = createNativeStackNavigator();
 
 class AppComponent extends Component {
+    constructor(props: any) {
+        super(props);
+        KntStore.initStore();
+    }
+
     render() {
         return (
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName="Home"
+                    initialRouteName="PainLocation"
                     screenOptions={{
                         headerShown: false
                     }}>
