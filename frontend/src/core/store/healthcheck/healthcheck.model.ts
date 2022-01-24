@@ -1,4 +1,4 @@
-import { BodyAreaType } from '../body/body-area-data.model';
+import { BodyAreaType } from '../../domain/body/body-area-data.model';
 
 export interface Healthcheck {
     /** Is the treatment has been started */

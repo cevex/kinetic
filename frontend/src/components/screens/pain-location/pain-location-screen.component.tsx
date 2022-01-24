@@ -48,8 +48,6 @@ class PainLocationScreen extends Component<ScreenProp, PainLocationScreenState> 
                                     selectedAreas
                                 )
                             );
-                            console.log('this.selectedAreas', this.state.selectedAreas);
-                            console.log('this.state', this.state);
                         }}
                     />
                 </View>

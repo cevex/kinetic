@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+
 import { SelectorService } from '../../../core/common/selector.service';
 import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
 import { globalVariables } from '../../styles';
@@ -64,14 +65,16 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 10,
         height: 10,
-        borderRadius: 50,
-        borderColor: 'black'
+        borderRadius: 50
     },
     areaSelected: {
-        backgroundColor: globalVariables.color.accent
+        backgroundColor: globalVariables.color.accent,
+        borderColor: globalVariables.color.white,
+        borderWidth: 1
     },
     areaUnselected: {
-        backgroundColor: globalVariables.color.accent2
+        backgroundColor: globalVariables.color.accent2,
+        borderWidth: 0
     }
 });
 
