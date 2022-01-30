@@ -2,8 +2,9 @@
     {
         "id": "pain-choice__sacro",
         "type": "change-location",
-        "bodyArea": "sacro-illiaque",
-        "more": "sacro__exercise-fente-arriere"
+        "bodyArea": "sacro",
+        "more": "sacro__exercise-fente-arriere",
+
     },
     {
         "id": "sacro__exercise-fente-arriere",

@@ -7,7 +7,7 @@ export class KineticStore {
         healthcheck: HealthcheckReducer.healthcheckReducer
     });
 
-    public static initStore(): Store {
+    public static initStore(): Store<KineticState> {
         return createStore(this.rootReducer);
     }
 }

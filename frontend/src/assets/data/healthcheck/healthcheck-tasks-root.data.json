@@ -5,24 +5,25 @@
         "root": "true",
         "testType": "body-map",
         "painChoices": [
-            "pain-choice__lombaire",
-            "pain-choice__fessiers",
-            "pain-choice__sacro"
+            "pain-choice__back-bar",
+            "pain-choice__back-zone",
+            "pain-choice__sacro",
+            "pain-choice__fessiers"
         ]
     },
     {
-        "id": "pain-choice__lombaire",
+        "id": "pain-choice__back",
         "type": "change-location",
-        "bodyArea": "lombaire",
-        "more": "test-location__lombaire"
+        "bodyArea": "back",
+        "more": "test-location__back"
     },
     {
-        "id": "test-location__lombaire",
+        "id": "test-location__back",
         "type": "test-location",
         "testType": "list",
         "painChoices": [
-            "pain-choice__lombaire-bar",
-            "pain-choice__lombaire-zone"
+            "pain-choice__back-bar",
+            "pain-choice__back-zone"
         ]
     }
 ]

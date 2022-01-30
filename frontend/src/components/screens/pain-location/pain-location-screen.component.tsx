@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
+import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
+import { HealthcheckActionner } from '../../../core/store/healthcheck/healthcheck.actions';
+import { KineticState } from '../../../core/store/kinetic.state';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
 import { globalVariables } from '../../styles';
@@ -11,8 +16,13 @@ import { PainLocationScreenState } from './pain-location-screen.model';
 import { PainLocationScreenService } from './pain-location-screen.service';
 import PainLocationSelector from './pain-location-selector.component';
 
-class PainLocationScreen extends Component<ScreenProp, PainLocationScreenState> {
-    constructor(props: ScreenProp) {
+interface PainLocationScreenProp extends ScreenProp {
+    healthcheck: Healthcheck;
+    chooseLocation: (bodyAreas: BodyAreaType[]) => void;
+}
+
+class PainLocationScreen extends Component<PainLocationScreenProp, PainLocationScreenState> {
+    constructor(props: PainLocationScreenProp) {
         super(props);
         this.state = PainLocationScreenService.initScreen('back');
     }
@@ -58,7 +68,7 @@ class PainLocationScreen extends Component<ScreenProp, PainLocationScreenState> 
                         label={I18n.t('healthcheck.start')}
                         type="primary"
                         fitWith={true}
-                        onPress={_ => this.props.navigation.navigate('HealthcheckGuide')}
+                        onPress={_ => this.props.chooseLocation(this.state.selectedAreas)}
                     />
                 </View>
             </View>
@@ -110,4 +120,14 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PainLocationScreen;
+const mapStateToProps = (state: KineticState) => ({
+    healthcheck: state.healthcheck
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    chooseLocation: (bodyAreas: BodyAreaType[]) => {
+        dispatch(HealthcheckActionner.chooseLocation(bodyAreas));
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PainLocationScreen);

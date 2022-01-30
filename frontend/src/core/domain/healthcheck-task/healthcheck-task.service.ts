@@ -28,6 +28,10 @@ export class HealthcheckTaskService {
         return this.mergeTasks(allTasks);
     }
 
+    public static getTaskByType(type: HealthcheckTaskType): HealthcheckTask[] {
+        return this.getTasks().filter(task => task.type === type);
+    }
+
     private static mergeTasks(tasksList: HealthcheckTask[][]): HealthcheckTask[] {
         if (!tasksList) return [];
         return tasksList.reduce((alltasks, tasks) => {
@@ -43,8 +47,8 @@ export class HealthcheckTaskService {
         return this.getTasks().find(task => task.root);
     }
 
-    public static findTaskById(taskIds: string): HealthcheckTask {
-        return this.getTasks().find(task => taskIds.includes(task.id));
+    public static findTaskById(taskId: string): HealthcheckTask {
+        return this.getTasks().find(task => taskId.includes(task.id));
     }
 
     // =======================================================================

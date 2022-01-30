@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ScreenProp } from '../../../common/navigable-screen-prop.model';
-import I18n from '../../../i18n';
-import { globalStyles, globalVariables } from '../../../styles';
-import KntButton from '../../../ui/button/button.component';
-import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectFlat from '../../../ui/selects/select-flat.component';
-import YoutubePlayer from '../../../ui/youtube-player.component';
+import { ScreenProp } from '../../common/navigable-screen-prop.model';
+import I18n from '../../i18n';
+import { globalStyles, globalVariables } from '../../styles';
+import KntButton from '../../ui/button/button.component';
+import { UiItem } from '../../ui/core/ui-item.model';
+import KntSelectFlat from '../../ui/selects/select-flat.component';
+import YoutubePlayer from '../../ui/youtube-player.component';
 import { ExerciseScreenState } from './exercise-screen.model';
 import { ExerciseScreenService } from './exercise-screen.service';
 

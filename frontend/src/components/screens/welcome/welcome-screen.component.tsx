@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { GestureResponderEvent, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
+import { HealthcheckActionner } from '../../../core/store/healthcheck/healthcheck.actions';
+import { KineticState } from '../../../core/store/kinetic.state';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
 import { globalVariables } from '../../styles';
@@ -12,7 +17,8 @@ import { WelcomeScreenService } from './welcome-screen.service';
 interface WelcomeScreenProp extends ScreenProp {
     label: string;
     type?: ButtonType;
-    onPress: ((event?: GestureResponderEvent) => void) | undefined;
+    healthcheck: Healthcheck;
+    startHealthcheck: () => void;
 }
 
 class WelcomeScreen extends Component<WelcomeScreenProp, WelcomeScreenState> {
@@ -56,7 +62,7 @@ class WelcomeScreen extends Component<WelcomeScreenProp, WelcomeScreenState> {
                         <KntButton
                             label={'👉 ' + I18n.t('healthcheck.start')}
                             type="link"
-                            onPress={() => this.props.navigation.navigate('PainLocation')}
+                            onPress={() => this.props.startHealthcheck()}
                         />
                     )}
                 </View>
@@ -109,4 +115,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default WelcomeScreen;
+const mapStateToProps = (state: KineticState) => ({
+    healthcheck: state.healthcheck
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    startHealthcheck: () => dispatch(HealthcheckActionner.startHealthcheck())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);

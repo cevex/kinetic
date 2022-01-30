@@ -1,25 +1,33 @@
-import { PainAreaChoice } from '../../domain/healthcheck-task/choice/pain-area-choice.model';
+import { BodyAreaType } from '../../domain/body/body-area-data.model';
 import { PainAssessChoiceTripleType } from '../../domain/healthcheck-task/choice/pain-assessment-choice.model';
 
+// =======================================================================
+//               Actions
+// =======================================================================
+
 export declare type HealthcheckActionType =
-    | 'SEE_GUIDE'
+    | 'START_HEALTHCHECK'
     | 'CHOOSE_LOCATION'
+    | 'SEE_DISCLAIMER'
     | 'ASSESS_EXERCISE'
-    | 'VALIDATE_EXERCISE'
-    | 'END_HEALTHCHECK'
-    | 'REDO_EXERCISE';
+    | 'REDO_EXERCISE'
+    | 'END_HEALTHCHECK';
 
 export interface HealthcheckAction {
     type: HealthcheckActionType;
 }
 
-export interface SeeHealthcheckGuideAction extends HealthcheckAction {
-    type: 'SEE_GUIDE';
+export interface StartHealthcheckAction extends HealthcheckAction {
+    type: 'START_HEALTHCHECK';
+}
+
+export interface SeeDisclaimerAction extends HealthcheckAction {
+    type: 'SEE_DISCLAIMER';
 }
 
 export interface ChooseLocationAction extends HealthcheckAction {
     type: 'CHOOSE_LOCATION';
-    choice: PainAreaChoice;
+    bodyAreas: BodyAreaType[];
 }
 
 export interface AssessExerciseAction extends HealthcheckAction {
@@ -28,6 +36,34 @@ export interface AssessExerciseAction extends HealthcheckAction {
 }
 
 export interface EndHealthcheckAction extends HealthcheckAction {
-    type: 'CHOOSE_LOCATION';
-    endTaskId: string;
+    type: 'END_HEALTHCHECK';
+}
+
+// =======================================================================
+//               Actionner
+// =======================================================================
+
+export class HealthcheckActionner {
+    public static startHealthcheck(): StartHealthcheckAction {
+        console.log('Building actions');
+        return { type: 'START_HEALTHCHECK' };
+    }
+
+    public static chooseLocation = (bodyAreas: BodyAreaType[]): ChooseLocationAction => {
+        return { type: 'CHOOSE_LOCATION', bodyAreas: bodyAreas };
+    };
+
+    public static seeDisclaimer = (): SeeDisclaimerAction => {
+        return { type: 'SEE_DISCLAIMER' };
+    };
+
+    public static assessExercise = (
+        choiceType: PainAssessChoiceTripleType
+    ): AssessExerciseAction => {
+        return { type: 'ASSESS_EXERCISE', choiceType: choiceType };
+    };
+
+    public static endHealthcheck = (): EndHealthcheckAction => {
+        return { type: 'END_HEALTHCHECK' };
+    };
 }

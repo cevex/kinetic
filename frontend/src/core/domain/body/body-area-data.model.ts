@@ -16,7 +16,7 @@ export declare type BodyAreaType =
     | 'calf__right';
 
 export declare type BodyDirection = 'front' | 'back';
-export declare type BodyAreaPlace = 'back' | 'sacro' | 'buttock' | 'thigh' | 'calf';
+export declare type BodyAreaPlace = 'backZone' | 'backBar' | 'sacro' | 'buttock' | 'thigh' | 'calf';
 export declare type BodyAreaRange = 'zoneH' | 'zoneV' | 'local';
 export declare type BodyAreaSide =
     | 'left'
@@ -29,6 +29,7 @@ export declare type BodyAreaSide =
 
 export interface BodyArea {
     type: BodyAreaType;
+    order: number;
     name: string;
     details: string;
     imgPath: string;

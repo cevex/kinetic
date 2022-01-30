@@ -1,10 +1,10 @@
 import { cloneDeep } from 'lodash-es';
-import { PainAssessChoiceType } from '../../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
-import I18n from '../../../i18n';
-import { UiItem } from '../../../ui/core/ui-item.model';
+import { PainAssessChoiceType } from '../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
+import I18n from '../../i18n';
+import { UiItem } from '../../ui/core/ui-item.model';
 import { ExerciseScreenState } from './exercise-screen.model';
 
-export class ExerciseScreenService {
+export class RedoExerciseScreenService {
     private static dualChoiceItem = [
         {
             id: 'no',

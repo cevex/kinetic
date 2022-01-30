@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Healthcheck } from '../../core/store/healthcheck/healthcheck.model';
+import { Healthcheck } from '../../core/domain/healthcheck/healthcheck.model';
 import { KineticState } from '../../core/store/kinetic.state';
 import { ScreenProp } from '../common/navigable-screen-prop.model';
 import I18n from '../i18n';
@@ -10,13 +10,17 @@ import KntButton from '../ui/button/button.component';
 
 export interface HomeScreenProp extends ScreenProp {
     healthcheck: Healthcheck;
+    startHealthcheck: () => void;
 }
 
 class HomeScreen extends Component<HomeScreenProp> {
     constructor(props: HomeScreenProp) {
         super(props);
-        console.log('Current state ', props.healthcheck);
     }
+
+    // componentDidUpdate(prevProps: Readonly<HomeScreenProp>, prevState: Readonly<any>) {
+    //     console.log('[HomeScreen] componentDidUpdate !');
+    // }
 
     render() {
         return (
@@ -27,7 +31,7 @@ class HomeScreen extends Component<HomeScreenProp> {
                     <Image source={require('../../assets/images/kinetic-logo.png')} />
                 </View>
                 <View style={styles.controls}>
-                    {this.props.healthcheck && (
+                    {this.props.healthcheck && this.props.healthcheck.treatmentStart && (
                         <KntButton
                             label={I18n.t('treatment.open')}
                             type="secondary"
@@ -39,10 +43,7 @@ class HomeScreen extends Component<HomeScreenProp> {
                     <KntButton
                         label={I18n.t('treatment.new')}
                         fitWith={true}
-                        onPress={() => {
-                            console.log('[nav] starting new treatment');
-                            this.props.navigation.navigate('Welcome');
-                        }}
+                        onPress={() => this.props.navigation.navigate('HealthcheckWelcome')}
                     />
                 </View>
             </View>

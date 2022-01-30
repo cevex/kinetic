@@ -1,4 +1,4 @@
-import { Healthcheck } from './healthcheck/healthcheck.model';
+import { Healthcheck } from '../domain/healthcheck/healthcheck.model';
 
 export interface KineticState {
     healthcheck: Healthcheck;

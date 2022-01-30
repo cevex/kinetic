@@ -2,6 +2,7 @@ import { PainAssessmentChoiceTriple } from '../choice/pain-assessment-choice.mod
 import { HealthcheckTask } from '../healthcheck-task.model';
 
 export interface ExerciseHealthcheckTask extends HealthcheckTask {
+    type: 'exercise';
     exerciseId: string;
     choice: PainAssessmentChoiceTriple;
 }

@@ -1,11 +1,14 @@
-import { BodyAreaType } from '../../domain/body/body-area-data.model';
+import { BodyAreaType } from '../body/body-area-data.model';
 
 export interface Healthcheck {
     /** Is the treatment has been started */
     treatmentStart?: boolean;
 
-    /** Should show disclaimer on healthcheck */
-    showDisclaimer?: boolean;
+    /** Is the disclaimer seen ? */
+    disclaimerSeen?: boolean;
+
+    /** The body areas to treat */
+    selectedBodyArea?: BodyAreaType[];
 
     /** The body areas to treat */
     bodyArea?: BodyAreaType;

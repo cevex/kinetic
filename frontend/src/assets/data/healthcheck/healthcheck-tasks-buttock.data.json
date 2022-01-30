@@ -1,39 +1,39 @@
 [
     {
-        "id": "pain-choice__fessiers",
+        "id": "pain-choice__buttock",
         "type": "change-location",
-        "bodyArea": "fessiers",
-        "more": "buttock__exercise-etirement-fessiers"
+        "bodyArea": "buttock",
+        "more": "buttock__exercise-etirement-buttock"
     },
     {
-        "id": "buttock__exercise-etirement-fessiers",
+        "id": "buttock__exercise-etirement-buttock",
         "type": "exercise",
-        "exerciseId": "etirement-fessiers",
+        "exerciseId": "etirement-buttock",
         "choice": {
-            "less": "buttock__exercise-attitude-fessier",
-            "equal": "buttock__exercise-etirement-fessiers__redo",
-            "more": "pain-choice__lombaire-zone"
+            "less": "buttock__exercise-attitude-buttock",
+            "equal": "buttock__exercise-etirement-buttock__redo",
+            "more": "pain-choice__back-zone"
         }
     },
     {
-        "id": "buttock__exercise-etirement-fessiers__redo",
+        "id": "buttock__exercise-etirement-buttock__redo",
         "type": "redo",
-        "exerciseTaskToRedo": "buttock__exercise-etirement-fessiers"
+        "exerciseTaskToRedo": "buttock__exercise-etirement-buttock"
     },
     {
-        "id": "buttock__exercise-etirement-fessiers__change-location",
+        "id": "buttock__exercise-etirement-buttock__change-location",
         "type": "change-location",
-        "bodyArea": "lombaire-zone",
-        "painChoice": "pain-choice__lombaire-zone"
+        "bodyArea": "back-zone",
+        "painChoice": "pain-choice__back-zone"
     },
     {
-        "id": "buttock__exercise-attitude-fessier",
+        "id": "buttock__exercise-attitude-buttock",
         "type": "exercise",
-        "exerciseId": "attitude-fessier",
+        "exerciseId": "attitude-buttock",
         "choice": {
             "less": "buttock__diagnosis-contracture-posturale",
-            "equal": "buttock__exercise-attitude-fessier__redo",
-            "more": "pain-choice__lombaire-zone"
+            "equal": "buttock__exercise-attitude-buttock__redo",
+            "more": "pain-choice__back-zone"
         }
     },
     {
@@ -42,8 +42,8 @@
         "diagnosisId": "contracture-posturale"
     },
     {
-        "id": "buttock__exercise-attitude-fessier__redo",
+        "id": "buttock__exercise-attitude-buttock__redo",
         "type": "redo",
-        "exerciseTaskToRedo": "buttock__exercise-attitude-fessier"
+        "exerciseTaskToRedo": "buttock__exercise-attitude-buttock"
     }
 ]
