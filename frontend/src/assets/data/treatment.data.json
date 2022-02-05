@@ -1,0 +1,197 @@
+[
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-sol-debout",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-sol-allonger",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "rotation-start",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "rotation",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "rotation-poids",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "rotation-angle",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-sol-relever",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "cobra-dyn-petit",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "cobra-dyn",
+        "phases": "mobilite,consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-chaise-assoir",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-chaise-lever",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-tabouret-assoir",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-manger",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-dormir-ventre",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-dormir-cote",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-dormir-dos",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-chausette",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-chaussures",
+        "phases": "inflammatoire"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-voiture-rentrer",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-voiture-sortir",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-tabouret-assis",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-chevalier-servant",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-canape-assoir",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-canape-lever",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-teletravail-canape",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-teletravail-alonge",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-ramasser",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "L5-S1-cuisine-faire",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "maracas",
+        "phases": "inflammatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "saut-1-pied",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "fente-arriere-main",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "fente-arriere",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "inclinaison-lateral",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "inclinaison-lateral-extension",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "inclinaison-lateral-flexion",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "squat-main",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "squat-reeducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "developpe-reeducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercices": "fessier-alonge-mur",
+        "phases": "entretien"
+    }
+]
