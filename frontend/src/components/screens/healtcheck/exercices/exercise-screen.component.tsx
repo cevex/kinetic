@@ -56,7 +56,7 @@ class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> 
         return (
             <View style={styles.container}>
                 <View style={globalStyles.card}>
-                    <Text style={globalStyles.cardTitle}>{this.state.exercise?.name}</Text>
+                    <Text style={globalStyles.cardTitle}>{this.state.exercise?.label}</Text>
                     <Text style={globalStyles.cardMessage}>{I18n.t('exercise.advice')}</Text>
                 </View>
 

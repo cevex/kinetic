@@ -8,7 +8,7 @@
     {
         "id": "buttock__exercise-etirement-buttock",
         "type": "exercise",
-        "exerciseId": "etirement-buttock",
+        "exerciseId": "fessier-assis",
         "choice": {
             "less": "buttock__exercise-attitude-buttock",
             "equal": "buttock__exercise-etirement-buttock__redo",

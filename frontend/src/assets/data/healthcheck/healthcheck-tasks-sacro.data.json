@@ -9,7 +9,7 @@
     {
         "id": "sacro__exercise-fente-arriere",
         "type": "exercise",
-        "exerciseId": "fente-arriere",
+        "exerciseId": "fente-arriere-sacro",
         "choice": {
             "less": "sacro__exercise-attitude-fessier",
             "equal": "sacro__exercise-fente-arriere__redo",
@@ -24,7 +24,7 @@
     {
         "id": "sacro__exercise-attitude-fessier",
         "type": "exercise",
-        "exerciseId": "attitude-fessier",
+        "exerciseId": "debout-L5-S1",
         "choice": {
             "less": "sacro__diagnosis-contracture-posturale",
             "equal": "sacro__exercise-attitude-fessier__redo",

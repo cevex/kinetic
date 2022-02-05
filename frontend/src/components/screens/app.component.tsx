@@ -3,6 +3,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Unsubscribe } from 'redux';
+import { TreatmentAreaDataService } from '../../core/domain/diagnosis/treatment-area.service';
+import { ExercisesService } from '../../core/domain/exercices/exercises.service';
+import { TreatmentService } from '../../core/domain/treatment/treatment.service';
 import { KineticStore } from '../../core/store/kinetic.store';
 import { RootNavigation } from '../common/root-navigator';
 import ConsultScreen from './healtcheck/consult-screen.component';
@@ -36,6 +39,28 @@ class AppComponent extends Component {
             }
             console.log('[AppComponent] => New state :', storeState);
         });
+
+        this.printNewTreatments();
+    }
+
+    private printNewTreatments() {
+        const treatments = TreatmentService.getTreatments();
+        const exercises = ExercisesService.getExercises();
+        const treatmentArea = TreatmentAreaDataService.getTreatmentAreas();
+        // console.log('[TreatmentService] => treatments :', treatments);
+        // console.log('[TreatmentService] => exercises :', exercises);
+        // console.log('[TreatmentService] => treatmentArea :', treatmentArea);
+
+        const newTreatments = treatments.map(treatment => {
+            const exercise = exercises.find(ex => ex.label === treatment.exercise);
+            if (!exercise) {
+                console.log('[TreatmentService] => cannot find :', treatment.exercise);
+            } else {
+                treatment.exercise = exercise.id;
+            }
+            return treatment;
+        });
+        console.log('[TreatmentService] => newTreatments :', newTreatments);
     }
 
     private listenForHealthcheck() {

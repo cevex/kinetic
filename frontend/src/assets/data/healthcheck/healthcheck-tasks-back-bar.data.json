@@ -8,7 +8,7 @@
     {
         "id": "back-bar__exercise-posture-extension",
         "type": "exercise",
-        "exerciseId": "posture-extension",
+        "exerciseId": "debout-L5-S1",
         "choice": {
             "less": "back-bar__exercise-mobilisation-extension",
             "equal": "back-bar__exercise-posture-extension-redo",
@@ -23,7 +23,7 @@
     {
         "id": "back-bar__exercise-mobilisation-extension",
         "type": "exercise",
-        "exerciseId": "mobilisation-extension",
+        "exerciseId": "cobra-dyn-petit",
         "choice": {
             "less": "back-bar__diagnosis-lomb-aigue-L5S1",
             "equal": "back-bar__exercise-mobilisation-extension-redo",
@@ -39,7 +39,7 @@
         "id": "back-bar__exercise-mobilisation-extension-redo",
         "type": "redo",
         "exerciseTaskToRedo": "back-bar__exercise-mobilisation-extension",
-        "exerciseIdAdditional": "etirement-rotation"
+        "exerciseIdAdditional": "rotation"
     },
     {
         "id": "back-bar__exercise-posture-flexion",
@@ -56,7 +56,7 @@
         "id": "back-bar__exercise-posture-flexion-redo",
         "type": "redo",
         "exerciseTaskToRedo": "exercise-posture-extension",
-        "exerciseIdAdditional": "etirement-rotation"
+        "exerciseIdAdditional": "rotation"
     },
     {
         "id": "back-bar__exercise-posture-flexion-consult",
@@ -66,7 +66,7 @@
     {
         "id": "back-bar__exercise-mobilisation-flexion",
         "type": "exercise",
-        "exerciseId": "mobilisation-flexion",
+        "exerciseId": "flexion-debout-dyn",
         "choice": {
             "less": "back-bar__diagnosis-lomb-aigue-L3L4",
             "equal": "back-bar__exercise-mobilisation-flexion-redo",
@@ -88,6 +88,6 @@
         "id": "back-bar__exercise-mobilisation-flexion-redo",
         "type": "redo",
         "exerciseTaskToRedo": "back-bar__exercise-mobilisation-flexion",
-        "exerciseIdAdditional": "etirement-rotation"
+        "exerciseIdAdditional": "rotation"
     }
 ]

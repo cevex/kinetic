@@ -1,197 +1,757 @@
 [
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-sol-debout",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Debout L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-sol-allonger",
-        "phases": "inflammatoire"
+        "exercise": "S'allonger au sol L5-S1",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "rotation-start",
-        "phases": "inflammatoire"
+        "exercise": "Début de rotation",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "rotation",
+        "exercise": "Rotation",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "rotation-poids",
+        "exercise": "Rotation avec poids",
         "phases": "consolidation"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "rotation-angle",
+        "exercise": "Rotation en cherchant l'angle qui tire le plus",
         "phases": "entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-sol-relever",
-        "phases": "inflammatoire"
+        "exercise": "Se relever du sol L5-S1",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "cobra-dyn-petit",
-        "phases": "inflammatoire"
+        "exercise": "Petit cobra dynamique",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "cobra-dyn",
+        "exercise": "Cobra dynamique",
         "phases": "mobilite,consolidation,entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-chaise-assoir",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "S'assoir sur une chaise L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-chaise-lever",
-        "phases": "inflammatoire"
+        "exercise": "Se lever d'une chaise L5- S1",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-tabouret-assoir",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "S'assoir sur un tabouret L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-manger",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Manger avec une lombalgie L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-dormir-ventre",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Dormir à plat ventre L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-dormir-cote",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Dormir sur le côté L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-dormir-dos",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Dormir sur le dos L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-chausette",
-        "phases": "inflammatoire"
+        "exercise": "Mettre ses chaussettes L5-S1",
+        "phases": "inflamatoire,mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-chaussures",
-        "phases": "inflammatoire"
+        "exercise": "Mettre ses chaussures L5-S1",
+        "phases": "inflamatoire"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-voiture-rentrer",
+        "exercise": "Rentrer dans une voiture avec  une lombalgie L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-voiture-sortir",
+        "exercise": "Sortir d'une voiture avec une lombalgie L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-tabouret-assis",
+        "exercise": "Travail assis au bureau avec un tabouret L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-chevalier-servant",
+        "exercise": "Travail en chevalier servant L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-canape-assoir",
+        "exercise": "S'assoir dans un canapé L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-canape-lever",
+        "exercise": "Se lever du canapé L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-teletravail-canape",
+        "exercise": "Télétravail assis au canapé L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-teletravail-alonge",
+        "exercise": "Télétravail allongé à plat ventre L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-ramasser",
+        "exercise": "A ne pas faire pour ramasser un objet L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "L5-S1-cuisine-faire",
+        "exercise": "Faire à manger L5-S1",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "maracas",
-        "phases": "inflammatoire,mobilite"
+        "exercise": "Maracas",
+        "phases": "mobilite,consolidation"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "saut-1-pied",
+        "exercise": "Saut sur 1 pied",
         "phases": "consolidation,entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "fente-arriere-main",
+        "exercise": "Fente arrière avec l'aide des mains",
         "phases": "mobilite"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "fente-arriere",
+        "exercise": "Fente arrière",
         "phases": "consolidation,entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "inclinaison-lateral",
-        "phases": "mobilite"
-    },
-    {
-        "area": "lomb-aigue-L5S1",
-        "exercices": "inclinaison-lateral-extension",
-        "phases": "entretien"
-    },
-    {
-        "area": "lomb-aigue-L5S1",
-        "exercices": "inclinaison-lateral-flexion",
-        "phases": "entretien"
-    },
-    {
-        "area": "lomb-aigue-L5S1",
-        "exercices": "squat-main",
+        "exercise": "Inclinaisons latérales",
         "phases": "consolidation"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "squat-reeducation",
+        "exercise": "Inclinaisons latérales avec extension",
         "phases": "entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "developpe-reeducation",
+        "exercise": "Inclinaisons latérales avec flexion",
         "phases": "entretien"
     },
     {
         "area": "lomb-aigue-L5S1",
-        "exercices": "fessier-alonge-mur",
+        "exercise": "Squat avec l'aide des mains",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercise": "Squat de rééducation",
         "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercise": "Développé militaire adapté à la rééducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L5S1",
+        "exercise": "Fessier allongé en poussant-tirant la jambe avec un appui sur un mur",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Debout L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "S'allonger au sol L5-S1",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Début de rotation",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Rotation",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Rotation avec poids",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Rotation en cherchant l'angle qui tire le plus",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Se relever du sol L5-S1",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Petit cobra statique",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Cobra statique",
+        "phases": "mobilite,consolidation"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Cobra élastique statique",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "S'assoir sur une chaise L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Se lever d'une chaise L5- S1",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "S'assoir sur un tabouret L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Manger avec une lombalgie L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Dormir à plat ventre L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Dormir sur le côté L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Dormir sur le dos L5-S1",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Mettre ses chaussettes L5-S1",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Mettre ses chaussures L5-S1",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Rentrer dans une voiture avec  une lombalgie L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Sortir d'une voiture avec une lombalgie L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Travail assis au bureau avec un tabouret L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Travail en chevalier servant L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "S'assoir dans un canapé L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Se lever du canapé L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Télétravail assis au canapé L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Télétravail allongé à plat ventre L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "A ne pas faire pour ramasser un objet L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Faire à manger L5-S1",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Maracas",
+        "phases": "mobilite,consolidation"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Saut sur 1 pied",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Fente arrière avec l'aide des mains",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Fente arrière",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Inclinaisons latérales",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Inclinaisons latérales avec extension",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Inclinaisons latérales avec flexion",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Squat avec l'aide des mains",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Squat de rééducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Développé militaire adapté à la rééducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L5S1",
+        "exercise": "Fessier allongé en poussant-tirant la jambe avec un appui sur un mur",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Debout L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Début de rotation",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Rotation",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Rotation avec poids",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Rotation en cherchant l'angle qui tire le plus",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Flexion assis dynamique",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Flexion debout dynamique",
+        "phases": "mobilite,consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "S'assoir sur une chaise L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Manger avec une lombalgie L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Dormir sur le dos L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Dormir sur le côté L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Dormir à plat ventre L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Travail au bureau avec une lombalgie L3-L4",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Abdominaux : la position des épaules",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Abdominaux à l'aide d'un élastique",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Abdominaux",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Maracas",
+        "phases": "mobilite,consolidation"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Saut sur 1 pied",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Fente arrière avec l'aide des mains",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Fente arrière",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Squat avec l'aide des mains",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Squat de rééducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Inclinaisons latérales",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Inclinaisons latérales avec flexion",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Inclinaisons latérales avec extension",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-aigue-L3L4",
+        "exercise": "Fessier allongé en tirer la cuisse",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Debout L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Début de rotation",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Rotation",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Rotation avec poids",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Rotation en cherchant l'angle qui tire le plus",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Flexion debout statique",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Flexion debout statique avec poids",
+        "phases": "mobilite,consolidation,entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "S'assoir sur une chaise L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Manger avec une lombalgie L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Dormir sur le dos L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Dormir sur le côté L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Dormir à plat ventre L1-L2 et L3-L4",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Travail au bureau avec une lombalgie L3-L4",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Abdominaux : la position des épaules",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Abdominaux à l'aide d'un élastique",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Abdominaux",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Maracas",
+        "phases": "mobilite,consolidation"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Saut sur 1 pied",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Fente arrière avec l'aide des mains",
+        "phases": "mobilite"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Fente arrière",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Squat avec l'aide des mains",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Squat de rééducation",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Inclinaisons latérales",
+        "phases": "consolidation"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Inclinaisons latérales avec flexion",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Inclinaisons latérales avec extension",
+        "phases": "entretien"
+    },
+    {
+        "area": "lomb-chro-L3L4",
+        "exercise": "Fessier allongé en tirer la cuisse",
+        "phases": "entretien"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Debout avec une déchirure thoracique basse ou moyenne",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Travail au bureau avec une déchirure thoracique",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "S'assoir sur une chaise avec des douleurs de déchirures thoraciques",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Dormir sur le côté avec une déchirure thoracique moyenne",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Dormir à plat ventre avec une déchirure thoracique moyenne",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Manger avec une déchirure thoracique",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Développé militaire adapté à la rééducation",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Saut sur 1 pied",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Maracas",
+        "phases": "mobilite,consolidation"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Flexion debout statique",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Flexion debout dynamique",
+        "phases": "mobilite"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Inclinaisons latérales",
+        "phases": "consolidation"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Inclinaisons latérales avec flexion",
+        "phases": "entretien"
+    },
+    {
+        "area": "dechirure",
+        "exercise": "Inclinaisons latérales avec extension",
+        "phases": "entretien"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Fessier assis",
+        "phases": "inflamatoire,mobilite,consolidation,entretien"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Fessier allongé en tirer la cuisse",
+        "phases": "inflamatoire"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Lotus",
+        "phases": "consolidation,entretien"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Fessier sur une table",
+        "phases": "entretien"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Fente arrière pour les douleurs sacro-iliaques",
+        "phases": "inflamatoire,mobilite"
+    },
+    {
+        "area": "contracture-posturale",
+        "exercise": "Fente arrière avec des poids",
+        "phases": "consolidation,entretien"
     }
 ]

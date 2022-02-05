@@ -8,7 +8,7 @@
     {
         "id": "back-zone__exercise-etirement-rotation",
         "type": "exercise",
-        "exerciseId": "etirement-rotation",
+        "exerciseId": "rotation",
         "choice": {
             "less": "back-zone__exercise-etirement-extension",
             "equal": "back-zone__exercise-etirement-rotation-redo",
@@ -23,7 +23,7 @@
     {
         "id": "back-zone__exercise-etirement-extension",
         "type": "exercise",
-        "exerciseId": "etirement-extension",
+        "exerciseId": "cobra-stat-petit",
         "choice": {
             "less": "back-zone__diagnosis-lomb-chro-L5S1",
             "equal": "back-zone__exercise-etirement-extension-redo",
@@ -43,7 +43,7 @@
     {
         "id": "back-zone__exercise-etirement-flexion",
         "type": "exercise",
-        "exerciseId": "etirement-flexion",
+        "exerciseId": "flexion-debout-stat",
         "choice": {
             "less": "back-zone__diagnosis-lomb-chro-L3L4",
             "equal": "back-zone__exercise-etirement-flexion-redo",
@@ -78,7 +78,7 @@
     {
         "id": "back-zone__exercise-posture-evitement",
         "type": "exercise",
-        "exerciseId": "posture-evitement",
+        "exerciseId": "debout-dechirure",
         "choice": {
             "less": "back-zone__diagnosis-dechirure",
             "equal": "back-zone__exercise-posture-evitement-redo",

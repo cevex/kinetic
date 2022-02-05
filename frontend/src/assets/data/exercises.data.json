@@ -1,68 +1,653 @@
 [
     {
-        "id": "posture-extension",
-        "name": "Debout L5-S1",
-        "advice": "Avancez le ventre, mettez les épaules en arrières, relachez les fessiers",
-        "videoId": "cFR4jM-FxlQ"
+        "id": "cobra-statique-elastique",
+        "label": "Cobra élastique statique",
+        "place": "L5-S1",
+        "type": "Etirement",
+        "equipment": "Tapis de sol",
+        "level": "5",
+        "videoId": "https://youtu.be/xyRTqCufSCs"
     },
     {
-        "id": "posture-flexion",
-        "name": "Debout L3-L4",
-        "advice": "Relâchez les fessiers et les abdominaux durant l'exercice, gardez le dos en légère extension lorsque vous êtes debout",
-        "videoId": "IZAJ3z8ItLM"
+        "id": "cobra-statique",
+        "label": "Cobra statique",
+        "place": "L5-S1",
+        "type": "Etirement",
+        "equipment": "Tapis de sol",
+        "level": "4",
+        "videoId": "https://youtu.be/ztvGDfzZ5dk"
     },
     {
-        "id": "posture-evitement",
-        "name": "Posture d'évitement",
-        "advice": "Gardez l'épaule du côté de la douleur en arrière",
-        "videoId": "GjJ4tIgN9io"
+        "id": "rotation-debut",
+        "label": "Début de rotation",
+        "place": "Lombaire",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/QtN8NBqHaS0"
     },
     {
-        "id": "mobilisation-extension",
-        "name": "Petit cobra dynamique",
-        "advice": "",
-        "videoId": "BTkL9fyV_Gc"
+        "id": "fessier-allonge-mur",
+        "label": "Fessier allongé en poussant-tirant la jambe avec un appui sur un mur",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "equipment": "Mur",
+        "level": "1",
+        "videoId": "https://youtu.be/NK0EU1LiF8Y"
     },
     {
-        "id": "mobilisation-flexion",
-        "name": "Exercice mobilisation en flexion",
-        "advice": "Ne pas remonté complètement entre chaque flexion, gardez le dos légèrement plié lorsque vous êtes debout",
-        "videoId": "UPRgurrYAbs"
+        "id": "fessier-allonge",
+        "label": "Fessier allongé en tirer la cuisse",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/z_CQH1AgdzQ"
     },
     {
-        "id": "etirement-rotation",
-        "name": "Rotation",
-        "advice": "Plier les hanches à 90°, posez les deux épaules au sol",
-        "videoId": "QB8N7IcsmKs"
+        "id": "flexion-debout-stat",
+        "label": "Flexion debout statique",
+        "place": "L3-L4",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/56mQ8q2r6Kc",
+        "advice": "Gardez les genoux légérement pliés pour éviter les douleurs dans les jambes"
     },
     {
-        "id": "etirement-extension",
-        "name": "Petit cobra statique",
-        "advice": "Relâchez les fessiers et les abdominaux durant l'exercice",
-        "videoId": "TZEt4DrAALg"
+        "id": "flexion-debout-stat-poids",
+        "label": "Flexion debout statique avec poids",
+        "place": "L3-L4",
+        "type": "Etirement",
+        "equipment": "Haltère",
+        "level": "3",
+        "videoId": "https://youtu.be/6s0rfYp-yOg"
     },
     {
-        "id": "etirement-flexion",
-        "name": "Flexion debout statique",
-        "advice": "Gardez les genoux légérement pliés pour éviter les douleurs dans les jambes",
-        "videoId": "56mQ8q2r6Kc"
+        "id": "flexion-debout-stat-mains",
+        "label": "flexion debout statique en poussant les mains ",
+        "place": "L3-L4",
+        "type": "Etirement",
+        "level": "2",
+        "videoId": "https://youtu.be/2_dNhrxlJE8"
     },
     {
-        "id": "etirement-fessiers",
-        "name": "Fessier assis",
-        "advice": "Rapprochez le pied de la jambe pliée pour faciliter l'étirement",
-        "videoId": "SMN6ce2CHI8"
+        "id": "cobra-stat-petit",
+        "label": "Petit cobra statique",
+        "place": "L5-S1",
+        "type": "Etirement",
+        "equipment": "Tapis de sol",
+        "level": "3",
+        "videoId": "https://youtu.be/TZEt4DrAALg",
+        "advice": "Relâchez les fessiers et les abdominaux durant l'exercice"
+    },
+    {
+        "id": "rotation",
+        "label": "Rotation",
+        "place": "Lombaire",
+        "type": "Etirement",
+        "level": "2",
+        "videoId": "https://youtu.be/QB8N7IcsmKs",
+        "advice": "Plier les hanches à 90°, posez les deux épaules au sol"
+    },
+    {
+        "id": "rotation-poids",
+        "label": "Rotation avec poids",
+        "place": "Lombaire",
+        "type": "Etirement",
+        "equipment": "Haltère",
+        "level": "3",
+        "videoId": "https://youtu.be/mcS37guP4As"
+    },
+    {
+        "id": "rotation-angles",
+        "label": "Rotation en cherchant l'angle qui tire le plus",
+        "place": "Lombaire",
+        "type": "Etirement",
+        "level": "4",
+        "videoId": "https://youtu.be/kmeTSD6wquA"
+    },
+    {
+        "id": "cobra-dyn",
+        "label": "Cobra dynamique",
+        "place": "L5-S1",
+        "type": "Mouvement",
+        "equipment": "Tapis de sol",
+        "level": "2",
+        "videoId": "https://youtu.be/CUrSFqix3Rw"
+    },
+    {
+        "id": "flexion-assis-dyn",
+        "label": "Flexion assis dynamique",
+        "place": "L3-L4",
+        "type": "Mouvement",
+        "equipment": "Chaise",
+        "level": "1",
+        "videoId": "https://youtu.be/oO3TU0J0DEU"
+    },
+    {
+        "id": "flexion-debout-dyn",
+        "label": "Flexion debout dynamique",
+        "place": "L3-L4",
+        "type": "Mouvement",
+        "level": "3",
+        "videoId": "https://youtu.be/UPRgurrYAbs",
+        "advice": "Ne pas remonté complètement entre chaque flexion, gardez le dos légèrement plié lorsque vous êtes debout"
+    },
+    {
+        "id": "cobra-dyn-petit",
+        "label": "Petit cobra dynamique",
+        "place": "L5-S1",
+        "type": "Mouvement",
+        "equipment": "Tapis de sol",
+        "level": "1",
+        "videoId": "https://youtu.be/BTkL9fyV_Gc"
+    },
+    {
+        "id": "L5-S1-rammaser",
+        "label": "A ne pas faire pour ramasser un objet L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "rammasser",
+        "level": "1.AB",
+        "videoId": "https://youtu.be/618rPiGvnyY"
+    },
+    {
+        "id": "debout-L3-L4",
+        "label": "Debout L3-L4",
+        "place": "L3-L4",
+        "type": "Posture",
+        "postureCategory": "debout",
+        "videoId": "https://youtu.be/IZAJ3z8ItLM",
+        "advice": "Relâchez les fessiers et les abdominaux durant l'exercice, gardez le dos en légère extension lorsque vous êtes debout"
+    },
+    {
+        "id": "debout-L5-S1",
+        "label": "Debout L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "debout",
+        "videoId": "https://youtu.be/cFR4jM-FxlQ",
+        "advice": "Avancez le ventre, mettez les épaules en arrières, relachez les fessiers"
+    },
+    {
+        "id": "dormir-L3-L4",
+        "label": "Dormir à plat ventre L1-L2 et L3-L4",
+        "place": "L1-L2,L3-L4",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/cFWrkX9dskc"
+    },
+    {
+        "id": "dormir-ventre-L5-S1",
+        "label": "Dormir à plat ventre L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/ZoZhiiGTVlc"
+    },
+    {
+        "id": "dormir-ventre-L3-L4",
+        "label": "Dormir sur le côté L1-L2 et L3-L4",
+        "place": "L1-L2 et L3-L4",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/mRGT_euTgy8"
+    },
+    {
+        "id": "dormir-cote-L5-S1",
+        "label": "Dormir sur le côté L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/594LXqEai5I"
+    },
+    {
+        "id": "dormir-dos-L3-L4",
+        "label": "Dormir sur le dos L1-L2 et L3-L4",
+        "place": "L1-L2 et L3-L4",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/o9NXSxrBGV4"
+    },
+    {
+        "id": "dormir-dos-L5-S1",
+        "label": "Dormir sur le dos L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/j05jVUPAwc0"
+    },
+    {
+        "id": "cuisine-faire-L5-S1",
+        "label": "Faire à manger L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "cuisiner",
+        "equipment": "Cuisine",
+        "level": "1",
+        "videoId": "https://youtu.be/ffWCNbaGFbc"
+    },
+    {
+        "id": "manger-L3-L4",
+        "label": "Manger avec une lombalgie L3-L4",
+        "place": "L3-L4",
+        "type": "Posture",
+        "postureCategory": "manger",
+        "equipment": "Repas",
+        "videoId": "https://youtu.be/RJU_krIpWjM"
+    },
+    {
+        "id": "manger-L5-S1",
+        "label": "Manger avec une lombalgie L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "manger",
+        "equipment": "Repas",
+        "videoId": "https://youtu.be/PhA8YNQZTBY"
+    },
+    {
+        "id": "habiller-chausettes-L5-S1",
+        "label": "Mettre ses chaussettes L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "habiller",
+        "equipment": "Chaise",
+        "level": "1",
+        "videoId": "https://youtu.be/peLXuOdUz0w"
+    },
+    {
+        "id": "voiture-rentrer-L5-S1",
+        "label": "Rentrer dans une voiture avec  une lombalgie L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "conduire",
+        "equipment": "Voiture",
+        "level": "1",
+        "videoId": "https://youtu.be/nNHXmC-UOz4"
+    },
+    {
+        "id": "allonger-L5-S1",
+        "label": "S'allonger au sol L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "allonger",
+        "equipment": "Tapis de sol",
+        "level": "1",
+        "videoId": "https://youtu.be/97gKp7XgFZE"
+    },
+    {
+        "id": "assoir-canape-L5-S1",
+        "label": "S'assoir dans un canapé L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Canape",
+        "level": "1",
+        "videoId": "https://youtu.be/pKBl6tCWF_s"
+    },
+    {
+        "id": "assoir-tabouret-L5-S1",
+        "label": "S'assoir sur un tabouret L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Tabouret",
+        "level": "1",
+        "videoId": "https://youtu.be/Nx3kSMiFs-s"
+    },
+    {
+        "id": "assoir-chaise-L3-L4",
+        "label": "S'assoir sur une chaise L1-L2 et L3-L4",
+        "place": "L3-L4",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Chaise",
+        "level": "/",
+        "videoId": "https://youtu.be/chD8HGcP1aA"
+    },
+    {
+        "id": "assoir-chaise-L5-S1",
+        "label": "S'assoir sur une chaise L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Chaise",
+        "level": "1",
+        "videoId": "https://youtu.be/K56LV1LKtiI"
+    },
+    {
+        "id": "relever-chaise-L5-S1",
+        "label": "Se lever d'une chaise L5- S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Chaise",
+        "level": "2",
+        "videoId": "https://youtu.be/0sfoZSR4Dow"
+    },
+    {
+        "id": "relever-sol-L5-S1",
+        "label": "Se relever du sol L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "allonger",
+        "equipment": "Tapis de sol",
+        "level": "2",
+        "videoId": "https://youtu.be/9SVGqV65orc"
+    },
+    {
+        "id": "sortir-voiture-L5-S1",
+        "label": "Sortir d'une voiture avec une lombalgie L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "conduire",
+        "equipment": "Voiture",
+        "level": "2",
+        "videoId": "https://youtu.be/J9FMqEDE4ps"
+    },
+    {
+        "id": "travailler-allonger-teletravail-L5-S1",
+        "label": "Télétravail allongé à plat ventre L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "télétravailler",
+        "equipment": "Lit",
+        "level": "4",
+        "videoId": "https://youtu.be/a7OTe4153Ns"
+    },
+    {
+        "id": "teletravailler-assis-canape-L5-S1",
+        "label": "Télétravail assis au canapé L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "télétravailler",
+        "equipment": "Canapé",
+        "level": "3",
+        "videoId": "https://youtu.be/S8QxjjkoTeQ"
+    },
+    {
+        "id": "travailler-assis-tabouret-L5-S1",
+        "label": "Travail assis au bureau avec un tabouret L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "travailler",
+        "equipment": "Tabouret",
+        "videoId": "https://youtu.be/6apUtjcxevE"
+    },
+    {
+        "id": "travailler-bureau-L3-L4",
+        "label": "Travail au bureau avec une lombalgie L3-L4",
+        "place": "L1-L2,L3-L4",
+        "type": "Posture",
+        "postureCategory": "travailler",
+        "equipment": "Bureau",
+        "videoId": "https://youtu.be/OV7WaxXeMXI"
+    },
+    {
+        "id": "travailler-chevalier-L5-S1",
+        "label": "Travail en chevalier servant L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "travailler",
+        "equipment": "Genouillère",
+        "videoId": "https://youtu.be/7opm486LK4w"
+    },
+    {
+        "id": "abdo",
+        "label": "Abdominaux",
+        "place": "Abdominaux",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "level": "2",
+        "videoId": "https://youtu.be/MsGP0D6IGcU"
+    },
+    {
+        "id": "abdo-epaules",
+        "label": "Abdominaux : la position des épaules",
+        "place": "Abdominaux",
+        "type": "Renforcement",
+        "kind": "Conseil",
+        "videoId": "https://youtu.be/PdOCFIL7JzU"
+    },
+    {
+        "id": "abdo-elastique",
+        "label": "Abdominaux à l'aide d'un élastique",
+        "place": "Abdominaux",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Elastique",
+        "level": "1",
+        "videoId": "https://youtu.be/tj9wAOQ85so"
+    },
+    {
+        "id": "developpe-militaire",
+        "label": "Développé militaire adapté à la rééducation",
+        "place": "Rachis",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "videoId": "https://youtu.be/OC6MJft8Nss"
     },
     {
         "id": "fente-arriere",
-        "name": "Fente arrière pour les douleurs sacro-iliaques",
-        "advice": "Tractez le poids avec la jambe avant",
-        "videoId": "vgphOxmpnV4"
+        "label": "Fente arrière",
+        "place": "Fessiers",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "level": "2",
+        "videoId": "https://youtu.be/G9bgYdORSWU"
     },
     {
-        "id": "attitude-fessier",
-        "name": "Attitude des fessiers",
-        "advice": "Relâchez les fessiers et les abdominaux",
-        "videoId": "cFR4jM-FxlQ"
+        "id": "fente-arriere-mains",
+        "label": "Fente arrière avec l'aide des mains",
+        "place": "Fessiers",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Table",
+        "level": "1",
+        "videoId": "https://youtu.be/QtB8qR6I-pw"
+    },
+    {
+        "id": "inclinaison-laterales",
+        "label": "Inclinaisons latérales",
+        "place": "Latéraux",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Haltère",
+        "videoId": "https://youtu.be/D7D8hF45dR4"
+    },
+    {
+        "id": "inclinaison-laterales-extension",
+        "label": "Inclinaisons latérales avec extension",
+        "place": "Latéraux",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Haltère",
+        "videoId": "https://youtu.be/UWpfAg_LgvA"
+    },
+    {
+        "id": "inclinaison-laterales-flexion",
+        "label": "Inclinaisons latérales avec flexion",
+        "place": "Latéraux",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Haltère",
+        "level": "2",
+        "videoId": "https://youtu.be/E3DATLwY1ps"
+    },
+    {
+        "id": "maracas",
+        "label": "Maracas",
+        "place": "Rachis",
+        "type": "Renforcement",
+        "kind": "Statique",
+        "equipment": "Haltère",
+        "level": "2",
+        "videoId": "https://youtu.be/ZZb0lSSa_jI"
+    },
+    {
+        "id": "saut-1-pied",
+        "label": "Saut sur 1 pied",
+        "place": "Rachis",
+        "type": "Renforcement",
+        "kind": "Statique",
+        "level": "3",
+        "videoId": "https://youtu.be/Zgld3JxDz5Q"
+    },
+    {
+        "id": "squat-mains",
+        "label": "Squat avec l'aide des mains",
+        "place": "Cuisses",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "level": "1",
+        "videoId": "https://youtu.be/D5-ugTDh7TM"
+    },
+    {
+        "id": "squat-reeduc",
+        "label": "Squat de rééducation",
+        "place": "Cuisses",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "level": "2",
+        "videoId": "https://youtu.be/p2AkyJT-DVA"
+    },
+    {
+        "id": "debout-dechirure",
+        "label": "Debout avec une déchirure thoracique basse ou moyenne",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "debout",
+        "videoId": "https://youtu.be/GjJ4tIgN9io",
+        "advice": "Gardez l'épaule du côté de la douleur en arrière"
+    },
+    {
+        "id": "travailler-bureau-dechirure",
+        "label": "Travail au bureau avec une déchirure thoracique",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "travailler",
+        "equipment": "Bureau",
+        "videoId": "https://youtu.be/KJ61f3F6Hjw"
+    },
+    {
+        "id": "assoir-chaise-dechirure",
+        "label": "S'assoir sur une chaise avec des douleurs de déchirures thoraciques",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Chaise",
+        "videoId": "https://youtu.be/Zzo1JyQkj5I"
+    },
+    {
+        "id": "dormir-cote-dechirure-moy",
+        "label": "Dormir sur le côté avec une déchirure thoracique moyenne",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/r53rURT7q4M"
+    },
+    {
+        "id": "dormir-ventre-dechirure-moy",
+        "label": "Dormir à plat ventre avec une déchirure thoracique moyenne",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/-CzTc8W8n68"
+    },
+    {
+        "id": "dormir-ventre-dechirure-bas",
+        "label": "Dormir à plat ventre avec une déchirure thoracique basse",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "dormir",
+        "equipment": "Lit",
+        "videoId": "https://youtu.be/rBnkPhtD7wc"
+    },
+    {
+        "id": "manger-dechirure",
+        "label": "Manger avec une déchirure thoracique",
+        "place": "Thorax",
+        "type": "Posture",
+        "postureCategory": "manger",
+        "equipment": "Repas",
+        "videoId": "https://youtu.be/S_VST6lcIao"
+    },
+    {
+        "id": "fessier-assis",
+        "label": "Fessier assis",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/SMN6ce2CHI8"
+    },
+    {
+        "id": "fessier-allonge",
+        "label": "Fessier allongé en tirer la cuisse",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/z_CQH1AgdzQ"
+    },
+    {
+        "id": "lotus",
+        "label": "Lotus",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "level": "1",
+        "videoId": "https://youtu.be/qGDoGV-MjuQ"
+    },
+    {
+        "id": "fessier-table",
+        "label": "Fessier sur une table",
+        "place": "Fessiers",
+        "type": "Etirement",
+        "equipment": "Table",
+        "videoId": "https://youtu.be/ypxvGspQYYM"
+    },
+    {
+        "id": "fente-arriere-sacro",
+        "label": "Fente arrière pour les douleurs sacro-iliaques",
+        "place": "Fessiers",
+        "type": "Mouvement",
+        "kind": "Dynamique",
+        "level": "1",
+        "videoId": "https://youtu.be/vgphOxmpnV4",
+        "advice": "Tractez le poids avec la jambe avant"
+    },
+    {
+        "id": "fente-arriere-poids",
+        "label": "Fente arrière avec des poids",
+        "place": "Fessiers",
+        "type": "Renforcement",
+        "kind": "Dynamique",
+        "equipment": "Haltère",
+        "level": "3",
+        "videoId": "https://youtu.be/9nRVo8hseoc"
+    },
+    {
+        "id": "habiller-chaussures-L5-S1",
+        "label": "Mettre ses chaussures L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "habiller",
+        "equipment": "Chaise",
+        "level": "2",
+        "videoId": "https://youtu.be/VUwObghSnVI"
+    },
+    {
+        "id": "relever-canape",
+        "label": "Se lever du canapé L5-S1",
+        "place": "L5-S1",
+        "type": "Posture",
+        "postureCategory": "assoir",
+        "equipment": "Canape",
+        "level": "2",
+        "videoId": "https://youtu.be/8NQhIt49Vzs"
     }
 ]

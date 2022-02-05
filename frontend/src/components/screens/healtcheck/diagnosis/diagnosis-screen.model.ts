@@ -1,5 +1,5 @@
-import { Diagnosis } from '../../../../core/domain/diagnosis/diagnosis.model';
+import { TreatmentArea } from '../../../../core/domain/diagnosis/treatment-area.model';
 
 export interface DiagnosisScreenState {
-    diagnosis?: Diagnosis;
+    diagnosis?: TreatmentArea;
 }

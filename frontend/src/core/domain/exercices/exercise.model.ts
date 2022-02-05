@@ -1,7 +1,11 @@
 export interface Exercise {
     id: string;
-    name: string;
-    advice: string;
+    label: string;
+
     videoId: string;
-    redoInfo: string;
+
+    place: string;
+    equipment: string;
+    type: string;
+    advice: string;
 }
