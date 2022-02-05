@@ -4,9 +4,9 @@ import {
     BodyAreaRange,
     BodyAreaSide,
     BodyDirection
-} from '../../../core/domain/body/body-area-data.model';
-import { BodyAreaDataService } from '../../../core/domain/body/body-area-data.service';
-import { Dimension } from '../../common/dimension.model';
+} from '../../../../../core/domain/body/body-area-data.model';
+import { BodyAreaDataService } from '../../../../../core/domain/body/body-area-data.service';
+import { Dimension } from '../../../../common/dimension.model';
 import { PainLocationSelectorProp } from './pain-location-selector.component';
 import { PainLocationSelectorState } from './pain-location-selector.model';
 
@@ -77,8 +77,8 @@ export class PainLocationSelectorService {
 
     private static getImage(bodyDirection: BodyDirection) {
         return bodyDirection === 'back'
-            ? require('../../../assets/images/body-map-back.png')
-            : require('../../../assets/images/body-map-front.png');
+            ? require('../../../../../assets/images/body-map-back.png')
+            : require('../../../../../assets/images/body-map-front.png');
     }
 
     // =================================================================

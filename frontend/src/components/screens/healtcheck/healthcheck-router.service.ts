@@ -1,6 +1,7 @@
 import { HealthcheckTaskService } from '../../../core/domain/healthcheck-task/healthcheck-task.service';
 import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
 import { RootNavigation } from '../../common/root-navigator';
+import { PathologyRouter } from '../pathology/pathology-router.service';
 
 export class HealthcheckRouter {
     public static routes = {
@@ -27,12 +28,9 @@ export class HealthcheckRouter {
     }
 
     private static getHealthcheckRoot(healthcheck: Healthcheck) {
-        if (!healthcheck.bodyArea) {
-            return this.routes.painLocation;
-        }
-        if (healthcheck.previousTaskId.length === 1) {
-            return this.routes.guide;
-        }
+        if (healthcheck.treatmentEnded) return PathologyRouter.routes.dashboard;
+        if (!healthcheck.bodyArea) return this.routes.painLocation;
+        if (!healthcheck.disclaimerSeen) return this.routes.guide;
 
         const currentTask = HealthcheckTaskService.findTaskById(healthcheck.taskId);
         switch (currentTask.type) {

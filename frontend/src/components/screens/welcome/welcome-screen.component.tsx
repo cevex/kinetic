@@ -58,13 +58,13 @@ class WelcomeScreen extends Component<WelcomeScreenProp, WelcomeScreenState> {
                             onPress={() => this.setState(WelcomeScreenService.goNext(this.state))}
                         />
                     )}
-                    {this.state.showStart && (
-                        <KntButton
-                            label={'👉 ' + I18n.t('healthcheck.start')}
-                            type="link"
-                            onPress={() => this.props.startHealthcheck()}
-                        />
-                    )}
+                    {/*{this.state.showStart && (*/}
+                    <KntButton
+                        label={'👉 ' + I18n.t('healthcheck.start')}
+                        type="link"
+                        onPress={() => this.props.startHealthcheck()}
+                    />
+                    {/*)}*/}
                 </View>
             </View>
         );
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.healthcheck
+    healthcheck: state.onGoingHealthcheck
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

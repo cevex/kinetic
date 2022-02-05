@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es';
-import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
-import I18n from '../../i18n';
-import { UiItem } from '../../ui/core/ui-item.model';
+import { BodyAreaType, BodyDirection } from '../../../../../core/domain/body/body-area-data.model';
+import I18n from '../../../../i18n';
+import { UiItem } from '../../../../ui/core/ui-item.model';
 import { PainLocationScreenState } from './pain-location-screen.model';
 
 export class PainLocationScreenService {

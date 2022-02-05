@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Image, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
-import { SelectorService } from '../../../core/common/selector.service';
-import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
-import { globalVariables } from '../../styles';
+import { SelectorService } from '../../../../../core/common/selector.service';
+import { BodyAreaType, BodyDirection } from '../../../../../core/domain/body/body-area-data.model';
+import { globalVariables } from '../../../../styles';
 import { PainLocationSelectorState } from './pain-location-selector.model';
 import { BodyPosition, PainLocationSelectorService } from './pain-location-selector.service';
 

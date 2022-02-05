@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import KntButton from '../../ui/button/button.component';
-import I18n from '../../i18n';
-import { globalVariables } from '../../styles';
+import KntButton from '../../../../ui/button/button.component';
+import I18n from '../../../../i18n';
+import { globalVariables } from '../../../../styles';
 import { PainLocationChoiceScreenState } from './pain-location-choice-screen.model';
 import { PainLocationChoiceScreenService } from './pain-location-choice-screen.service';
 
@@ -17,7 +17,7 @@ class PainLocationChoiceScreen extends Component<any, PainLocationChoiceScreenSt
             <View style={styles.container}>
                 <Image
                     style={styles.imagesContainer}
-                    source={require('../../../assets/images/body-map-back__back-left.png')}
+                    source={require('../../../../../assets/images/body-map-back__back-left.png')}
                 />
 
                 <View style={styles.modalContainer}>

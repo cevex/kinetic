@@ -1,5 +1,7 @@
 import { Healthcheck } from '../domain/healthcheck/healthcheck.model';
+import { Pathology } from '../domain/pathology/pathology.model';
 
 export interface KineticState {
-    healthcheck: Healthcheck;
+    onGoingHealthcheck: Healthcheck;
+    pathology: Pathology;
 }

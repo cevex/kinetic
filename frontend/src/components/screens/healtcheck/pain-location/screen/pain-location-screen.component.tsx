@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { BodyAreaType, BodyDirection } from '../../../core/domain/body/body-area-data.model';
-import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
-import { HealthcheckActionner } from '../../../core/store/healthcheck/healthcheck.actions';
-import { KineticState } from '../../../core/store/kinetic.state';
-import { ScreenProp } from '../../common/navigable-screen-prop.model';
-import I18n from '../../i18n';
-import { globalVariables } from '../../styles';
-import KntButton from '../../ui/button/button.component';
-import { UiItem } from '../../ui/core/ui-item.model';
-import KntSelectSwitch from '../../ui/selects/select-switch.component';
+import { BodyAreaType, BodyDirection } from '../../../../../core/domain/body/body-area-data.model';
+import { Healthcheck } from '../../../../../core/domain/healthcheck/healthcheck.model';
+import { HealthcheckActionner } from '../../../../../core/store/healthcheck/healthcheck.actions';
+import { KineticState } from '../../../../../core/store/kinetic.state';
+import { ScreenProp } from '../../../../common/navigable-screen-prop.model';
+import I18n from '../../../../i18n';
+import { globalVariables } from '../../../../styles';
+import KntButton from '../../../../ui/button/button.component';
+import { UiItem } from '../../../../ui/core/ui-item.model';
+import KntSelectSwitch from '../../../../ui/selects/select-switch.component';
+import PainLocationSelector from '../selector/pain-location-selector.component';
 import { PainLocationScreenState } from './pain-location-screen.model';
 import { PainLocationScreenService } from './pain-location-screen.service';
-import PainLocationSelector from './pain-location-selector.component';
 
 interface PainLocationScreenProp extends ScreenProp {
     healthcheck: Healthcheck;
@@ -68,6 +68,7 @@ class PainLocationScreen extends Component<PainLocationScreenProp, PainLocationS
                         label={I18n.t('healthcheck.start')}
                         type="primary"
                         fitWith={true}
+                        disabled={!this.state.selectedAreas || !this.state.selectedAreas.length}
                         onPress={_ => this.props.chooseLocation(this.state.selectedAreas)}
                     />
                 </View>
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.healthcheck
+    healthcheck: state.onGoingHealthcheck
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

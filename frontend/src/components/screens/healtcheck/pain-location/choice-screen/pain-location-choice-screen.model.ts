@@ -1,4 +1,4 @@
-import { BodyArea } from '../../../core/domain/body/body-area-data.model';
+import { BodyArea } from '../../../../../core/domain/body/body-area-data.model';
 
 export interface PainLocationChoiceScreenState {
     bodyAreas: BodyArea[];

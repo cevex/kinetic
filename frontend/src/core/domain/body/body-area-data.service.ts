@@ -48,7 +48,7 @@ export class BodyAreaDataService {
     public static getMainArea(areasType: BodyAreaType[]): BodyArea {
         const areas = BodyAreaDataService.getBodyAreasByTypes(areasType);
         BodyAreaDataService.sortArea(areas);
-        return areas[0];
+        return this.getNonLocalArea(areas[0]);
     }
 
     public static sortArea(areas: BodyArea[]) {
@@ -72,6 +72,17 @@ export class BodyAreaDataService {
             case 'calf':
                 return 4;
         }
+    }
+
+    // =======================================================================
+    //                Convert
+    // =======================================================================
+
+    private static getNonLocalArea(bodyArea: BodyArea): BodyArea {
+        if (bodyArea.range !== 'local') return bodyArea;
+        // Remove 'left'/'right'
+        const nonLocalAreaId = bodyArea.type.replace('__left', '').replace('__right', '');
+        return this.getBodyAreas().find(area => area.type === nonLocalAreaId);
     }
 
     // =======================================================================

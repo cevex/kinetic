@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es';
-import { PaginatorService } from '../../../core/common/paginator.service';
-import { BodyAreaDataService } from '../../../core/domain/body/body-area-data.service';
-import I18n from '../../i18n';
+import { PaginatorService } from '../../../../../core/common/paginator.service';
+import { BodyAreaDataService } from '../../../../../core/domain/body/body-area-data.service';
+import I18n from '../../../../i18n';
 import { PainLocationChoiceScreenState } from './pain-location-choice-screen.model';
 
 export class PainLocationChoiceScreenService {

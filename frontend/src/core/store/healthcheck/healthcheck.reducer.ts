@@ -17,7 +17,7 @@ import {
 
 export class HealthcheckReducer {
     private static initialState: Healthcheck = {
-        treatmentStart: false,
+        treatmentStarted: false,
         disclaimerSeen: true,
         taskId: HealthcheckTaskService.findRootTask().id,
         previousTaskId: []
@@ -38,12 +38,14 @@ export class HealthcheckReducer {
                 return this.startHealthcheck(state);
             case 'CHOOSE_LOCATION':
                 return this.selectLocation(state, (<ChooseLocationAction>action).bodyAreas);
+            case 'SEE_DISCLAIMER':
+                return this.seeDisclaimer(state);
             case 'ASSESS_EXERCISE':
                 return this.assessExercise(state, (<AssessExerciseAction>action).choiceType);
             case 'REDO_EXERCISE':
                 return this.redoExercise(state);
-            // case 'END_HEALTHCHECK':
-            //     return this.endHealthcheck(state, (<EndHealthcheckAction>action).endTaskId);
+            case 'END_HEALTHCHECK':
+                return this.endHealthcheck(state);
             default:
                 return state;
         }
@@ -55,12 +57,20 @@ export class HealthcheckReducer {
 
     private static startHealthcheck(healthcheck: Healthcheck): Healthcheck {
         const newHealthcheck = cloneDeep(healthcheck);
-        newHealthcheck.treatmentStart = true;
+        newHealthcheck.treatmentStarted = true;
         return newHealthcheck;
     }
 
-    private static endHealthcheck(healthcheck: Healthcheck, endTaskId: string): Healthcheck {
-        return HealthcheckService.addTask(healthcheck, endTaskId);
+    private static seeDisclaimer(healthcheck: Healthcheck): Healthcheck {
+        const newHealthcheck = cloneDeep(healthcheck);
+        newHealthcheck.disclaimerSeen = true;
+        return newHealthcheck;
+    }
+
+    private static endHealthcheck(healthcheck: Healthcheck): Healthcheck {
+        const newHealthcheck = cloneDeep(healthcheck);
+        newHealthcheck.treatmentEnded = true;
+        return newHealthcheck;
     }
 
     // =======================================================================
@@ -72,18 +82,11 @@ export class HealthcheckReducer {
         choiceAreas: BodyAreaType[]
     ): Healthcheck {
         const choiceToTreat = this.getTaskToTreat(choiceAreas);
-        console.log('[selectLocation] choiceAreas', choiceAreas);
-        console.log('[selectLocation] choiceToTreat', choiceToTreat);
         return this.chooseLocation(healthcheck, <PainAreaChoice>choiceToTreat);
     }
 
     private static getTaskToTreat(choiceAreas: BodyAreaType[]): ChangeLocationHealthcheckTask {
         const bodyAreaToTreat = BodyAreaDataService.getMainArea(choiceAreas);
-        console.log('[getTaskToTreat] bodyAreaToTreat', bodyAreaToTreat);
-        console.log(
-            '[getTaskToTreat] changeLocation',
-            HealthcheckTaskService.getTaskByType('change-location')
-        );
         return HealthcheckTaskService.getTaskByType('change-location')
             .map(changeLocationTask => <ChangeLocationHealthcheckTask>changeLocationTask)
             .find(task => task.bodyArea === bodyAreaToTreat.type);
@@ -116,14 +119,14 @@ export class HealthcheckReducer {
         );
 
         const choiceToApply = this.validateAssessmentChoice(healthcheck, exerciseTask, choiceType);
-        const newTaskId = exerciseTask.choice[choiceToApply];
+        const newTaskId = (<any>exerciseTask.choice)[choiceToApply];
         const newTask = HealthcheckTaskService.findTaskById(newTaskId);
 
         if (newTask.type === 'change-location') {
             return this.chooseLocation(healthcheck, <ChangeLocationHealthcheckTask>newTask);
         } else {
             const newHealthcheck = HealthcheckService.addTask(healthcheck, newTaskId);
-            newHealthcheck.treatmentStart = true;
+            newHealthcheck.treatmentStarted = true;
             return newHealthcheck;
         }
     }

@@ -2,7 +2,10 @@ import { BodyAreaType } from '../body/body-area-data.model';
 
 export interface Healthcheck {
     /** Is the treatment has been started */
-    treatmentStart?: boolean;
+    treatmentStarted?: boolean;
+
+    /** Is the treatment finished */
+    treatmentEnded?: boolean;
 
     /** Is the disclaimer seen ? */
     disclaimerSeen?: boolean;

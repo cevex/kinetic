@@ -2,11 +2,11 @@ import diagnosisData from '../../../assets/data/diagnosis.data.json';
 import { Diagnosis } from './diagnosis.model';
 
 export class DiagnosisDataService {
-    public getDiagnosis(): Diagnosis[] {
+    public static getDiagnosis(): Diagnosis[] {
         return diagnosisData as Diagnosis[];
     }
 
-    public getDiagnosisById(diagnosisId: string): Diagnosis | undefined {
+    public static getDiagnosisById(diagnosisId: string): Diagnosis {
         return this.getDiagnosis().find(diagnosis => diagnosis.id === diagnosisId);
     }
 }

@@ -2,40 +2,60 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { Unsubscribe } from 'redux';
 import { KineticStore } from '../../core/store/kinetic.store';
 import { RootNavigation } from '../common/root-navigator';
-import ExerciseScreen from './exercices/exercise-screen.component';
 import ConsultScreen from './healtcheck/consult-screen.component';
-import DiagnosisScreen from './healtcheck/diagnosis-screen.component';
+import DiagnosisScreen from './healtcheck/diagnosis/diagnosis-screen.component';
+import ExerciseScreen from './healtcheck/exercices/exercise-screen.component';
 import HealthcheckGuideScreen from './healtcheck/healthcheck-guide-screen.component';
 import { HealthcheckRouter } from './healtcheck/healthcheck-router.service';
+import PainLocationChoiceScreen from './healtcheck/pain-location/choice-screen/pain-location-choice-screen.component';
+import PainLocationScreen from './healtcheck/pain-location/screen/pain-location-screen.component';
 import HomeScreen from './home-screen.component';
-import PainLocationChoiceScreen from './pain-location/pain-location-choice-screen.component';
-import PainLocationScreen from './pain-location/pain-location-screen.component';
-import PathologyDashboardScreen from './pathology/pathology.component';
+import PathologyDashboardScreen from './pathology/dashboard/pathology-dashboard.component';
+import { PathologyRouter } from './pathology/pathology-router.service';
 import WelcomeScreen from './welcome/welcome-screen.component';
 
 const Stack = createNativeStackNavigator();
 
 class AppComponent extends Component {
     private store = KineticStore.initStore();
+    private healthcheckChangeUnsub: Unsubscribe;
 
     private routes = {
-        home: 'Home',
-        pathology: {
-            dashboard: 'PathologyDashboard'
-        }
+        home: 'Home'
     };
 
     constructor(props: any) {
         super(props);
-        console.log('[AppComponent] Initial State :', this.store.getState());
-
         this.store.subscribe(() => {
-            const currentState = this.store.getState();
-            HealthcheckRouter.rootToTask(currentState.healthcheck);
-            console.log('[AppComponent] => New state :', currentState);
+            const storeState = this.store.getState();
+            if (storeState.onGoingHealthcheck && storeState.onGoingHealthcheck.treatmentStarted) {
+                this.listenForHealthcheck();
+            }
+            console.log('[AppComponent] => New state :', storeState);
         });
+    }
+
+    private listenForHealthcheck() {
+        if (this.healthcheckChangeUnsub) return;
+        console.log('[AppComponent] => START healthcheck listening');
+        this.healthcheckChangeUnsub = this.store.subscribe(() => {
+            // When Healthcheck is on going, handle navigation here
+            const currentHealthcheck = this.store.getState().onGoingHealthcheck;
+            HealthcheckRouter.rootToTask(currentHealthcheck);
+
+            // When Healthcheck is over, Stop listening
+            if (currentHealthcheck && currentHealthcheck.treatmentEnded) {
+                this.healthcheckChangeUnsub();
+                this.healthcheckChangeUnsub = null;
+                console.log('[AppComponent] => STOP healthcheck listening');
+            }
+        });
+
+        // First rooting
+        HealthcheckRouter.rootToTask(this.store.getState().onGoingHealthcheck);
     }
 
     render() {
@@ -51,7 +71,7 @@ class AppComponent extends Component {
 
                         <Stack.Screen name={this.routes.home} component={HomeScreen} />
                         <Stack.Screen
-                            name={this.routes.pathology.dashboard}
+                            name={PathologyRouter.routes.dashboard}
                             component={PathologyDashboardScreen}
                         />
 

@@ -2,6 +2,6 @@ export interface Exercise {
     id: string;
     name: string;
     advice: string;
-    videolink: string;
+    videoId: string;
     redoInfo: string;
 }

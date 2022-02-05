@@ -1,7 +1,10 @@
 import { cloneDeep } from 'lodash-es';
-import { PainAssessChoiceType } from '../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
-import I18n from '../../i18n';
-import { UiItem } from '../../ui/core/ui-item.model';
+import { Exercise } from '../../../../core/domain/exercices/exercise.model';
+import { ExercisesService } from '../../../../core/domain/exercices/exercises.service';
+import { HealthcheckTaskService } from '../../../../core/domain/healthcheck-task/healthcheck-task.service';
+import { ExerciseHealthcheckTask } from '../../../../core/domain/healthcheck-task/specific/exercise-healthcheck-task.model';
+import I18n from '../../../i18n';
+import { UiItem } from '../../../ui/core/ui-item.model';
 import { ExerciseScreenState } from './exercise-screen.model';
 
 export class ExerciseScreenService {
@@ -36,9 +39,18 @@ export class ExerciseScreenService {
         }
     ];
 
-    public static initScreen(type: PainAssessChoiceType): ExerciseScreenState {
+    public static initScreen(taskId: string): ExerciseScreenState {
+        const exerciseTask = <ExerciseHealthcheckTask>HealthcheckTaskService.findTaskById(taskId);
+        const exercise =
+            exerciseTask &&
+            exerciseTask.exerciseId &&
+            <Exercise>ExercisesService.getExercisesById(exerciseTask.exerciseId);
         return {
-            choices: type === 'dual' ? this.dualChoiceItem : this.tripleChoiceItem,
+            exercise: exercise,
+            choices:
+                exerciseTask && exerciseTask.choice && exerciseTask.choice.type === 'dual'
+                    ? this.dualChoiceItem
+                    : this.tripleChoiceItem,
             selectedChoice: null
         };
     }

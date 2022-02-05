@@ -31,14 +31,14 @@ class HomeScreen extends Component<HomeScreenProp> {
                     <Image source={require('../../assets/images/kinetic-logo.png')} />
                 </View>
                 <View style={styles.controls}>
-                    {this.props.healthcheck && this.props.healthcheck.treatmentStart && (
-                        <KntButton
-                            label={I18n.t('treatment.open')}
-                            type="secondary"
-                            fitWith={true}
-                            onPress={() => this.props.navigation.navigate('PathologyDashboard')}
-                        />
-                    )}
+                    {/*{this.props.healthcheck && this.props.healthcheck.treatmentStart && (*/}
+                    <KntButton
+                        label={I18n.t('treatment.open')}
+                        type="secondary"
+                        fitWith={true}
+                        onPress={() => this.props.navigation.navigate('PathologyDashboard')}
+                    />
+                    {/*)}*/}
 
                     <KntButton
                         label={I18n.t('treatment.new')}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.healthcheck
+    healthcheck: state.onGoingHealthcheck
 });
 
 export default connect(mapStateToProps)(HomeScreen);
