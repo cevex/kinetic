@@ -2,8 +2,6 @@
   <h1>Kinetic</h1>
 </div>
 
----
-
 ## 👋 Intro
 
 This project in the root node of the @kinetic projects.

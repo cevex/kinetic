@@ -1,6 +1,6 @@
 import { PainAssessChoiceTripleType } from '../../domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { Healthcheck } from '../../domain/healthcheck/healthcheck.model';
-import { PathologyEvaluationFeeling } from '../../domain/pathology/pathology-evaluation.model';
+import { PathologyEvaluationFeeling } from '../../domain/pathology/evaluation/pathology-evaluation.model';
 
 // =======================================================================
 //               Actions
@@ -25,12 +25,7 @@ export interface StartPathologyAction extends PathologyAction {
 
 export interface MarkExerciseAsSeenAction extends PathologyAction {
     type: 'MARK_EXERCISE_SEEN';
-    exerciseId: string;
-    seen: boolean;
-}
-
-export interface MarkAllExerciseAsSeenAction extends PathologyAction {
-    type: 'MARK_ALL_EXERCISES_SEEN';
+    exercisesId: string[];
     seen: boolean;
 }
 
@@ -58,14 +53,10 @@ export class PathologyActionner {
     }
 
     public static markExerciseAsSeen = (
-        exerciseId: string,
+        exercisesId: string[],
         seen: boolean
     ): MarkExerciseAsSeenAction => {
-        return { type: 'MARK_EXERCISE_SEEN', exerciseId: exerciseId, seen: seen };
-    };
-
-    public static markAllExercisesAsSeen = (seen: boolean): MarkAllExerciseAsSeenAction => {
-        return { type: 'MARK_ALL_EXERCISES_SEEN', seen: seen };
+        return { type: 'MARK_EXERCISE_SEEN', exercisesId: exercisesId, seen: seen };
     };
 
     public static evaluateFeelingSession = (

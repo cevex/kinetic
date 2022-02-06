@@ -1,4 +1,4 @@
-import { PathologyEvaluation } from './pathology-evaluation.model';
+import { PathologyEvaluation } from '../evaluation/pathology-evaluation.model';
 
 export interface PathologySession {
     date: Date;

@@ -121,14 +121,13 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.onGoingHealthcheck
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    chooseLocation: (bodyAreas: BodyAreaType[]) => {
-        dispatch(HealthcheckActionner.chooseLocation(bodyAreas));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PainLocationScreen);
+export default connect(
+    (state: KineticState) => ({
+        healthcheck: state.onGoingHealthcheck
+    }),
+    (dispatch: Dispatch) => ({
+        chooseLocation: (bodyAreas: BodyAreaType[]) => {
+            dispatch(HealthcheckActionner.chooseLocation(bodyAreas));
+        }
+    })
+)(PainLocationScreen);

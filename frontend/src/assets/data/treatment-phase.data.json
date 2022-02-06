@@ -1,0 +1,22 @@
+[
+    {
+        "id": "inflammatoire",
+        "name": "Inflammatoire",
+        "duration": 4
+    },
+    {
+        "id": "consolidation",
+        "name": "Consolidation",
+        "duration": 6
+    },
+    {
+        "id": "entretien",
+        "name": "Entretien",
+        "duration": 4
+    },
+    {
+        "id": "mobilite",
+        "name": "Mobilité",
+        "duration": 15
+    }
+]

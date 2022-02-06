@@ -28,7 +28,6 @@ export class HealthcheckRouter {
     }
 
     private static getHealthcheckRoot(healthcheck: Healthcheck) {
-        if (healthcheck.treatmentEnded) return PathologyRouter.routes.dashboard;
         if (!healthcheck.bodyArea) return this.routes.painLocation;
         if (!healthcheck.disclaimerSeen) return this.routes.guide;
 

@@ -6,5 +6,5 @@ export interface SelectProp {
     selectedItemId?: string;
     disabled?: boolean;
     style?: StyleProp<ViewStyle>;
-    onSelected: ((item: UiItem) => void) | undefined;
+    onSelected?: ((item: UiItem) => void) | undefined;
 }

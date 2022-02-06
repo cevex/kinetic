@@ -1,19 +1,13 @@
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import { UiItem } from '../../../ui/core/ui-item.model';
+import { PathologySessionState } from '../session/pathology-session.model';
 
 export declare type DashboardMode = 'phase' | 'video-library';
 
 export interface PathologyDashboardState {
-    dashboardMode: UiItem[];
+    dashboardModeOptions: UiItem[];
     selectedDashboardMode: UiItem;
 
-    phases: string[];
-    selectedPhase: string;
-
-    phaseName: string;
-
-    exercises: Exercise[];
-
-    nbSession: number;
-    currentSession: number;
+    session?: PathologySessionState;
+    videoLibrary?: Exercise[];
 }

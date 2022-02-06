@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 import { Healthcheck } from '../../../../core/domain/healthcheck/healthcheck.model';
 import { HealthcheckActionner } from '../../../../core/store/healthcheck/healthcheck.actions';
 import { KineticState } from '../../../../core/store/kinetic.state';
+import { PathologyActionner } from '../../../../core/store/pathology/pathology.actions';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
 import { globalStyles, globalVariables } from '../../../styles';
@@ -14,7 +15,7 @@ import { DiagnosisScreenService } from './diagnosis-screen.service';
 
 interface DiagnosisScreenProp extends ScreenProp {
     healthcheck: Healthcheck;
-    endHealthcheck: () => void;
+    endHealthcheck: (healthcheck: Healthcheck) => void;
 }
 
 class DiagnosisScreen extends Component<DiagnosisScreenProp, DiagnosisScreenState> {
@@ -38,7 +39,7 @@ class DiagnosisScreen extends Component<DiagnosisScreenProp, DiagnosisScreenStat
                     label={I18n.t('treatment.new')}
                     type="primary"
                     style={styles.controls}
-                    onPress={() => this.props.endHealthcheck()}
+                    onPress={() => this.props.endHealthcheck(this.props.healthcheck)}
                 />
             </View>
         );
@@ -58,14 +59,14 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.onGoingHealthcheck
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    endHealthcheck: () => {
-        dispatch(HealthcheckActionner.endHealthcheck());
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DiagnosisScreen);
+export default connect(
+    (state: KineticState) => ({
+        healthcheck: state.onGoingHealthcheck
+    }),
+    (dispatch: Dispatch) => ({
+        endHealthcheck: (healthcheck: Healthcheck) => {
+            dispatch(HealthcheckActionner.endHealthcheck());
+            dispatch(PathologyActionner.startPathology(healthcheck));
+        }
+    })
+)(DiagnosisScreen);

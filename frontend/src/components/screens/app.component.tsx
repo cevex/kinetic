@@ -3,9 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Unsubscribe } from 'redux';
-import { TreatmentAreaDataService } from '../../core/domain/diagnosis/treatment-area.service';
-import { ExercisesService } from '../../core/domain/exercices/exercises.service';
-import { TreatmentService } from '../../core/domain/treatment/treatment.service';
+import { KineticState } from '../../core/store/kinetic.state';
 import { KineticStore } from '../../core/store/kinetic.store';
 import { RootNavigation } from '../common/root-navigator';
 import ConsultScreen from './healtcheck/consult-screen.component';
@@ -34,48 +32,35 @@ class AppComponent extends Component {
         super(props);
         this.store.subscribe(() => {
             const storeState = this.store.getState();
-            if (storeState.onGoingHealthcheck && storeState.onGoingHealthcheck.treatmentStarted) {
+            if (this.isHealthcheckRouter(storeState)) {
                 this.listenForHealthcheck();
             }
             console.log('[AppComponent] => New state :', storeState);
         });
-
-        this.printNewTreatments();
     }
 
-    private printNewTreatments() {
-        const treatments = TreatmentService.getTreatments();
-        const exercises = ExercisesService.getExercises();
-        const treatmentArea = TreatmentAreaDataService.getTreatmentAreas();
-        // console.log('[TreatmentService] => treatments :', treatments);
-        // console.log('[TreatmentService] => exercises :', exercises);
-        // console.log('[TreatmentService] => treatmentArea :', treatmentArea);
-
-        const newTreatments = treatments.map(treatment => {
-            const exercise = exercises.find(ex => ex.label === treatment.exercise);
-            if (!exercise) {
-                console.log('[TreatmentService] => cannot find :', treatment.exercise);
-            } else {
-                treatment.exercise = exercise.id;
-            }
-            return treatment;
-        });
-        console.log('[TreatmentService] => newTreatments :', newTreatments);
+    private isHealthcheckRouter(storeState: KineticState) {
+        return (
+            storeState.onGoingHealthcheck &&
+            storeState.onGoingHealthcheck.treatmentStarted &&
+            !storeState.onGoingHealthcheck.treatmentEnded
+        );
     }
 
     private listenForHealthcheck() {
         if (this.healthcheckChangeUnsub) return;
         console.log('[AppComponent] => START healthcheck listening');
         this.healthcheckChangeUnsub = this.store.subscribe(() => {
-            // When Healthcheck is on going, handle navigation here
             const currentHealthcheck = this.store.getState().onGoingHealthcheck;
-            HealthcheckRouter.rootToTask(currentHealthcheck);
-
             // When Healthcheck is over, Stop listening
             if (currentHealthcheck && currentHealthcheck.treatmentEnded) {
                 this.healthcheckChangeUnsub();
                 this.healthcheckChangeUnsub = null;
+                RootNavigation.navigate(PathologyRouter.routes.dashboard);
                 console.log('[AppComponent] => STOP healthcheck listening');
+            } else {
+                // When Healthcheck is on going, handle navigation here
+                HealthcheckRouter.rootToTask(currentHealthcheck);
             }
         });
 
@@ -88,7 +73,8 @@ class AppComponent extends Component {
             <Provider store={this.store}>
                 <NavigationContainer ref={RootNavigation.navigationRef}>
                     <Stack.Navigator
-                        initialRouteName="Home"
+                        // initialRouteName="Home"
+                        initialRouteName={PathologyRouter.routes.dashboard}
                         screenOptions={{
                             headerShown: false
                         }}>

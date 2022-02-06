@@ -1,8 +1,15 @@
-import { cloneDeep, last } from 'lodash-es';
-import { PathologyPhase } from './pathology-phase.model';
-import { PathologyPhaseService } from './pathology-phase.service';
-import { PathologySession } from './pathology-session.model';
+import { cloneDeep, last, range } from 'lodash-es';
+import moment from 'moment';
+import { Healthcheck } from '../healthcheck/healthcheck.model';
+import { HealthcheckService } from '../healthcheck/healthcheck.service';
+import { TreatmentPhase, TreatmentPhaseType } from '../treatment/phase/treatment-phase.model';
+import { Treatment } from '../treatment/treatment.model';
+import { TreatmentService } from '../treatment/treatment.service';
+import { PathologyPhase } from './phase/pathology-phase.model';
+import { PathologyPhaseService } from './phase/pathology-phase.service';
+import { PathologySession } from './session/pathology-session.model';
 import { Pathology } from './pathology.model';
+import { PathologySessionService } from './session/pathology-session.service';
 
 export class PathologyService {
     constructor() {}

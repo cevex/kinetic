@@ -1,12 +1,7 @@
-export declare type TreatmentPhase = 'inflammatoire' | 'consolidation' | 'entretien' | 'mobilite';
+import { TreatmentArea } from '../treatment-area/treatment-area.model';
+import { TreatmentPhase } from './phase/treatment-phase.model';
 
 export interface Treatment {
-    area: string;
-    exercise: string;
+    area: TreatmentArea;
     phases: TreatmentPhase[];
-}
-
-export interface TreatmentArea {
-    id: string;
-    name: string;
 }

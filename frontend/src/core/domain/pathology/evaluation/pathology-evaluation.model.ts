@@ -1,4 +1,4 @@
-import { PainAssessChoiceTripleType } from '../healthcheck-task/choice/pain-assessment-choice.model';
+import { PainAssessChoiceTripleType } from '../../healthcheck-task/choice/pain-assessment-choice.model';
 
 export declare type EvaluationFeelingPlace =
     | 'morning'

@@ -1,6 +1,5 @@
 <div align="center">
   <h1>Kinetic - React Native</h1>
- <hr/>
 </div>
 
 ## 👋 What is this?

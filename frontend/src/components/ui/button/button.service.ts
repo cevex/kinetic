@@ -10,6 +10,8 @@ export class ButtonService {
                 return this.getAccentButton();
             case 'link':
                 return this.getLinkButton();
+            case 'success':
+                return this.getSuccessButton();
             case 'primary':
             default:
                 return this.getPrimaryButton();
@@ -44,6 +46,14 @@ export class ButtonService {
         return {
             backgroundColor: globalVariables.color.white,
             textColor: globalVariables.color.primary,
+            borderColor: globalVariables.color.white
+        };
+    }
+
+    private static getSuccessButton() {
+        return {
+            backgroundColor: globalVariables.color.accent2,
+            textColor: globalVariables.color.dark,
             borderColor: globalVariables.color.white
         };
     }

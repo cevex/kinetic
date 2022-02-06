@@ -6,7 +6,7 @@ export class TreatmentAreaDataService {
         return treatmentAreaData as TreatmentArea[];
     }
 
-    public static getDiagnosisById(treatmentAreaId: string): TreatmentArea {
+    public static getTreatmentAreasById(treatmentAreaId: string): TreatmentArea {
         return this.getTreatmentAreas().find(treatmentArea => treatmentArea.id === treatmentAreaId);
     }
 }
