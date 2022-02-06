@@ -4,7 +4,7 @@ import { globalVariables } from '../../styles';
 import { UiItem } from '../core/ui-item.model';
 import { SelectProp } from './select-prop.model';
 
-class KntSelectProgres extends Component<SelectProp> {
+class KntSelectProgress extends Component<SelectProp> {
     render() {
         return (
             <View style={styles.switchContainer}>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default KntSelectProgres;
+export default KntSelectProgress;

@@ -2,8 +2,6 @@ import { cloneDeep, first, last } from 'lodash-es';
 import { Pathology } from '../../../../core/domain/pathology/pathology.model';
 import { PathologyPhase } from '../../../../core/domain/pathology/phase/pathology-phase.model';
 import { TreatmentPhase } from '../../../../core/domain/treatment/phase/treatment-phase.model';
-import { TreatmentPhaseService } from '../../../../core/domain/treatment/phase/treatment-phase.service';
-import { TreatmentService } from '../../../../core/domain/treatment/treatment.service';
 import { UiItem } from '../../../ui/core/ui-item.model';
 import { PathologySessionState } from '../session/pathology-session.model';
 import { DashboardMode, PathologyDashboardState } from './pathology-dashboard.model';

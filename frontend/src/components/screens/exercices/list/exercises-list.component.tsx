@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
-import { globalVariables } from '../../../styles';
 import ExerciseItem from '../item/exercises-item.component';
 
 interface ExerciseListProp {
     exercises: Exercise[];
-    selectedExercises: string[];
+    showCheck?: boolean;
+    selectedExercises?: string[];
 }
 
 class ExerciseList extends Component<ExerciseListProp> {
@@ -18,7 +18,12 @@ class ExerciseList extends Component<ExerciseListProp> {
         return (
             <View style={styles.container}>
                 {this.props.exercises.map((exercise: Exercise, index: number) => (
-                    <ExerciseItem key={exercise.id} exercise={exercise} selected={false} />
+                    <ExerciseItem
+                        key={exercise.id}
+                        exercise={exercise}
+                        selected={index % 2 === 0}
+                        showCheck={this.props.showCheck}
+                    />
                 ))}
             </View>
         );
@@ -27,13 +32,9 @@ class ExerciseList extends Component<ExerciseListProp> {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-
-        width: '100%',
-        height: 44,
-
-        backgroundColor: globalVariables.color.grey.light,
-        borderRadius: 8
+        flexDirection: 'column',
+        flex: 1,
+        width: '100%'
     }
 });
 

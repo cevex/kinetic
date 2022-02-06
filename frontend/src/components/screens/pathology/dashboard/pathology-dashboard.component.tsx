@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { ExercisesService } from '../../../../core/domain/exercices/exercises.service';
 import { PainAssessChoiceTripleType } from '../../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { Healthcheck } from '../../../../core/domain/healthcheck/healthcheck.model';
 import { PathologyEvaluationFeeling } from '../../../../core/domain/pathology/evaluation/pathology-evaluation.model';
@@ -10,10 +11,11 @@ import { Pathology } from '../../../../core/domain/pathology/pathology.model';
 import { KineticState } from '../../../../core/store/kinetic.state';
 import { PathologyActionner } from '../../../../core/store/pathology/pathology.actions';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
-import I18n from '../../../i18n';
 import { globalVariables } from '../../../styles';
 import { UiItem } from '../../../ui/core/ui-item.model';
 import KntSelectSwitch from '../../../ui/selects/select-switch.component';
+import ExerciseList from '../../exercices/list/exercises-list.component';
+import PathologySession from '../session/pathology-session.component';
 import { DashboardMode, PathologyDashboardState } from './pathology-dashboard.model';
 import { PathologyDashboardService } from './pathology-dashboard.service';
 
@@ -41,25 +43,41 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.headerTitle}>
-                        <Icon name="bars" size={30} color="#900" />
-                        <Text style={styles.headerTitleText}>{I18n.t('pain.area.selectPain')}</Text>
+                        <Icon name="bars" size={25} color="#432C81" />
+                        {/*<Text style={styles.headerTitleText}>{I18n.t('pain.area.selectPain')}</Text>*/}
+                        <Text style={styles.headerTitleText}>Lombalgie aigue L5 S1</Text>
                     </View>
-                    <KntSelectSwitch
-                        items={this.state.dashboardModeOptions}
-                        selectedItemId={this.state.selectedDashboardMode.id}
-                        onSelected={(item: UiItem) => {
-                            this.setState(
-                                PathologyDashboardService.setDashboardMode(
-                                    this.state,
-                                    item.id as DashboardMode
-                                )
-                            );
-                        }}
-                    />
+                    <View style={styles.headerChoice}>
+                        <KntSelectSwitch
+                            items={this.state.dashboardModeOptions}
+                            selectedItemId={this.state.selectedDashboardMode.id}
+                            onSelected={(item: UiItem) => {
+                                this.setState(
+                                    PathologyDashboardService.setDashboardMode(
+                                        this.state,
+                                        item.id as DashboardMode
+                                    )
+                                );
+                            }}
+                        />
+                    </View>
                 </View>
-                {/*<View style={styles.headerTitle}>*/}
-                {/*    <PathologySession session={this.state.session} />*/}
-                {/*</View>*/}
+
+                {this.state.selectedDashboardMode &&
+                    this.state.selectedDashboardMode.id === 'phase' && (
+                        <View style={styles.sessionContainer}>
+                            <PathologySession session={this.state.session} />
+                        </View>
+                    )}
+                {!this.state.selectedDashboardMode ||
+                    (this.state.selectedDashboardMode.id === 'video-library' && (
+                        <ScrollView style={{ width: '100%' }}>
+                            <ExerciseList
+                                exercises={ExercisesService.getExercises()}
+                                // selectedExercises={this.props.session?.selectedExercises}
+                            />
+                        </ScrollView>
+                    ))}
             </View>
         );
     }
@@ -73,12 +91,36 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     header: {
-        flex: 1,
+        width: '100%',
+        height: 100,
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        margin: 20
     },
-    headerTitle: {},
-    headerTitleText: {}
+    headerTitle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        height: 60,
+        width: '100%',
+        flex: 1,
+        paddingLeft: 15
+    },
+    headerTitleText: {
+        color: globalVariables.color.primary,
+        fontSize: globalVariables.fontSize.xbig,
+        fontWeight: '600',
+        marginLeft: 10
+    },
+    headerChoice: {
+        height: 50,
+        alignItems: 'center',
+        margin: 10
+    },
+    sessionContainer: {
+        flex: 1,
+        width: '100%'
+    }
 });
 
 export default connect(
