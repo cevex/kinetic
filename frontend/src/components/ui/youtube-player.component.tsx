@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import YoutubeIframe from 'react-native-youtube-iframe';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 interface YoutubePlayerProp {
     videoId: string;
@@ -17,19 +17,24 @@ class KntYoutubePlayer extends Component<YoutubePlayerProp> {
 
     render() {
         return (
-            <View style={{ width: '100%' }}>
-                <YoutubeIframe
-                    height={300}
+            <View
+                style={{
+                    width: '100%',
+                    borderRadius: 10,
+                    overflow: 'hidden'
+                }}>
+                <YoutubePlayer
+                    height={200}
+                    play={true}
+                    videoId={this.props.videoId}
                     initialPlayerParams={{
                         controls: false, // No controls
                         preventFullScreen: false, // Allow full screen
                         showClosedCaptions: false,
                         modestbranding: true, // Small youtube logo
                         iv_load_policy: 3, // No annotation
-                        rel: false // No suggestion
+                        rel: false // No suggestion (Not working : google stop handling it...)
                     }}
-                    play={this.props.playing}
-                    videoId={this.props.videoId}
                     onChangeState={this.onStateChange}
                 />
             </View>

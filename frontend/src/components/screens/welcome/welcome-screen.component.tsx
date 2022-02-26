@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
@@ -7,12 +7,12 @@ import { HealthcheckActionner } from '../../../core/store/healthcheck/healthchec
 import { KineticState } from '../../../core/store/kinetic.state';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
-import { globalVariables } from '../../styles';
-import KntBreadcrumb from '../../ui/breadcrumb.component';
+import KntBreadcrumb from '../../ui/breadcrumb/breadcrumb.component';
 import KntButton from '../../ui/button/button.component';
 import { ButtonType } from '../../ui/button/button.model';
 import { WelcomeScreenState } from './welcome-screen.model';
 import { WelcomeScreenService } from './welcome-screen.service';
+import styles from './welcome-screen.style';
 
 interface WelcomeScreenProp extends ScreenProp {
     label: string;
@@ -71,56 +71,11 @@ class WelcomeScreen extends Component<WelcomeScreenProp, WelcomeScreenState> {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: globalVariables.color.white
-    },
-    imagesContainer: {
-        margin: 20,
-        flex: 7,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    messageContainer: {
-        flex: 3,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 20
-    },
-    messageTitle: {
-        color: globalVariables.color.primary,
-        fontSize: globalVariables.fontSize.xbig,
-        fontWeight: '600',
-        margin: 10,
-        textAlign: 'center',
-        textAlignVertical: 'center'
-    },
-    messageLabel: {
-        color: globalVariables.color.primaryLight,
-        fontSize: globalVariables.fontSize.medium,
-        margin: 10,
-        textAlign: 'center',
-        textAlignVertical: 'center'
-    },
-    controls: {
-        flex: 3,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
-
-const mapStateToProps = (state: KineticState) => ({
-    healthcheck: state.onGoingHealthcheck
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    startHealthcheck: () => dispatch(HealthcheckActionner.startHealthcheck())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);
+export default connect(
+    (state: KineticState) => ({
+        healthcheck: state.onGoingHealthcheck
+    }),
+    (dispatch: Dispatch) => ({
+        startHealthcheck: () => dispatch(HealthcheckActionner.startHealthcheck())
+    })
+)(WelcomeScreen);

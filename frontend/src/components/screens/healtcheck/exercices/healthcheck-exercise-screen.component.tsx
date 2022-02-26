@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { PainAssessChoiceTripleType } from '../../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
@@ -7,13 +7,14 @@ import { HealthcheckActionner } from '../../../../core/store/healthcheck/healthc
 import { KineticState } from '../../../../core/store/kinetic.state';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
-import { globalStyles, globalVariables } from '../../../styles';
+import { globalStyles } from '../../../styles';
 import KntButton from '../../../ui/button/button.component';
 import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectFlat from '../../../ui/selects/select-flat.component';
-import YoutubePlayer from '../../../ui/youtube-player.component';
-import { ExerciseScreenState } from './exercise-screen.model';
-import { ExerciseScreenService } from './exercise-screen.service';
+import KntSelectFlat from '../../../ui/selects/flat/select-flat.component';
+import KntYoutubePlayer from '../../../ui/youtube-player.component';
+import { ExerciseScreenState } from './healthcheck-exercise-screen.model';
+import { HealthcheckExerciseScreenService } from './healthcheck-exercise-screen.service';
+import styles from './healthcheck-exercise-screen.style';
 
 interface ExerciseScreenProp extends ScreenProp {
     taskId: string;
@@ -23,7 +24,7 @@ interface ExerciseScreenProp extends ScreenProp {
 class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> {
     constructor(props: ExerciseScreenProp) {
         super(props);
-        this.state = ExerciseScreenService.initScreen(this.props.taskId);
+        this.state = HealthcheckExerciseScreenService.initScreen(this.props.taskId);
     }
 
     componentDidUpdate(
@@ -32,19 +33,9 @@ class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> 
     ) {
         if (prevProps.taskId !== this.props.taskId) {
             // eslint-disable-next-line react/no-did-update-set-state
-            this.setState(ExerciseScreenService.initScreen(this.props.taskId));
+            this.setState(HealthcheckExerciseScreenService.initScreen(this.props.taskId));
         }
     }
-
-    private onStateChange = (state: string) => {
-        if (state === 'ended') {
-            // console.log('Video is ending');
-        }
-    };
-
-    private togglePlaying = () => {
-        // console.log('togglePlaying');
-    };
 
     private validateAssessment() {
         if (!this.state.selectedChoice) return;
@@ -61,11 +52,11 @@ class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> 
                 </View>
 
                 <View style={styles.videoPlayer}>
-                    <YoutubePlayer
+                    <KntYoutubePlayer
                         videoId={this.state.exercise?.videoId}
                         playing={true}
                         onPlayChange={event => {
-                            // console.log('YoutubePlayer onPlayChange : ', event);
+                            console.log('YoutubePlayer onPlayChange : ', event);
                         }}
                     />
                     <Text style={globalStyles.cardMessage}>{this.state.exercise?.advice}</Text>
@@ -75,7 +66,9 @@ class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> 
                     items={this.state.choices}
                     selectedItemId={this.state.selectedChoice?.id}
                     onSelected={(item: UiItem) => {
-                        this.setState(ExerciseScreenService.selectAssessments(this.state, item));
+                        this.setState(
+                            HealthcheckExerciseScreenService.selectAssessments(this.state, item)
+                        );
                     }}
                 />
 
@@ -91,41 +84,13 @@ class ExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> 
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: globalVariables.color.grey.xlight,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    video: {
-        flex: 2
-    },
-    videoPlayer: {
-        width: '90%',
-        borderRadius: 10,
-        overflow: 'hidden'
-    },
-    assessment: {
-        flex: 2,
-        width: '100%',
-        alignItems: 'flex-end',
-        marginBottom: 15
-    },
-    controls: {
-        width: '90%',
-        marginBottom: 15
-    }
-});
-
-const mapStateToProps = (state: KineticState) => ({
-    taskId: state.onGoingHealthcheck.taskId
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    assessExercise: (choiceType: PainAssessChoiceTripleType) => {
-        dispatch(HealthcheckActionner.assessExercise(choiceType));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseScreen);
+export default connect(
+    (state: KineticState) => ({
+        taskId: state.onGoingHealthcheck.taskId
+    }),
+    (dispatch: Dispatch) => ({
+        assessExercise: (choiceType: PainAssessChoiceTripleType) => {
+            dispatch(HealthcheckActionner.assessExercise(choiceType));
+        }
+    })
+)(ExerciseScreen);

@@ -39,6 +39,6 @@
     {
         "id": "sacro__exercise-attitude-fessier__redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-etirement-flexion"
+        "exerciseTaskToRedo": "sacro__exercise-attitude-fessier"
     }
 ]

@@ -3,16 +3,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Unsubscribe } from 'redux';
+import { HealthcheckService } from '../../core/domain/healthcheck/healthcheck.service';
 import { KineticState } from '../../core/store/kinetic.state';
 import { KineticStore } from '../../core/store/kinetic.store';
 import { RootNavigation } from '../common/root-navigator';
-import ConsultScreen from './healtcheck/consult-screen.component';
+import { I18nService } from '../i18n';
+import ConsultScreen from './healtcheck/consult/consult-screen.component';
 import DiagnosisScreen from './healtcheck/diagnosis/diagnosis-screen.component';
-import ExerciseScreen from './healtcheck/exercices/exercise-screen.component';
-import HealthcheckGuideScreen from './healtcheck/healthcheck-guide-screen.component';
+import ExerciseScreen from './healtcheck/exercices/healthcheck-exercise-screen.component';
+import HealthcheckGuideScreen from './healtcheck/guide/healthcheck-guide-screen.component';
 import { HealthcheckRouter } from './healtcheck/healthcheck-router.service';
 import PainLocationChoiceScreen from './healtcheck/pain-location/choice-screen/pain-location-choice-screen.component';
 import PainLocationScreen from './healtcheck/pain-location/screen/pain-location-screen.component';
+import HealthcheckRedoScreen from './healtcheck/redo/healthcheck-redo-screen.component';
+import TestLocationScreen from './healtcheck/test-location/test-location-screen.component';
 import HomeScreen from './home-screen.component';
 import PathologyDashboardScreen from './pathology/dashboard/pathology-dashboard.component';
 import { PathologyRouter } from './pathology/pathology-router.service';
@@ -30,12 +34,16 @@ class AppComponent extends Component {
 
     constructor(props: any) {
         super(props);
+        I18nService.init();
         this.store.subscribe(() => {
             const storeState = this.store.getState();
             if (this.isHealthcheckRouter(storeState)) {
                 this.listenForHealthcheck();
             }
-            console.log('[AppComponent] => New state :', storeState);
+            // console.log('[AppComponent] => New state :', storeState);
+            if (storeState.onGoingHealthcheck) {
+                HealthcheckService.printTasks(storeState.onGoingHealthcheck);
+            }
         });
     }
 
@@ -49,7 +57,7 @@ class AppComponent extends Component {
 
     private listenForHealthcheck() {
         if (this.healthcheckChangeUnsub) return;
-        console.log('[AppComponent] => START healthcheck listening');
+        console.log('[AppComponent] => LISTEN healthcheck');
         this.healthcheckChangeUnsub = this.store.subscribe(() => {
             const currentHealthcheck = this.store.getState().onGoingHealthcheck;
             // When Healthcheck is over, Stop listening
@@ -57,7 +65,7 @@ class AppComponent extends Component {
                 this.healthcheckChangeUnsub();
                 this.healthcheckChangeUnsub = null;
                 RootNavigation.navigate(PathologyRouter.routes.dashboard);
-                console.log('[AppComponent] => STOP healthcheck listening');
+                console.log('[AppComponent] => LISTEN-STOP healthcheck listening');
             } else {
                 // When Healthcheck is on going, handle navigation here
                 HealthcheckRouter.rootToTask(currentHealthcheck);
@@ -73,10 +81,10 @@ class AppComponent extends Component {
             <Provider store={this.store}>
                 <NavigationContainer ref={RootNavigation.navigationRef}>
                     <Stack.Navigator
-                        // initialRouteName="Home"
-                        initialRouteName={PathologyRouter.routes.dashboard}
+                        initialRouteName="Home"
                         screenOptions={{
-                            headerShown: false
+                            headerShown: false,
+                            animation: 'none'
                         }}>
                         {/*======================= Base =====================================*/}
 
@@ -104,13 +112,17 @@ class AppComponent extends Component {
                             component={PainLocationChoiceScreen}
                         />
                         <Stack.Screen
+                            name={HealthcheckRouter.routes.testLocation}
+                            component={TestLocationScreen}
+                        />
+                        <Stack.Screen
                             name={HealthcheckRouter.routes.exercise}
                             component={ExerciseScreen}
                         />
-                        {/*<Stack.Screen*/}
-                        {/*    name={HealthcheckRouter.routes.redoExercise}*/}
-                        {/*    component={RedoExerciseScreen} */}
-                        {/*/>*/}
+                        <Stack.Screen
+                            name={HealthcheckRouter.routes.redoExercise}
+                            component={HealthcheckRedoScreen}
+                        />
                         <Stack.Screen
                             name={HealthcheckRouter.routes.diagnosis}
                             component={DiagnosisScreen}

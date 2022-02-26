@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep, last } from 'lodash-es';
 import { BodyAreaType } from '../../domain/body/body-area-data.model';
 import { HealthcheckTaskService } from '../../domain/healthcheck-task/healthcheck-task.service';
 import { HealthcheckTask } from '../healthcheck-task/healthcheck-task.model';
@@ -18,12 +18,17 @@ export class HealthcheckService {
         return HealthcheckTaskService.findTaskById(healthcheck.taskId);
     }
 
+    public static getPreviousTask(healthcheck: Healthcheck): HealthcheckTask {
+        const lastTaskId = last(healthcheck.previousTaskId);
+        return HealthcheckTaskService.findTaskById(lastTaskId);
+    }
+
     public static getCurrentTaskType(healthcheck: Healthcheck) {
         return this.getCurrentTask(healthcheck).type;
     }
 
     public static getTreatmentArea(healthcheck: Healthcheck): TreatmentArea {
-        const diagnosisTask = <DiagnosisHealthcheckTask> this.getCurrentTask(healthcheck);
+        const diagnosisTask = <DiagnosisHealthcheckTask>this.getCurrentTask(healthcheck);
         return TreatmentAreaDataService.getTreatmentAreasById(diagnosisTask.diagnosisId);
     }
 
@@ -59,5 +64,17 @@ export class HealthcheckService {
         bodyArea: BodyAreaType
     ): Healthcheck[] {
         return healthcheckList.filter(healthcheck => healthcheck.bodyArea === bodyArea);
+    }
+
+    // =======================================================================
+    //                Print
+    // =======================================================================
+
+    public static printTasks(healthcheck: Healthcheck) {
+        console.log('[Healthcheck] => TASKS :');
+        healthcheck.previousTaskId.forEach(str => {
+            console.log('[Healthcheck]          [previous]-->', str);
+        });
+        console.log('[Healthcheck]          [current]-->', healthcheck.taskId);
     }
 }

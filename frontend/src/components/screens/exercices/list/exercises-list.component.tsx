@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import ExerciseItem from '../item/exercises-item.component';
+import styles from './exercises-list.style';
 
 interface ExerciseListProp {
     exercises: Exercise[];
@@ -29,13 +30,5 @@ class ExerciseList extends Component<ExerciseListProp> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        flex: 1,
-        width: '100%'
-    }
-});
 
 export default ExerciseList;

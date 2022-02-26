@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Image, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-
+import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { SelectorService } from '../../../../../core/common/selector.service';
 import { BodyAreaType, BodyDirection } from '../../../../../core/domain/body/body-area-data.model';
-import { globalVariables } from '../../../../styles';
 import { PainLocationSelectorState } from './pain-location-selector.model';
 import { BodyPosition, PainLocationSelectorService } from './pain-location-selector.service';
+import styles from './pain-location-selector.style';
 
 export interface PainLocationSelectorProp {
     bodyDirection: BodyDirection;
@@ -55,27 +54,5 @@ class PainLocationSelector extends Component<PainLocationSelectorProp, PainLocat
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        width: 161,
-        height: 432
-    },
-    area: {
-        position: 'absolute',
-        width: 10,
-        height: 10,
-        borderRadius: 50
-    },
-    areaSelected: {
-        backgroundColor: globalVariables.color.accent,
-        borderColor: globalVariables.color.white,
-        borderWidth: 1
-    },
-    areaUnselected: {
-        backgroundColor: globalVariables.color.accent2,
-        borderWidth: 0
-    }
-});
 
 export default PainLocationSelector;

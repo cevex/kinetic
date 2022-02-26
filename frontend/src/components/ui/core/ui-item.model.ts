@@ -3,4 +3,6 @@ export interface UiItem {
     label: string;
     image?: any;
     icon?: string;
+
+    data?: any;
 }

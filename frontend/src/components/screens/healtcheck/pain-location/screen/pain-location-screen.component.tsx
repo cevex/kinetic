@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { BodyAreaType, BodyDirection } from '../../../../../core/domain/body/body-area-data.model';
@@ -8,13 +8,13 @@ import { HealthcheckActionner } from '../../../../../core/store/healthcheck/heal
 import { KineticState } from '../../../../../core/store/kinetic.state';
 import { ScreenProp } from '../../../../common/navigable-screen-prop.model';
 import I18n from '../../../../i18n';
-import { globalVariables } from '../../../../styles';
 import KntButton from '../../../../ui/button/button.component';
 import { UiItem } from '../../../../ui/core/ui-item.model';
-import KntSelectSwitch from '../../../../ui/selects/select-switch.component';
+import KntSelectSwitch from '../../../../ui/selects/switch/select-switch.component';
 import PainLocationSelector from '../selector/pain-location-selector.component';
 import { PainLocationScreenState } from './pain-location-screen.model';
 import { PainLocationScreenService } from './pain-location-screen.service';
+import styles from './pain-location-screen.style';
 
 interface PainLocationScreenProp extends ScreenProp {
     healthcheck: Healthcheck;
@@ -76,50 +76,6 @@ class PainLocationScreen extends Component<PainLocationScreenProp, PainLocationS
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: globalVariables.color.white
-    },
-    messageContainer: {
-        flex: 2,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '95%'
-    },
-    messageTitle: {
-        color: globalVariables.color.primary,
-        fontSize: globalVariables.fontSize.xbig,
-        fontWeight: '600',
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        marginBottom: 15
-    },
-    imagesContainer: {
-        flex: 6,
-        width: '40%'
-    },
-    images: {
-        width: '80%'
-    },
-    controls: {
-        flex: 2,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '90%'
-    },
-    adviceText: {
-        color: globalVariables.color.primary,
-        fontSize: globalVariables.fontSize.medium,
-        marginBottom: 10
-    }
-});
 
 export default connect(
     (state: KineticState) => ({

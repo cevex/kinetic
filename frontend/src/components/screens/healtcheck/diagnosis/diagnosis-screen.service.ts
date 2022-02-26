@@ -1,7 +1,7 @@
-import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-area.model';
-import { TreatmentAreaDataService } from '../../../../core/domain/treatment-area/treatment-area.service';
 import { HealthcheckTaskService } from '../../../../core/domain/healthcheck-task/healthcheck-task.service';
 import { DiagnosisHealthcheckTask } from '../../../../core/domain/healthcheck-task/specific/diagnosis-healthcheck-task.model';
+import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-area.model';
+import { TreatmentAreaDataService } from '../../../../core/domain/treatment-area/treatment-area.service';
 import { DiagnosisScreenState } from './diagnosis-screen.model';
 
 export class DiagnosisScreenService {

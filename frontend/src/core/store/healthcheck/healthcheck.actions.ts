@@ -35,6 +35,10 @@ export interface AssessExerciseAction extends HealthcheckAction {
     choiceType: PainAssessChoiceTripleType;
 }
 
+export interface RedoExerciseAction extends HealthcheckAction {
+    type: 'REDO_EXERCISE';
+}
+
 export interface EndHealthcheckAction extends HealthcheckAction {
     type: 'END_HEALTHCHECK';
 }
@@ -61,6 +65,10 @@ export class HealthcheckActionner {
         choiceType: PainAssessChoiceTripleType
     ): AssessExerciseAction => {
         return { type: 'ASSESS_EXERCISE', choiceType: choiceType };
+    };
+
+    public static redoExercise = (): RedoExerciseAction => {
+        return { type: 'REDO_EXERCISE' };
     };
 
     public static endHealthcheck = (): EndHealthcheckAction => {

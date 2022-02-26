@@ -18,7 +18,7 @@
     {
         "id": "back-bar__exercise-posture-extension-redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-posture-extension"
+        "exerciseTaskToRedo": "back-bar__exercise-posture-extension"
     },
     {
         "id": "back-bar__exercise-mobilisation-extension",
@@ -44,7 +44,7 @@
     {
         "id": "back-bar__exercise-posture-flexion",
         "type": "exercise",
-        "exerciseId": "posture-flexion",
+        "exerciseId": "debout-L3-L4",
         "choice": {
             "less": "back-bar__exercise-mobilisation-flexion",
             "equal": "back-bar__exercise-posture-flexion-redo",
@@ -55,7 +55,7 @@
     {
         "id": "back-bar__exercise-posture-flexion-redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-posture-extension",
+        "exerciseTaskToRedo": "back-bar__exercise-posture-extension",
         "exerciseIdAdditional": "rotation"
     },
     {

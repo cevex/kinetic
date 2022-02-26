@@ -2,7 +2,10 @@ import { cloneDeep } from 'lodash-es';
 import { BodyAreaType } from '../../domain/body/body-area-data.model';
 import { BodyAreaDataService } from '../../domain/body/body-area-data.service';
 import { PainAreaChoice } from '../../domain/healthcheck-task/choice/pain-area-choice.model';
-import { PainAssessChoiceTripleType } from '../../domain/healthcheck-task/choice/pain-assessment-choice.model';
+import {
+    PainAssessChoiceTripleType,
+    PainAssessmentChoiceTriple
+} from '../../domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { HealthcheckTaskService } from '../../domain/healthcheck-task/healthcheck-task.service';
 import { ChangeLocationHealthcheckTask } from '../../domain/healthcheck-task/specific/change-location-healthcheck-task.model';
 import { ExerciseHealthcheckTask } from '../../domain/healthcheck-task/specific/exercise-healthcheck-task.model';
@@ -87,6 +90,8 @@ export class HealthcheckReducer {
 
     private static getTaskToTreat(choiceAreas: BodyAreaType[]): ChangeLocationHealthcheckTask {
         const bodyAreaToTreat = BodyAreaDataService.getMainArea(choiceAreas);
+        console.log('[HealthCheckReducer] selectLocation - choiceAreas', choiceAreas);
+        console.log('[HealthCheckReducer] selectLocation - bodyAreaToTreat', bodyAreaToTreat.type);
         return HealthcheckTaskService.getTaskByType('change-location')
             .map(changeLocationTask => <ChangeLocationHealthcheckTask>changeLocationTask)
             .find(task => task.bodyArea === bodyAreaToTreat.type);
@@ -117,10 +122,14 @@ export class HealthcheckReducer {
         const exerciseTask = <ExerciseHealthcheckTask>(
             HealthcheckTaskService.findTaskById(healthcheck.taskId)
         );
+        console.log('[assessExercise] choiceType', choiceType);
 
         const choiceToApply = this.validateAssessmentChoice(healthcheck, exerciseTask, choiceType);
+        console.log('[assessExercise] choiceToApply', choiceToApply);
         const newTaskId = (<any>exerciseTask.choice)[choiceToApply];
+        console.log('[assessExercise] newTaskId', newTaskId);
         const newTask = HealthcheckTaskService.findTaskById(newTaskId);
+        console.log('[assessExercise] newTask', newTask);
 
         if (newTask.type === 'change-location') {
             return this.chooseLocation(healthcheck, <ChangeLocationHealthcheckTask>newTask);
@@ -136,13 +145,19 @@ export class HealthcheckReducer {
         exerciseTask: ExerciseHealthcheckTask,
         choiceType: PainAssessChoiceTripleType
     ): PainAssessChoiceTripleType {
-        if (choiceType !== 'equal') return choiceType;
-        const healthcheckTasks = HealthcheckTaskService.filterTaskByIds(healthcheck.previousTaskId);
+        if (choiceType === 'less') return choiceType;
+
+        const availableChoices = <PainAssessmentChoiceTriple>exerciseTask.choice;
+        const doneTasks = HealthcheckTaskService.filterTaskByIds(healthcheck.previousTaskId);
         const exerciseTries = HealthcheckTaskService.filterTaskByExercises(
-            healthcheckTasks,
+            doneTasks,
             exerciseTask.exerciseId
         );
-        return exerciseTries.length > 0 ? 'more' : choiceType;
+        // No need to retry an exercise too much
+        if (exerciseTries.length > 0) {
+            return availableChoices.more2 ? 'more2' : 'more';
+        }
+        return choiceType;
     }
 
     private static redoExercise(healthcheck: Healthcheck): Healthcheck {

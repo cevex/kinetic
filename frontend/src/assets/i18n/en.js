@@ -1,13 +1,13 @@
 export default {
     global: {
         validate: 'Validate',
-        yes: 'Yes',
-        no: 'No'
+        yes: 'Oui',
+        no: 'Non'
     },
     navigation: {
-        next: 'Next',
         previous: 'previous',
-        close: 'Close'
+        next: 'next',
+        close: 'close'
     },
     diagnosis: {
         open: 'Health check is over !',
@@ -16,7 +16,9 @@ export default {
     },
     exercise: {
         start: 'Start exercise',
-        advice: 'Lancez la vidéo, à la fin de l’exercice indiquez l’état si les variations de douleur correspond à celle décrite dans la vidéo'
+        done: 'Exercice is over, rate your pain',
+        next: 'New exercise',
+        advice: 'Start the video then choose if your pain match the one describe in the video'
     },
     treatment: {
         mine: 'My treatments',
@@ -25,6 +27,11 @@ export default {
     },
     healthcheck: {
         start: 'Start health check',
+        redo: {
+            title: 'Refaites l’exercice',
+            label: 'Redo the exercise. Take care of how you stand.',
+            advice: 'Aidez-vous d’une glace ou d’un proche pour corriger la posture si vous le pouvez'
+        },
         guide: {
             count: 'At least 4 exercices have to be done to identify your pain..',
             first: 'Pour pouvoir aider Kinetic à faire le diagnostic, nous allons de proposer des exercices sous forme d’étirements.',

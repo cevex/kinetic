@@ -13,7 +13,7 @@ import { PathologyActionner } from '../../../../core/store/pathology/pathology.a
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import { globalVariables } from '../../../styles';
 import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectSwitch from '../../../ui/selects/select-switch.component';
+import KntSelectSwitch from '../../../ui/selects/switch/select-switch.component';
 import ExerciseList from '../../exercices/list/exercises-list.component';
 import PathologySession from '../session/pathology-session.component';
 import { DashboardMode, PathologyDashboardState } from './pathology-dashboard.model';

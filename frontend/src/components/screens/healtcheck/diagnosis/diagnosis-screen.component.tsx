@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Healthcheck } from '../../../../core/domain/healthcheck/healthcheck.model';
@@ -8,10 +8,11 @@ import { KineticState } from '../../../../core/store/kinetic.state';
 import { PathologyActionner } from '../../../../core/store/pathology/pathology.actions';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
-import { globalStyles, globalVariables } from '../../../styles';
+import { globalStyles } from '../../../styles';
 import KntButton from '../../../ui/button/button.component';
 import { DiagnosisScreenState } from './diagnosis-screen.model';
 import { DiagnosisScreenService } from './diagnosis-screen.service';
+import styles from './diagnosis-screen.style';
 
 interface DiagnosisScreenProp extends ScreenProp {
     healthcheck: Healthcheck;
@@ -45,19 +46,6 @@ class DiagnosisScreen extends Component<DiagnosisScreenProp, DiagnosisScreenStat
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: globalVariables.color.grey.light,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    controls: {
-        width: '90%',
-        marginBottom: 10
-    }
-});
 
 export default connect(
     (state: KineticState) => ({

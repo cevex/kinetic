@@ -3,8 +3,14 @@ import backZoneTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks
 import buttockTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-buttock.data.json';
 import rootTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-root.data.json';
 import sacroTaskJson from '../../../assets/data/healthcheck/healthcheck-tasks-sacro.data.json';
+import { BodyArea } from '../body/body-area-data.model';
+import { BodyAreaDataService } from '../body/body-area-data.service';
+import { Exercise } from '../exercices/exercise.model';
+import { ExercisesService } from '../exercices/exercises.service';
 import { HealthcheckTask, HealthcheckTaskType } from './healthcheck-task.model';
+import { ChangeLocationHealthcheckTask } from './specific/change-location-healthcheck-task.model';
 import { ExerciseHealthcheckTask } from './specific/exercise-healthcheck-task.model';
+import { TestLocationHealthcheckTask } from './specific/test-location-healthcheck-task.model';
 
 export class HealthcheckTaskService {
     private static TREATMENT_URL: any = {
@@ -40,6 +46,34 @@ export class HealthcheckTaskService {
     }
 
     // =======================================================================
+    //                Read
+    // =======================================================================
+
+    public static getExercise(exerciseTask: ExerciseHealthcheckTask): Exercise {
+        return (
+            exerciseTask &&
+            exerciseTask.exerciseId &&
+            <Exercise>ExercisesService.getExercisesById(exerciseTask.exerciseId)
+        );
+    }
+
+    public static getBodyAreas(testLocationTask: TestLocationHealthcheckTask): BodyArea[] {
+        const painChoicesIds = testLocationTask && testLocationTask.painChoices;
+        console.log('[getBodyAreas] testLocationTask', testLocationTask);
+        console.log('[getBodyAreas] painChoicesIds', painChoicesIds);
+        const bodyAreasTypes = painChoicesIds.map(painChoicesId => {
+            const changeLocationTask = <ChangeLocationHealthcheckTask>(
+                HealthcheckTaskService.findTaskById(painChoicesId)
+            );
+            console.log('[getBodyAreas] changeLocationTask', changeLocationTask);
+
+            return changeLocationTask.bodyArea;
+        });
+        console.log('[getBodyAreas] bodyAreasTypes', bodyAreasTypes);
+        return BodyAreaDataService.getBodyAreasByTypes(bodyAreasTypes);
+    }
+
+    // =======================================================================
     //                Find
     // =======================================================================
 
@@ -48,7 +82,7 @@ export class HealthcheckTaskService {
     }
 
     public static findTaskById(taskId: string): HealthcheckTask {
-        return this.getTasks().find(task => taskId.includes(task.id));
+        return this.getTasks().find(task => taskId === task.id);
     }
 
     // =======================================================================

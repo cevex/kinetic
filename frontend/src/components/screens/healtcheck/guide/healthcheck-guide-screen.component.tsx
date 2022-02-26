@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { HealthcheckActionner } from '../../../core/store/healthcheck/healthcheck.actions';
-import { ScreenProp } from '../../common/navigable-screen-prop.model';
-import I18n from '../../i18n';
-import { globalStyles, globalVariables } from '../../styles';
-import KntButton from '../../ui/button/button.component';
+import { HealthcheckActionner } from '../../../../core/store/healthcheck/healthcheck.actions';
+import { ScreenProp } from '../../../common/navigable-screen-prop.model';
+import I18n from '../../../i18n';
+import { globalStyles, globalVariables } from '../../../styles';
+import KntButton from '../../../ui/button/button.component';
 
 interface HealthcheckGuideScreenProp extends ScreenProp {
     seeDisclaimer: () => void;
@@ -52,8 +52,6 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+export default connect(null, (dispatch: Dispatch) => ({
     seeDisclaimer: () => dispatch(HealthcheckActionner.seeDisclaimer())
-});
-
-export default connect(null, mapDispatchToProps)(HealthcheckGuideScreen);
+}))(HealthcheckGuideScreen);

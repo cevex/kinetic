@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import {
-    GestureResponderEvent,
-    StyleProp,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    ViewStyle
-} from 'react-native';
-import { globalVariables } from '../../styles';
+import { GestureResponderEvent, StyleProp, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import { ButtonState, ButtonType } from './button.model';
 import { ButtonService } from './button.service';
+import buttonStyles from './button.style';
 
 interface ButtonProp {
     label: string;
@@ -52,26 +45,5 @@ class KntButton extends Component<ButtonProp, ButtonState> {
         );
     }
 }
-
-const buttonStyles = StyleSheet.create({
-    container: {
-        height: 45,
-        alignItems: 'center',
-        margin: 5,
-
-        borderWidth: 1,
-        padding: 10,
-        borderRadius: 8
-    },
-    text: {
-        fontSize: globalVariables.fontSize.medium
-    },
-    disabled: {
-        opacity: 0.5
-    },
-    fullWidth: {
-        width: '100%'
-    }
-});
 
 export default KntButton;

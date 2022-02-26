@@ -33,7 +33,7 @@
     {
         "id": "back-zone__exercise-etirement-extension-redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-etirement-extension"
+        "exerciseTaskToRedo": "back-zone__exercise-etirement-extension"
     },
     {
         "id": "back-zone__diagnosis-lomb-chro-L5S1",
@@ -53,7 +53,7 @@
     {
         "id": "back-zone__exercise-etirement-flexion-redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-etirement-flexion"
+        "exerciseTaskToRedo": "back-zone__exercise-etirement-flexion"
     },
     {
         "id": "back-zone__diagnosis-lomb-chro-L3L4",
@@ -71,7 +71,7 @@
     },
     {
         "id": "pain-choice__back-zone-unilateral",
-        "type": "pain-choice",
+        "type": "change-location",
         "bodyArea": "back-zone-unilateral",
         "more": "exercise-posture-evitement"
     },
@@ -88,7 +88,7 @@
     {
         "id": "back-zone__exercise-posture-evitement-redo",
         "type": "redo",
-        "exerciseTaskToRedo": "exercise-posture-evitement"
+        "exerciseTaskToRedo": "back-zone__exercise-posture-evitement"
     },
     {
         "id": "back-zone__exercise-posture-evitement-consult",
