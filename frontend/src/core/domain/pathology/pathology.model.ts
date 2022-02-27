@@ -1,7 +1,7 @@
 import { Healthcheck } from '../healthcheck/healthcheck.model';
-import { PathologyPhase } from './phase/pathology-phase.model';
+import { PathologyPhaseData } from './phase/pathology-phase-data.model';
 
 export interface Pathology {
     originalHealthcheck: Healthcheck;
-    phases: PathologyPhase[];
+    phases: PathologyPhaseData[];
 }

@@ -1,25 +1,40 @@
 import { cloneDeep, range } from 'lodash-es';
 import moment from 'moment';
+import { DateTimeService } from '../../../common/date-time.service';
 import { TreatmentPhase } from '../../treatment/phase/treatment-phase.model';
-import { PathologySession } from './pathology-session.model';
+import { PathologySessionData } from './pathology-session-data.model';
 
-export class PathologySessionService {
+export class PathologySessionDataService {
     constructor() {}
 
-    public static generateSessions(phase: TreatmentPhase): PathologySession[] {
+    // =======================================================================
+    //               Build
+    // =======================================================================
+
+    public static generateSessions(phase: TreatmentPhase): PathologySessionData[] {
         const baseDate = new Date();
         return range(phase.duration).map(index => {
             const date = moment(baseDate).add(index, 'days').toDate();
-            return PathologySessionService.buildSession(date);
+            return PathologySessionDataService.buildSession(date);
         });
     }
 
-    public static buildSession(date: Date): PathologySession {
+    public static buildSession(date: Date): PathologySessionData {
         return {
             date: date,
             doneExercisesId: [],
-            evaluations: null
+            evaluation: null
         };
+    }
+
+    // =======================================================================
+    //               Find
+    // =======================================================================
+
+    public static findTodaySession(sessions: PathologySessionData[]): PathologySessionData {
+        return sessions?.find(session =>
+            DateTimeService.equals(session.date, DateTimeService.getNow())
+        );
     }
 
     // =======================================================================
@@ -27,16 +42,16 @@ export class PathologySessionService {
     // =======================================================================
 
     public static setCurrentSession(
-        sessions: PathologySession[],
-        newSession: PathologySession
-    ): PathologySession[] {
+        sessions: PathologySessionData[],
+        newSession: PathologySessionData
+    ): PathologySessionData[] {
         const newSessions = cloneDeep(sessions);
         newSessions.pop();
         newSessions.push(newSession);
         return newSessions;
     }
 
-    static addSession(sessions: PathologySession[], newSession: PathologySession) {
+    static addSession(sessions: PathologySessionData[], newSession: PathologySessionData) {
         const newSessions = cloneDeep(sessions);
         newSessions.push(newSession);
         return newSessions;
@@ -47,20 +62,20 @@ export class PathologySessionService {
     // =======================================================================
 
     public static toggleExercises(
-        pathologySession: PathologySession,
+        pathologySession: PathologySessionData,
         exercisesId: string[],
         seen: boolean
-    ): PathologySession {
-        return exercisesId.reduce((session: PathologySession, exerciseId: string) => {
+    ): PathologySessionData {
+        return exercisesId.reduce((session: PathologySessionData, exerciseId: string) => {
             return this.toggleExercise(session, exerciseId, seen);
         }, pathologySession);
     }
 
     public static toggleExercise(
-        pathologySession: PathologySession,
+        pathologySession: PathologySessionData,
         exerciseId: string,
         seen: boolean
-    ): PathologySession {
+    ): PathologySessionData {
         const newSession = cloneDeep(pathologySession);
         newSession.doneExercisesId = seen
             ? [...pathologySession.doneExercisesId, exerciseId]
@@ -69,24 +84,24 @@ export class PathologySessionService {
     }
 
     public static addAllExercises(
-        pathologySession: PathologySession,
+        pathologySession: PathologySessionData,
         exerciseIds: string[]
-    ): PathologySession {
+    ): PathologySessionData {
         const newSession = cloneDeep(pathologySession);
         newSession.doneExercisesId = exerciseIds;
         return newSession;
     }
 
-    public static clearExercises(pathologySession: PathologySession): PathologySession {
+    public static clearExercises(pathologySession: PathologySessionData): PathologySessionData {
         const newSession = cloneDeep(pathologySession);
         newSession.doneExercisesId = [];
         return newSession;
     }
 
     public static setExercises(
-        pathologySession: PathologySession,
+        pathologySession: PathologySessionData,
         exerciseIds: string[]
-    ): PathologySession {
+    ): PathologySessionData {
         const newSession = cloneDeep(pathologySession);
         newSession.doneExercisesId = exerciseIds;
         return newSession;

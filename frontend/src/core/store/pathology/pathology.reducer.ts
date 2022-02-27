@@ -2,8 +2,8 @@ import { cloneDeep } from 'lodash-es';
 import { Healthcheck } from '../../domain/healthcheck/healthcheck.model';
 import { Pathology } from '../../domain/pathology/pathology.model';
 import { PathologyService } from '../../domain/pathology/pathology.service';
-import { PathologyPhaseService } from '../../domain/pathology/phase/pathology-phase.service';
-import { PathologySessionService } from '../../domain/pathology/session/pathology-session.service';
+import { PathologyPhaseDataService } from '../../domain/pathology/phase/pathology-phase-data.service';
+import { PathologySessionDataService } from '../../domain/pathology/session/pathology-session-data.service';
 import {
     EvaluateFeelingSessionAction,
     EvaluateGlobalSessionAction,
@@ -51,7 +51,7 @@ export class PathologyReducer {
         console.log('[PathologyReducer] => startPathology', healthcheck);
         const newPathology = cloneDeep(pathology);
         newPathology.originalHealthcheck = healthcheck;
-        newPathology.phases = PathologyPhaseService.generatePhases(healthcheck);
+        newPathology.phases = PathologyPhaseDataService.generatePhases(healthcheck);
         return newPathology;
     }
 
@@ -60,7 +60,7 @@ export class PathologyReducer {
         action: MarkExerciseAsSeenAction
     ): Pathology {
         const currentSession = PathologyService.getCurrentSession(pathology);
-        const newSession = PathologySessionService.toggleExercises(
+        const newSession = PathologySessionDataService.toggleExercises(
             currentSession,
             action.exercisesId,
             action.seen

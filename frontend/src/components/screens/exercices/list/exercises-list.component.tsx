@@ -8,6 +8,7 @@ interface ExerciseListProp {
     exercises: Exercise[];
     showCheck?: boolean;
     selectedExercises?: string[];
+    onExerciseSelected?: (exercise: Exercise) => void;
 }
 
 class ExerciseList extends Component<ExerciseListProp> {

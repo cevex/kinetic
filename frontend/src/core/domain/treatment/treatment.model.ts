@@ -3,5 +3,10 @@ import { TreatmentPhase } from './phase/treatment-phase.model';
 
 export interface Treatment {
     area: TreatmentArea;
-    phases: TreatmentPhase[];
+    phasesWorkList: TreatmentPhaseWorkList[];
+}
+
+export interface TreatmentPhaseWorkList {
+    phase: TreatmentPhase;
+    exercisesId: string[];
 }

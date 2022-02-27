@@ -7,7 +7,7 @@
         "ios": "react-native run-ios",
         "start": "react-native start",
         "test": "jest",
-        "clean": "npm run clean:lib && clean:metro && npm run android:clean ",
+        "clean": "npm run clean:lib && npm run android:clean && clean:metro ",
         "clean:lib": "rimraf -rf yarn.lock package-lock.json node_modules",
         "clean:metro": "yarn start --reset-cache && rm -rf /tmp/metro-*",
         "android:pack": "npm run android:clean && npm run android:bundle && npm run android:build",
@@ -17,6 +17,7 @@
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "dependencies": {
+        "@react-native-async-storage/async-storage": "^1.16.1",
         "@react-native-community/cli-platform-android": "^7.0.1",
         "@react-navigation/native": "^6.0.6",
         "@react-navigation/native-stack": "^6.2.5",
@@ -35,6 +36,7 @@
         "react-native-youtube-iframe": "^2.2.1",
         "react-redux": "^7.2.6",
         "redux": "^4.1.2",
+        "redux-persist": "^6.0.0",
         "rxjs": "^7.4.0"
     },
     "devDependencies": {

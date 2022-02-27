@@ -1,7 +1,7 @@
 import { PathologyEvaluation } from '../evaluation/pathology-evaluation.model';
 
-export interface PathologySession {
+export interface PathologySessionData {
     date: Date;
     doneExercisesId: string[];
-    evaluations: PathologyEvaluation;
+    evaluation: PathologyEvaluation;
 }

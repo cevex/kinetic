@@ -38,7 +38,7 @@ export class HealthcheckReducer {
     ): Healthcheck => {
         switch (action.type) {
             case 'START_HEALTHCHECK':
-                return this.startHealthcheck(state);
+                return this.startHealthcheck();
             case 'CHOOSE_LOCATION':
                 return this.selectLocation(state, (<ChooseLocationAction>action).bodyAreas);
             case 'SEE_DISCLAIMER':
@@ -58,8 +58,8 @@ export class HealthcheckReducer {
     //               Workflow
     // =======================================================================
 
-    private static startHealthcheck(healthcheck: Healthcheck): Healthcheck {
-        const newHealthcheck = cloneDeep(healthcheck);
+    private static startHealthcheck(): Healthcheck {
+        const newHealthcheck = cloneDeep(this.initialState);
         newHealthcheck.treatmentStarted = true;
         return newHealthcheck;
     }
@@ -122,14 +122,9 @@ export class HealthcheckReducer {
         const exerciseTask = <ExerciseHealthcheckTask>(
             HealthcheckTaskService.findTaskById(healthcheck.taskId)
         );
-        console.log('[assessExercise] choiceType', choiceType);
-
         const choiceToApply = this.validateAssessmentChoice(healthcheck, exerciseTask, choiceType);
-        console.log('[assessExercise] choiceToApply', choiceToApply);
         const newTaskId = (<any>exerciseTask.choice)[choiceToApply];
-        console.log('[assessExercise] newTaskId', newTaskId);
         const newTask = HealthcheckTaskService.findTaskById(newTaskId);
-        console.log('[assessExercise] newTask', newTask);
 
         if (newTask.type === 'change-location') {
             return this.chooseLocation(healthcheck, <ChangeLocationHealthcheckTask>newTask);

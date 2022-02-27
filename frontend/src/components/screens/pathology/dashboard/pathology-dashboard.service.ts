@@ -1,9 +1,10 @@
-import { cloneDeep, first, last } from 'lodash-es';
+import { cloneDeep } from 'lodash-es';
 import { Pathology } from '../../../../core/domain/pathology/pathology.model';
-import { PathologyPhase } from '../../../../core/domain/pathology/phase/pathology-phase.model';
-import { TreatmentPhase } from '../../../../core/domain/treatment/phase/treatment-phase.model';
+import { PathologyPhaseDataService } from '../../../../core/domain/pathology/phase/pathology-phase-data.service';
+import { PathologySessionDataService } from '../../../../core/domain/pathology/session/pathology-session-data.service';
+import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-area.model';
 import { UiItem } from '../../../ui/core/ui-item.model';
-import { PathologySessionState } from '../session/pathology-session.model';
+import { PathologyPhasesElementService } from '../phases/pathology-phases-element.service';
 import { DashboardMode, PathologyDashboardState } from './pathology-dashboard.model';
 
 export class PathologyDashboardService {
@@ -19,51 +20,52 @@ export class PathologyDashboardService {
     ];
 
     public static initScreen(
+        treatmentArea: TreatmentArea,
         pathology: Pathology,
         dashboardMode: DashboardMode
     ): PathologyDashboardState {
         console.log('[PathologyDashboard] pathology', pathology);
-        // const treatment = TreatmentService.getTreatmentForHealthcheck(
-        //     pathology.originalHealthcheck
-        // );
+
+        const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
+        const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
+
         return {
+            // Data model
+            currentPhase: currentPhase,
+            currentSession: currentSession,
+
+            // Element model
+            dashboardTitle: treatmentArea.title,
             dashboardModeOptions: this.dashboardModeOptions,
-            selectedDashboardMode: this.dashboardModeOptions.find(item => item.id === dashboardMode)
-            // session: this.initCurrentSession(pathology.phases, treatment.phases),
-            // videoLibrary: TreatmentPhaseService.flattenExercises(treatment.phases)
+            selectedDashboardMode: this.dashboardModeOptions.find(
+                item => item.id === dashboardMode
+            ),
+            pathologyPhase: PathologyPhasesElementService.mapPathologyPhase(
+                treatmentArea,
+                currentPhase,
+                currentSession,
+                !PathologyPhaseDataService.isFirstPhase(pathology.phases, currentPhase),
+                !PathologyPhaseDataService.isLastPhase(pathology.phases, currentPhase)
+            )
         };
     }
 
-    public static initCurrentSession(
-        pathologyPhases: PathologyPhase[],
-        treatmentPhases: TreatmentPhase[]
-    ): PathologySessionState {
-        const pathologyPhase = <PathologyPhase>first(pathologyPhases);
-        const treatmentPhase = <TreatmentPhase>first(treatmentPhases); // Find current
-
-        const currentSession = last(pathologyPhase.sessions);
-        const nbSessions = treatmentPhase.duration;
-        const currentSessionNb = pathologyPhases.length;
-        return {
-            nbSession: nbSessions,
-            currentSession: currentSessionNb,
-
-            phaseName: treatmentPhase.name,
-            sessions: this.getPhaseItems(pathologyPhases),
-            selectedSession: pathologyPhase.treatmentPhase + '',
-
-            exercises: treatmentPhase.exercises,
-            selectedExercises: currentSession.doneExercisesId
-        };
-    }
-
-    private static getPhaseItems(pathologyPhases: PathologyPhase[]): UiItem[] {
-        return pathologyPhases.map((pathologyPhase, index) => {
-            return {
-                id: pathologyPhase.treatmentPhase,
-                label: index + ''
-            };
-        });
+    public static updateScreen(
+        currentState: PathologyDashboardState,
+        treatmentArea: TreatmentArea,
+        pathology: Pathology
+    ): PathologyDashboardState {
+        const newState = cloneDeep(currentState);
+        const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
+        const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
+        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+            treatmentArea,
+            currentPhase,
+            currentSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, currentPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, currentPhase)
+        );
+        return newState;
     }
 
     public static setDashboardMode(

@@ -6,6 +6,10 @@ export class ExercisesService {
         return exerciseData as Exercise[];
     }
 
+    public static getExercisesByIds(exercisesId: string[]): Exercise[] {
+        return this.getExercises().filter(exercises => exercisesId.includes(exercises.id));
+    }
+
     public static getExercisesById(exercisesId: string): Exercise {
         return this.getExercises().find(exercises => exercises.id === exercisesId);
     }

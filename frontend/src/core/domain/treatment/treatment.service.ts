@@ -1,12 +1,13 @@
-import { cloneDeep, groupBy } from 'lodash-es';
-import treatmentData from '../../../assets/data/treatment.data.json';
+import { groupBy } from 'lodash-es';
+import treatmentDataJson from '../../../assets/data/treatment.data.json';
+import { Exercise } from '../exercices/exercise.model';
 import { ExercisesService } from '../exercices/exercises.service';
 import { Healthcheck } from '../healthcheck/healthcheck.model';
 import { HealthcheckService } from '../healthcheck/healthcheck.service';
 import { TreatmentAreaDataService } from '../treatment-area/treatment-area.service';
-import { TreatmentPhase } from './phase/treatment-phase.model';
+import { TreatmentPhaseType } from './phase/treatment-phase.model';
 import { TreatmentPhaseService } from './phase/treatment-phase.service';
-import { Treatment } from './treatment.model';
+import { Treatment, TreatmentPhaseWorkList } from './treatment.model';
 
 interface TreatmentData {
     area: string;
@@ -15,6 +16,10 @@ interface TreatmentData {
 }
 
 export class TreatmentService {
+    // =======================================================================
+    //                Getter
+    // =======================================================================
+
     public static getTreatments(): Treatment[] {
         return this.mapTreatment(this.loadTreatments());
     }
@@ -29,53 +34,47 @@ export class TreatmentService {
     }
 
     public static loadTreatments(): TreatmentData[] {
-        return treatmentData as TreatmentData[];
+        return treatmentDataJson as TreatmentData[];
     }
+
+    // =======================================================================
+    //                Mapper
+    // =======================================================================
 
     private static mapTreatment(treatmentsData: TreatmentData[]): Treatment[] {
         const groupByArea = groupBy(treatmentsData, 'area');
-
         return Object.keys(groupByArea).map((treatmentAreaId: string) => {
             const treatmentArea = TreatmentAreaDataService.getTreatmentAreasById(treatmentAreaId);
             return <Treatment>{
                 area: treatmentArea,
-                phases: this.mapPhasesForArea(<TreatmentData[]>groupByArea[treatmentAreaId])
+                phasesWorkList: this.mapPhasesForArea(<TreatmentData[]>groupByArea[treatmentAreaId])
             };
         });
     }
 
-    private static mapPhasesForArea(treatmentsData: TreatmentData[]): TreatmentPhase[] {
-        let finalPhases: TreatmentPhase[] = [];
-        // console.log('mapPhasesForArea', treatmentsData);
-        treatmentsData.forEach((treatmentData, treatmentIndex) => {
-            const treatmentPhases = TreatmentPhaseService.mapTreatmentPhase(treatmentData.phases);
-            treatmentPhases.forEach(phase => {
-                const exercise = ExercisesService.getExercisesById(treatmentData.exercise);
-                if (!exercise) {
-                    console.log('WARNING : For phase : ', phase.name);
-                    console.log('WARNING ==> Cannot find exercises ', treatmentData.exercise);
-                    return;
-                }
-                const alreadyExistingPhase = finalPhases.find(p => p.id === phase.id);
-
-                const phaseToHandle = alreadyExistingPhase
-                    ? alreadyExistingPhase
-                    : cloneDeep(phase);
-                if (!phaseToHandle.exercises) {
-                    phaseToHandle.exercises = [];
-                }
-                phaseToHandle.exercises.push(exercise);
-                if (!alreadyExistingPhase) {
-                    finalPhases.push(phaseToHandle);
-                } else {
-                    finalPhases = finalPhases.map(treatmentPhase => {
-                        return treatmentPhase.id === phaseToHandle.id
-                            ? phaseToHandle
-                            : treatmentPhase;
-                    });
-                }
-            });
+    private static mapPhasesForArea(treatmentsData: TreatmentData[]): TreatmentPhaseWorkList[] {
+        return TreatmentPhaseService.getTreatmentPhases().map(phase => {
+            const treatmentForPhase = treatmentsData.filter(treatmentData =>
+                treatmentData.phases.includes(phase.id)
+            );
+            return {
+                phase: phase,
+                exercisesId: treatmentForPhase.map(treatment => treatment.exercise)
+            };
         });
-        return finalPhases;
+    }
+
+    // =======================================================================
+    //                Exercises
+    // =======================================================================
+
+    public static getExercisesForPhases(
+        treatment: Treatment,
+        currentPhase: TreatmentPhaseType
+    ): Exercise[] {
+        const workList = treatment.phasesWorkList.find(
+            phaseWorkList => phaseWorkList.phase.id === currentPhase
+        );
+        return ExercisesService.getExercisesByIds(workList.exercisesId);
     }
 }

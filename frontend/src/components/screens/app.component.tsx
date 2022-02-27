@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Unsubscribe } from 'redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import { HealthcheckService } from '../../core/domain/healthcheck/healthcheck.service';
 import { KineticState } from '../../core/store/kinetic.state';
 import { KineticStore } from '../../core/store/kinetic.store';
@@ -17,7 +18,7 @@ import PainLocationChoiceScreen from './healtcheck/pain-location/choice-screen/p
 import PainLocationScreen from './healtcheck/pain-location/screen/pain-location-screen.component';
 import HealthcheckRedoScreen from './healtcheck/redo/healthcheck-redo-screen.component';
 import TestLocationScreen from './healtcheck/test-location/test-location-screen.component';
-import HomeScreen from './home-screen.component';
+import HomeScreen from './home/home-screen.component';
 import PathologyDashboardScreen from './pathology/dashboard/pathology-dashboard.component';
 import { PathologyRouter } from './pathology/pathology-router.service';
 import WelcomeScreen from './welcome/welcome-screen.component';
@@ -25,7 +26,6 @@ import WelcomeScreen from './welcome/welcome-screen.component';
 const Stack = createNativeStackNavigator();
 
 class AppComponent extends Component {
-    private store = KineticStore.initStore();
     private healthcheckChangeUnsub: Unsubscribe;
 
     private routes = {
@@ -35,8 +35,8 @@ class AppComponent extends Component {
     constructor(props: any) {
         super(props);
         I18nService.init();
-        this.store.subscribe(() => {
-            const storeState = this.store.getState();
+        KineticStore.store.subscribe(() => {
+            const storeState = KineticStore.store.getState();
             if (this.isHealthcheckRouter(storeState)) {
                 this.listenForHealthcheck();
             }
@@ -58,8 +58,8 @@ class AppComponent extends Component {
     private listenForHealthcheck() {
         if (this.healthcheckChangeUnsub) return;
         console.log('[AppComponent] => LISTEN healthcheck');
-        this.healthcheckChangeUnsub = this.store.subscribe(() => {
-            const currentHealthcheck = this.store.getState().onGoingHealthcheck;
+        this.healthcheckChangeUnsub = KineticStore.store.subscribe(() => {
+            const currentHealthcheck = KineticStore.store.getState().onGoingHealthcheck;
             // When Healthcheck is over, Stop listening
             if (currentHealthcheck && currentHealthcheck.treatmentEnded) {
                 this.healthcheckChangeUnsub();
@@ -73,66 +73,68 @@ class AppComponent extends Component {
         });
 
         // First rooting
-        HealthcheckRouter.rootToTask(this.store.getState().onGoingHealthcheck);
+        HealthcheckRouter.rootToTask(KineticStore.store.getState().onGoingHealthcheck);
     }
 
     render() {
         return (
-            <Provider store={this.store}>
-                <NavigationContainer ref={RootNavigation.navigationRef}>
-                    <Stack.Navigator
-                        initialRouteName="Home"
-                        screenOptions={{
-                            headerShown: false,
-                            animation: 'none'
-                        }}>
-                        {/*======================= Base =====================================*/}
+            <Provider store={KineticStore.store}>
+                <PersistGate loading={null} persistor={KineticStore.persistor}>
+                    <NavigationContainer ref={RootNavigation.navigationRef}>
+                        <Stack.Navigator
+                            initialRouteName="Home"
+                            screenOptions={{
+                                headerShown: false,
+                                animation: 'none'
+                            }}>
+                            {/*======================= Base =====================================*/}
 
-                        <Stack.Screen name={this.routes.home} component={HomeScreen} />
-                        <Stack.Screen
-                            name={PathologyRouter.routes.dashboard}
-                            component={PathologyDashboardScreen}
-                        />
+                            <Stack.Screen name={this.routes.home} component={HomeScreen} />
+                            <Stack.Screen
+                                name={PathologyRouter.routes.dashboard}
+                                component={PathologyDashboardScreen}
+                            />
 
-                        {/*======================= HEALTHCHECK =====================================*/}
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.welcome}
-                            component={WelcomeScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.guide}
-                            component={HealthcheckGuideScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.painLocation}
-                            component={PainLocationScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.painLocationChoice}
-                            component={PainLocationChoiceScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.testLocation}
-                            component={TestLocationScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.exercise}
-                            component={ExerciseScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.redoExercise}
-                            component={HealthcheckRedoScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.diagnosis}
-                            component={DiagnosisScreen}
-                        />
-                        <Stack.Screen
-                            name={HealthcheckRouter.routes.consult}
-                            component={ConsultScreen}
-                        />
-                    </Stack.Navigator>
-                </NavigationContainer>
+                            {/*======================= HEALTHCHECK =====================================*/}
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.welcome}
+                                component={WelcomeScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.guide}
+                                component={HealthcheckGuideScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.painLocation}
+                                component={PainLocationScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.painLocationChoice}
+                                component={PainLocationChoiceScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.testLocation}
+                                component={TestLocationScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.exercise}
+                                component={ExerciseScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.redoExercise}
+                                component={HealthcheckRedoScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.diagnosis}
+                                component={DiagnosisScreen}
+                            />
+                            <Stack.Screen
+                                name={HealthcheckRouter.routes.consult}
+                                component={ConsultScreen}
+                            />
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </PersistGate>
             </Provider>
         );
     }
