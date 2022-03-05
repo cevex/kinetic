@@ -6,19 +6,25 @@ export const globalVariables = {
         dark: 'black',
         primary: '#432C81',
         primaryLight: '#82799D',
+        primaryBackground: '#E1D6FF',
         accent: '#CF35A4',
-        accent2: '#19E15D',
+        success: '#6BF299',
         grey: {
             xlight: '#efefef',
             light: '#e1e1e1',
             medium: '#d2d2d2'
+        },
+        danger: {
+            strong: 'red',
+            light: '#E86161FF'
         }
     },
     fontSize: {
+        xsmall: 10,
         small: 13,
         medium: 16,
-        big: 20,
-        xbig: 24
+        big: 19,
+        xbig: 22
     }
 };
 

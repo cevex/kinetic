@@ -19,14 +19,20 @@ export class PathologySessionElementService {
         };
     }
 
-    private static mapTodoExercisesGroup(
+    public static mapTodoExercisesGroup(
         session: PathologySessionData,
         exercises: Exercise[]
     ): ExerciseGroupElement {
+        const title = this.getSessionTitle(session);
         return {
-            title: this.getSessionTitle(session),
+            id: this.getExerciseGroupId(title, exercises),
+            title: title,
             exercises: exercises
         };
+    }
+
+    public static getExerciseGroupId(title: string, exercises: Exercise[]): string {
+        return title + exercises.map(exercise => exercise.id).join('#');
     }
 
     private static mapPostureExercisesGroups(
@@ -38,6 +44,6 @@ export class PathologySessionElementService {
 
     private static getSessionTitle(session: PathologySessionData): string {
         const now = DateTimeService.getNow();
-        return 'A faire ' + DateTimeService.formatDayDuration(session.date, now);
+        return 'A faire ' + DateTimeService.formatDayDuration(new Date(session.dateUTC), now);
     }
 }

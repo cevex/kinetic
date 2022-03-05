@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import KntCheckBox from '../../../ui/check-box/check-box.component';
 import styles from './exercises-item.style';
@@ -8,6 +8,8 @@ interface ExerciseItemProp {
     exercise: Exercise;
     selected: boolean;
     showCheck?: boolean;
+    onExerciseSelected?: (exercise: Exercise) => void;
+    onExerciseNavigate?: (exercise: Exercise) => void;
 }
 
 class ExerciseItem extends Component<ExerciseItemProp> {
@@ -24,10 +26,15 @@ class ExerciseItem extends Component<ExerciseItemProp> {
                         {this.props.exercise.label}
                     </Text>
                 </View>
-                <Image
-                    style={styles.img}
-                    source={require('../../../../assets/images/play-button.png')}
-                />
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.onExerciseNavigate(this.props.exercise);
+                    }}>
+                    <Image
+                        style={styles.img}
+                        source={require('../../../../assets/images/play-button.png')}
+                    />
+                </TouchableOpacity>
             </View>
         );
     }

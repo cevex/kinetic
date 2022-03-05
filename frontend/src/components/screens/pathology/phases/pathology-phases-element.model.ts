@@ -1,4 +1,4 @@
-import { UiItem } from '../../../ui/core/ui-item.model';
+import { SelectProgressItem } from '../../../ui/selects/progress/select-progress.component';
 import { PathologySessionElement } from '../session/pathology-session-element.model';
 
 export interface PathologyPhaseElement {
@@ -6,7 +6,7 @@ export interface PathologyPhaseElement {
     hasNext: boolean;
     hasPrevious: boolean;
 
-    sessions: UiItem[];
+    sessions: SelectProgressItem[];
     selectedSession: string;
 
     sessionElement: PathologySessionElement;

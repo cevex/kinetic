@@ -9,9 +9,10 @@ import { KineticState } from '../../core/store/kinetic.state';
 import { KineticStore } from '../../core/store/kinetic.store';
 import { RootNavigation } from '../common/root-navigator';
 import { I18nService } from '../i18n';
+import ExerciseDetailsScreen from './exercices/details/exercise-details-screen.component';
 import ConsultScreen from './healtcheck/consult/consult-screen.component';
 import DiagnosisScreen from './healtcheck/diagnosis/diagnosis-screen.component';
-import ExerciseScreen from './healtcheck/exercices/healthcheck-exercise-screen.component';
+import HealthcheckExerciseScreen from './healtcheck/exercices/healthcheck-exercise-screen.component';
 import HealthcheckGuideScreen from './healtcheck/guide/healthcheck-guide-screen.component';
 import { HealthcheckRouter } from './healtcheck/healthcheck-router.service';
 import PainLocationChoiceScreen from './healtcheck/pain-location/choice-screen/pain-location-choice-screen.component';
@@ -29,7 +30,8 @@ class AppComponent extends Component {
     private healthcheckChangeUnsub: Unsubscribe;
 
     private routes = {
-        home: 'Home'
+        home: 'Home',
+        exercise: 'Exercise'
     };
 
     constructor(props: any) {
@@ -90,9 +92,16 @@ class AppComponent extends Component {
                             {/*======================= Base =====================================*/}
 
                             <Stack.Screen name={this.routes.home} component={HomeScreen} />
+
+                            {/*======================= Pathology =====================================*/}
+
                             <Stack.Screen
                                 name={PathologyRouter.routes.dashboard}
                                 component={PathologyDashboardScreen}
+                            />
+                            <Stack.Screen
+                                name={this.routes.exercise}
+                                component={ExerciseDetailsScreen}
                             />
 
                             {/*======================= HEALTHCHECK =====================================*/}
@@ -118,7 +127,7 @@ class AppComponent extends Component {
                             />
                             <Stack.Screen
                                 name={HealthcheckRouter.routes.exercise}
-                                component={ExerciseScreen}
+                                component={HealthcheckExerciseScreen}
                             />
                             <Stack.Screen
                                 name={HealthcheckRouter.routes.redoExercise}

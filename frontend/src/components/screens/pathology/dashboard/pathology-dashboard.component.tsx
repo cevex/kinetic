@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
@@ -14,7 +13,6 @@ import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-
 import { KineticState } from '../../../../core/store/kinetic.state';
 import { PathologyActionner } from '../../../../core/store/pathology/pathology.actions';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
-import I18n from '../../../i18n';
 import { UiItem } from '../../../ui/core/ui-item.model';
 import KntSelectSwitch from '../../../ui/selects/switch/select-switch.component';
 import ExerciseList from '../../exercices/list/exercises-list.component';
@@ -70,23 +68,22 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.headerTitle}>
-                        <Icon name="bars" size={25} color="#432C81" />
-                        <Text style={styles.headerTitleText}>{I18n.t('pain.area.selectPain')}</Text>
+                        {/*<Icon name="bars" size={25} color="#432C81" />*/}
+                        <Text style={styles.headerTitleText}>{this.state.dashboardTitle}</Text>
                     </View>
-                    <View style={styles.headerChoice}>
-                        <KntSelectSwitch
-                            items={this.state.dashboardModeOptions}
-                            selectedItemId={this.state.selectedDashboardMode.id}
-                            onSelected={(item: UiItem) => {
-                                this.setState(
-                                    PathologyDashboardService.setDashboardMode(
-                                        this.state,
-                                        item.id as DashboardMode
-                                    )
-                                );
-                            }}
-                        />
-                    </View>
+                    <KntSelectSwitch
+                        style={styles.headerChoice}
+                        items={this.state.dashboardModeOptions}
+                        selectedItemId={this.state.selectedDashboardMode.id}
+                        onSelected={(item: UiItem) => {
+                            this.setState(
+                                PathologyDashboardService.setDashboardMode(
+                                    this.state,
+                                    item.id as DashboardMode
+                                )
+                            );
+                        }}
+                    />
                 </View>
 
                 {this.state.selectedDashboardMode &&
@@ -97,6 +94,11 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
                                 selectedExercises={this.state.currentSession.doneExercisesId}
                                 onExerciseSelected={(exercise: Exercise) => {
                                     console.log('onExerciseSelected', exercise);
+                                }}
+                                onExerciseNavigate={(exercise: Exercise) => {
+                                    this.props.navigation.navigate('Exercise', {
+                                        exerciseId: exercise.id
+                                    });
                                 }}
                                 onSessionSelected={(session: PathologySession) => {
                                     console.log('onSessionSelected', session);
@@ -110,8 +112,10 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
                             <ExerciseList
                                 exercises={ExercisesService.getExercises()}
                                 showCheck={false}
-                                onExerciseSelected={(exercise: Exercise) => {
-                                    console.log(exercise);
+                                onExerciseNavigate={(exercise: Exercise) => {
+                                    this.props.navigation.navigate('Exercise', {
+                                        exerciseId: exercise.id
+                                    });
                                 }}
                             />
                         </ScrollView>

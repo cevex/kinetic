@@ -52,7 +52,7 @@ export class ButtonService {
 
     private static getSuccessButton() {
         return {
-            backgroundColor: globalVariables.color.accent2,
+            backgroundColor: globalVariables.color.success,
             textColor: globalVariables.color.dark,
             borderColor: globalVariables.color.white
         };

@@ -7,7 +7,7 @@ import styles from './select-switch.style';
 class KntSelectSwitch extends Component<SelectProp> {
     render() {
         return (
-            <View style={styles.switchContainer}>
+            <View style={[styles.switchContainer, this.props.style]}>
                 {this.props.items.map((item: UiItem) => (
                     <TouchableOpacity
                         key={item.id}

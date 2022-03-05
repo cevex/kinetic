@@ -11,6 +11,7 @@ interface PathologySessionProp {
     session: PathologySessionElement;
     selectedExercises: string[];
     onExerciseSelected?: (exercise: Exercise) => void;
+    onExerciseNavigate?: (exercise: Exercise) => void;
 }
 
 class PathologySession extends Component<PathologySessionProp> {
@@ -25,11 +26,12 @@ class PathologySession extends Component<PathologySessionProp> {
                     {this.props.session.exercisesGroups.map(
                         (exerciseGroup: ExerciseGroupElement) => (
                             <ExerciseGroup
-                                key={JSON.stringify(exerciseGroup)}
+                                key={exerciseGroup.id}
                                 exerciseGroup={exerciseGroup}
-                                secondaryMode={!exerciseGroup.subGroup?.length}
+                                secondaryMode={!!exerciseGroup.subGroup?.length}
                                 selectedExercises={this.props.selectedExercises}
                                 onExerciseSelected={this.props.onExerciseSelected}
+                                onExerciseNavigate={this.props.onExerciseNavigate}
                             />
                         )
                     )}

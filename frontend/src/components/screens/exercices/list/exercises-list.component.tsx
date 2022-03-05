@@ -9,6 +9,7 @@ interface ExerciseListProp {
     showCheck?: boolean;
     selectedExercises?: string[];
     onExerciseSelected?: (exercise: Exercise) => void;
+    onExerciseNavigate?: (exercise: Exercise) => void;
 }
 
 class ExerciseList extends Component<ExerciseListProp> {
@@ -25,6 +26,8 @@ class ExerciseList extends Component<ExerciseListProp> {
                         exercise={exercise}
                         selected={index % 2 === 0}
                         showCheck={this.props.showCheck}
+                        onExerciseSelected={this.props.onExerciseSelected}
+                        onExerciseNavigate={this.props.onExerciseNavigate}
                     />
                 ))}
             </View>

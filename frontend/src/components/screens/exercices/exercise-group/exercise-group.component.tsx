@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
-import { globalStyles, globalVariables } from '../../../styles';
+import { globalVariables } from '../../../styles';
 import ExerciseList from '../list/exercises-list.component';
 import { ExerciseGroupElement } from './exercise-group.model';
 import styles from './exercise-group.styles';
@@ -12,6 +12,7 @@ interface ExerciseGroupProp {
     selectedExercises: string[];
     secondaryMode?: boolean;
     onExerciseSelected?: (exercise: Exercise) => void;
+    onExerciseNavigate?: (exercise: Exercise) => void;
 }
 
 class ExerciseGroup extends Component<ExerciseGroupProp> {
@@ -29,11 +30,13 @@ class ExerciseGroup extends Component<ExerciseGroupProp> {
                             size={25}
                             color={
                                 this.props.secondaryMode
-                                    ? globalVariables.color.primary
-                                    : globalVariables.color.accent
+                                    ? globalVariables.color.accent
+                                    : globalVariables.color.primary
                             }
                         />
-                        <Text style={globalStyles.cardTitle}>{this.props.exerciseGroup.title}</Text>
+                        <Text style={styles.exerciseGroupHeaderTitleText}>
+                            {this.props.exerciseGroup.title}
+                        </Text>
                     </View>
                     <Text style={styles.exerciseGroupHeaderAside}>20min</Text>
                 </View>
@@ -43,6 +46,7 @@ class ExerciseGroup extends Component<ExerciseGroupProp> {
                         showCheck={!this.props.secondaryMode}
                         selectedExercises={this.props.selectedExercises}
                         onExerciseSelected={this.props.onExerciseSelected}
+                        onExerciseNavigate={this.props.onExerciseNavigate}
                     />
                 </View>
             </View>

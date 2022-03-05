@@ -13,13 +13,17 @@ const styles = StyleSheet.create({
         backgroundColor: globalVariables.color.white,
         // flex: 1,
         width: '100%',
-        height: 40
+        padding: 10
     },
     headerText: {
         color: globalVariables.color.primary,
         marginLeft: 10,
-        fontSize: globalVariables.fontSize.medium,
-        fontWeight: '600'
+        fontSize: globalVariables.fontSize.big,
+        fontWeight: '700'
+    },
+    selectProgress: {
+        marginTop: 10,
+        marginLeft: 10
     },
     session: {
         backgroundColor: globalVariables.color.white,

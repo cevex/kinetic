@@ -5,14 +5,34 @@ export class DateTimeService {
         return moment().toDate();
     }
 
+    public static getTodayStart(): Date {
+        return this.toStartOfDay(this.getNow());
+    }
+
+    public static equalsUTC(dateUtc1: string, dateUtc2: string): boolean {
+        return moment(dateUtc1).isSame(moment(dateUtc2));
+    }
+
     public static equals(date1: Date, date2: Date): boolean {
-        return moment(date1.toString()).isSame(moment(date2.toString()));
+        return moment(date1.toISOString()).isSame(moment(date2.toISOString()));
+    }
+
+    public static isBefore(date1: Date, date2: Date): boolean {
+        return moment(date1.toISOString()).isBefore(moment(date2.toISOString()));
+    }
+
+    public static isAfter(date1: Date, date2: Date): boolean {
+        return moment(date1.toISOString()).isAfter(moment(date2.toISOString()));
     }
 
     public static durationAsDayRounded(date1: Date, date2: Date): number {
-        return moment(date1.toString())
+        return moment(date1.toISOString())
             .startOf('day')
-            .diff(moment(date2.toString()).startOf('day'), 'day');
+            .diff(moment(date2.toISOString()).startOf('day'), 'day');
+    }
+
+    public static toStartOfDay(date1: Date): Date {
+        return moment(date1.toISOString()).startOf('day').toDate();
     }
 
     public static formatDayDuration(date1: Date, date2: Date): string {

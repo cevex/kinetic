@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     areaUnselected: {
-        backgroundColor: globalVariables.color.accent2,
+        backgroundColor: globalVariables.color.success,
         borderWidth: 0
     }
 });

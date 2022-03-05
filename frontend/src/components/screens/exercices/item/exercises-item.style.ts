@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         // flex: 1
     },
     text: {
-        maxWidth: '80%',
+        maxWidth: '90%',
         flexDirection: 'row',
         textAlignVertical: 'center',
         color: globalVariables.color.primary
@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
     box: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingTop: 15
+        paddingTop: 15,
+        paddingLeft: 5
     },
     img: {
-        // width: 50
-        // height: 50
+        width: 30,
+        height: 30
     }
 });
 

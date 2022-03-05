@@ -9,7 +9,8 @@ import styles from './pathology-phases.styles';
 interface PathologyPhaseProp {
     phase: PathologyPhaseElement;
     selectedExercises: string[];
-    onExerciseSelected: (exercise: Exercise) => void;
+    onExerciseSelected?: (exercise: Exercise) => void;
+    onExerciseNavigate?: (exercise: Exercise) => void;
     onSessionSelected: (session: PathologySession) => void;
 }
 
@@ -24,6 +25,7 @@ class PathologyPhase extends Component<PathologyPhaseProp> {
                 <View style={styles.header}>
                     <Text style={styles.headerText}>{this.props.phase.phaseName}</Text>
                     <KntSelectProgress
+                        style={styles.selectProgress}
                         items={this.props.phase.sessions}
                         selectedItemId={this.props.phase.selectedSession}
                         onSelected={item => {
@@ -36,6 +38,7 @@ class PathologyPhase extends Component<PathologyPhaseProp> {
                         session={this.props.phase.sessionElement}
                         selectedExercises={this.props.selectedExercises}
                         onExerciseSelected={this.props.onExerciseSelected}
+                        onExerciseNavigate={this.props.onExerciseNavigate}
                     />
                 </View>
             </View>

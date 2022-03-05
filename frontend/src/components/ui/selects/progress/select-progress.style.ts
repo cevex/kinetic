@@ -2,33 +2,31 @@ import { StyleSheet } from 'react-native';
 import { globalVariables } from '../../../styles';
 
 const styles = StyleSheet.create({
-    switchContainer: {
+    container: {
         flexDirection: 'row',
 
         width: '100%',
-        height: 44,
-
-        backgroundColor: globalVariables.color.grey.light,
         borderRadius: 8
     },
     selectButton: {
-        flex: 1,
+        width: 30,
+        height: 40,
         alignContent: 'center',
         justifyContent: 'center',
-        margin: 1
+        marginRight: 5,
+        borderRadius: 8
     },
     selectButtonSelected: {
-        backgroundColor: globalVariables.color.white,
-        borderRadius: 8,
-        borderWidth: 1,
         borderColor: globalVariables.color.grey.light,
-        height: 42
+        borderWidth: 2
     },
     selectButtonUnselected: {
-        backgroundColor: globalVariables.color.grey.light
+        borderColor: globalVariables.color.grey.light,
+        borderWidth: 0
     },
     selectButtonText: {
         fontSize: globalVariables.fontSize.medium,
+        fontWeight: '600',
         textAlign: 'center'
     }
 });

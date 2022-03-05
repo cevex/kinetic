@@ -12,7 +12,7 @@ export class PathologySessionDataService {
     // =======================================================================
 
     public static generateSessions(phase: TreatmentPhase): PathologySessionData[] {
-        const baseDate = new Date();
+        const baseDate = DateTimeService.getTodayStart();
         return range(phase.duration).map(index => {
             const date = moment(baseDate).add(index, 'days').toDate();
             return PathologySessionDataService.buildSession(date);
@@ -21,7 +21,7 @@ export class PathologySessionDataService {
 
     public static buildSession(date: Date): PathologySessionData {
         return {
-            date: date,
+            dateUTC: date.toUTCString(),
             doneExercisesId: [],
             evaluation: null
         };
@@ -32,9 +32,13 @@ export class PathologySessionDataService {
     // =======================================================================
 
     public static findTodaySession(sessions: PathologySessionData[]): PathologySessionData {
-        return sessions?.find(session =>
-            DateTimeService.equals(session.date, DateTimeService.getNow())
-        );
+        return sessions?.find(session => {
+            console.log('');
+            return DateTimeService.equals(
+                new Date(session.dateUTC),
+                DateTimeService.getTodayStart()
+            );
+        });
     }
 
     // =======================================================================

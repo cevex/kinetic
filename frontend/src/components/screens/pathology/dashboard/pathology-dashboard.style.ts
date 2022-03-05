@@ -3,26 +3,24 @@ import { globalVariables } from '../../../styles';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: globalVariables.color.white,
         flex: 1,
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
     },
     header: {
         width: '100%',
-        height: 100,
         flexDirection: 'column',
-        alignItems: 'center',
         justifyContent: 'center',
-        margin: 20
+        alignItems: 'center',
+        backgroundColor: globalVariables.color.white
     },
     headerTitle: {
         flexDirection: 'row',
         alignItems: 'center',
-        height: 60,
         width: '100%',
-        flex: 1,
-        paddingLeft: 15
+        // flex: 1,
+        paddingTop: 15
     },
     headerTitleText: {
         color: globalVariables.color.primary,
@@ -31,8 +29,7 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     headerChoice: {
-        height: 50,
-        alignItems: 'center',
+        // width: '90%',
         margin: 10
     },
     sessionContainer: {

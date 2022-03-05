@@ -9,38 +9,20 @@ import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
 import { globalStyles } from '../../../styles';
 import KntButton from '../../../ui/button/button.component';
-import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectFlat from '../../../ui/selects/flat/select-flat.component';
 import KntYoutubePlayer from '../../../ui/youtube-player.component';
-import { ExerciseScreenState } from './healthcheck-exercise-screen.model';
-import { HealthcheckExerciseScreenService } from './healthcheck-exercise-screen.service';
-import styles from './healthcheck-exercise-screen.style';
+import { ExerciseDetailsState } from './exercise-details-screen.model';
+import { ExerciseDetailsScreenService } from './exercise-details-screen.service';
+import styles from './exercise-details-screen.style';
 
-interface ExerciseScreenProp extends ScreenProp {
+interface ExerciseDetailsScreenProp extends ScreenProp {
     taskId: string;
     assessExercise: (choiceType: PainAssessChoiceTripleType) => void;
 }
 
-class HealthcheckExerciseScreen extends Component<ExerciseScreenProp, ExerciseScreenState> {
-    constructor(props: ExerciseScreenProp) {
+class ExerciseDetailsScreen extends Component<ExerciseDetailsScreenProp, ExerciseDetailsState> {
+    constructor(props: ExerciseDetailsScreenProp) {
         super(props);
-        this.state = HealthcheckExerciseScreenService.initScreen(this.props.taskId);
-    }
-
-    componentDidUpdate(
-        prevProps: Readonly<ExerciseScreenProp>,
-        prevState: Readonly<ExerciseScreenState>
-    ) {
-        if (prevProps.taskId !== this.props.taskId) {
-            // eslint-disable-next-line react/no-did-update-set-state
-            this.setState(HealthcheckExerciseScreenService.initScreen(this.props.taskId));
-        }
-    }
-
-    private validateAssessment() {
-        if (!this.state.selectedChoice) return;
-        const choice = this.state.selectedChoice.id as PainAssessChoiceTripleType;
-        this.props.assessExercise(choice);
+        this.state = ExerciseDetailsScreenService.initScreen(this.props.route.params.exerciseId);
     }
 
     render() {
@@ -61,23 +43,11 @@ class HealthcheckExerciseScreen extends Component<ExerciseScreenProp, ExerciseSc
                     />
                     <Text style={globalStyles.cardMessage}>{this.state.exercise?.advice}</Text>
                 </View>
-                <KntSelectFlat
-                    style={styles.assessment}
-                    items={this.state.choices}
-                    selectedItemId={this.state.selectedChoice?.id}
-                    onSelected={(item: UiItem) => {
-                        this.setState(
-                            HealthcheckExerciseScreenService.selectAssessments(this.state, item)
-                        );
-                    }}
-                />
-
                 <KntButton
                     label={I18n.t('global.validate')}
                     type="primary"
                     style={styles.controls}
-                    disabled={!this.state.selectedChoice}
-                    onPress={() => this.validateAssessment()}
+                    onPress={() => this.props.navigation.goBack()}
                 />
             </View>
         );
@@ -93,4 +63,4 @@ export default connect(
             dispatch(HealthcheckActionner.assessExercise(choiceType));
         }
     })
-)(HealthcheckExerciseScreen);
+)(ExerciseDetailsScreen);

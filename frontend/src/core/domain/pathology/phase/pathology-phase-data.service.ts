@@ -62,6 +62,26 @@ export class PathologyPhaseDataService {
         );
     }
 
+    public static findNextPhase(
+        phases: PathologyPhaseData[],
+        phaseToCheck: PathologyPhaseData
+    ): PathologyPhaseData {
+        const indexToCheck = phases?.findIndex(
+            phase => phase.treatmentPhase === phaseToCheck.treatmentPhase
+        );
+        return phases[indexToCheck];
+    }
+
+    public static findPreviousPhase(
+        phases: PathologyPhaseData[],
+        phaseToCheck: PathologyPhaseData
+    ): PathologyPhaseData {
+        const indexToCheck = phases?.findIndex(
+            phase => phase.treatmentPhase === phaseToCheck.treatmentPhase
+        );
+        return phases[indexToCheck - 1];
+    }
+
     // ===============================================================
     //              Controls
     // ===============================================================

@@ -24,8 +24,6 @@ export class PathologyDashboardService {
         pathology: Pathology,
         dashboardMode: DashboardMode
     ): PathologyDashboardState {
-        console.log('[PathologyDashboard] pathology', pathology);
-
         const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
         const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
 
@@ -35,7 +33,7 @@ export class PathologyDashboardService {
             currentSession: currentSession,
 
             // Element model
-            dashboardTitle: treatmentArea.title,
+            dashboardTitle: treatmentArea.name,
             dashboardModeOptions: this.dashboardModeOptions,
             selectedDashboardMode: this.dashboardModeOptions.find(
                 item => item.id === dashboardMode
@@ -56,14 +54,74 @@ export class PathologyDashboardService {
         pathology: Pathology
     ): PathologyDashboardState {
         const newState = cloneDeep(currentState);
-        const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
-        const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
+        // const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
+        // const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
         newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
             treatmentArea,
-            currentPhase,
-            currentSession,
-            !PathologyPhaseDataService.isFirstPhase(pathology.phases, currentPhase),
-            !PathologyPhaseDataService.isLastPhase(pathology.phases, currentPhase)
+            currentState.currentPhase,
+            currentState.currentSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, currentState.currentPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, currentState.currentPhase)
+        );
+        return newState;
+    }
+
+    public static goNextPhase(
+        currentState: PathologyDashboardState,
+        treatmentArea: TreatmentArea,
+        pathology: Pathology
+    ): PathologyDashboardState {
+        const newState = cloneDeep(currentState);
+        newState.currentPhase = PathologyPhaseDataService.findNextPhase(
+            pathology.phases,
+            currentState.currentPhase
+        );
+        newState.currentSession = newState.currentPhase.sessions[0];
+        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+            treatmentArea,
+            newState.currentPhase,
+            newState.currentSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newState.currentPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, newState.currentPhase)
+        );
+        return newState;
+    }
+
+    public static goPreviousPhase(
+        currentState: PathologyDashboardState,
+        treatmentArea: TreatmentArea,
+        pathology: Pathology
+    ): PathologyDashboardState {
+        const newState = cloneDeep(currentState);
+        newState.currentPhase = PathologyPhaseDataService.findPreviousPhase(
+            pathology.phases,
+            currentState.currentPhase
+        );
+        newState.currentSession = newState.currentPhase.sessions[0];
+        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+            treatmentArea,
+            newState.currentPhase,
+            newState.currentSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newState.currentPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, newState.currentPhase)
+        );
+        return newState;
+    }
+
+    public static goToSession(
+        currentState: PathologyDashboardState,
+        sessionIndex: number,
+        treatmentArea: TreatmentArea,
+        pathology: Pathology
+    ): PathologyDashboardState {
+        const newState = cloneDeep(currentState);
+        newState.currentSession = newState.currentPhase.sessions[sessionIndex];
+        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+            treatmentArea,
+            newState.currentPhase,
+            newState.currentSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newState.currentPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, newState.currentPhase)
         );
         return newState;
     }
