@@ -11,6 +11,7 @@ interface ExerciseGroupProp {
     exerciseGroup: ExerciseGroupElement;
     selectedExercises: string[];
     secondaryMode?: boolean;
+    readOnly?: boolean;
     onExerciseSelected?: (exercise: Exercise) => void;
     onExerciseNavigate?: (exercise: Exercise) => void;
 }
@@ -42,8 +43,8 @@ class ExerciseGroup extends Component<ExerciseGroupProp> {
                 </View>
                 <View style={styles.exerciseGroupContent}>
                     <ExerciseList
+                        showCheck={!this.props.secondaryMode && !this.props.readOnly}
                         exercises={this.props.exerciseGroup.exercises}
-                        showCheck={!this.props.secondaryMode}
                         selectedExercises={this.props.selectedExercises}
                         onExerciseSelected={this.props.onExerciseSelected}
                         onExerciseNavigate={this.props.onExerciseNavigate}

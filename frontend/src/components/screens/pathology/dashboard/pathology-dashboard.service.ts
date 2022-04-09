@@ -1,4 +1,5 @@
 import { cloneDeep } from 'lodash-es';
+import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import { Pathology } from '../../../../core/domain/pathology/pathology.model';
 import { PathologyPhaseDataService } from '../../../../core/domain/pathology/phase/pathology-phase-data.service';
 import { PathologySessionDataService } from '../../../../core/domain/pathology/session/pathology-session-data.service';
@@ -19,6 +20,10 @@ export class PathologyDashboardService {
         }
     ];
 
+    // =======================================================================
+    //               Sessions
+    // =======================================================================
+
     public static initScreen(
         treatmentArea: TreatmentArea,
         pathology: Pathology,
@@ -28,6 +33,8 @@ export class PathologyDashboardService {
         const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
 
         return {
+            showEvaluation: false,
+
             // Data model
             currentPhase: currentPhase,
             currentSession: currentSession,
@@ -72,11 +79,13 @@ export class PathologyDashboardService {
         pathology: Pathology
     ): PathologyDashboardState {
         const newState = cloneDeep(currentState);
+        // Data
         newState.currentPhase = PathologyPhaseDataService.findNextPhase(
             pathology.phases,
             currentState.currentPhase
         );
         newState.currentSession = newState.currentPhase.sessions[0];
+        // Element
         newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
             treatmentArea,
             newState.currentPhase,
@@ -134,6 +143,30 @@ export class PathologyDashboardService {
         newState.selectedDashboardMode = this.dashboardModeOptions.find(
             item => item.id === dashboardMode
         );
+        return newState;
+    }
+
+    public static selectExercise(
+        pathologyDashboard: PathologyDashboardState,
+        exercise: Exercise
+    ): PathologyDashboardState {
+        const newState = cloneDeep(pathologyDashboard);
+        return newState;
+    }
+
+    public static showEvaluation(
+        pathologyDashboard: PathologyDashboardState
+    ): PathologyDashboardState {
+        const newState = cloneDeep(pathologyDashboard);
+        newState.showEvaluation = true;
+        return newState;
+    }
+
+    public static setEvaluation(
+        pathologyDashboard: PathologyDashboardState
+    ): PathologyDashboardState {
+        const newState = cloneDeep(pathologyDashboard);
+        newState.showEvaluation = true;
         return newState;
     }
 }

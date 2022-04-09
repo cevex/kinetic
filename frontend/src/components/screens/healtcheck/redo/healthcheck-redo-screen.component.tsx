@@ -53,9 +53,6 @@ class HealthcheckRedoScreen extends Component<
                             <KntYoutubePlayer
                                 videoId={this.state.exerciseAdditional.videoId}
                                 playing={true}
-                                onPlayChange={event => {
-                                    console.log('YoutubePlayer onPlayChange : ', event);
-                                }}
                             />
                         </View>
                     )}

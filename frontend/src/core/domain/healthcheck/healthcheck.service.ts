@@ -1,4 +1,5 @@
 import { cloneDeep, last } from 'lodash-es';
+import { Logger } from '../../common/log.service';
 import { BodyAreaType } from '../../domain/body/body-area-data.model';
 import { HealthcheckTaskService } from '../../domain/healthcheck-task/healthcheck-task.service';
 import { HealthcheckTask } from '../healthcheck-task/healthcheck-task.model';
@@ -71,10 +72,6 @@ export class HealthcheckService {
     // =======================================================================
 
     public static printTasks(healthcheck: Healthcheck) {
-        console.log('[Healthcheck] => TASKS :');
-        healthcheck.previousTaskId.forEach(str => {
-            console.log('[Healthcheck]          [previous]-->', str);
-        });
-        console.log('[Healthcheck]          [current]-->', healthcheck.taskId);
+        Logger.log('[Healthcheck] => TASKS :', healthcheck);
     }
 }

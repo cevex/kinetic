@@ -6,6 +6,8 @@ import { PathologyPhaseElement } from '../phases/pathology-phases-element.model'
 export declare type DashboardMode = 'phase' | 'video-library';
 
 export interface PathologyDashboardState {
+    showEvaluation: boolean;
+
     // Data model
     currentPhase: PathologyPhaseData;
     currentSession: PathologySessionData;

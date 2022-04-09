@@ -10,8 +10,10 @@ import styles from './pathology-session.styles';
 interface PathologySessionProp {
     session: PathologySessionElement;
     selectedExercises: string[];
-    onExerciseSelected?: (exercise: Exercise) => void;
-    onExerciseNavigate?: (exercise: Exercise) => void;
+    onSessionValidated: () => void;
+    onExerciseAllSelected: () => void;
+    onExerciseSelected: (exercise: Exercise) => void;
+    onExerciseNavigate: (exercise: Exercise) => void;
 }
 
 class PathologySession extends Component<PathologySessionProp> {
@@ -22,6 +24,9 @@ class PathologySession extends Component<PathologySessionProp> {
     render() {
         return (
             <View style={styles.session}>
+                {/*----------------------------------------------------------------------------------*/}
+                {/*                         List                                                     */}
+                {/*----------------------------------------------------------------------------------*/}
                 <ScrollView style={styles.sessionContent}>
                     {this.props.session.exercisesGroups.map(
                         (exerciseGroup: ExerciseGroupElement) => (
@@ -29,6 +34,7 @@ class PathologySession extends Component<PathologySessionProp> {
                                 key={exerciseGroup.id}
                                 exerciseGroup={exerciseGroup}
                                 secondaryMode={!!exerciseGroup.subGroup?.length}
+                                readOnly={this.props.session.readOnly}
                                 selectedExercises={this.props.selectedExercises}
                                 onExerciseSelected={this.props.onExerciseSelected}
                                 onExerciseNavigate={this.props.onExerciseNavigate}
@@ -36,18 +42,25 @@ class PathologySession extends Component<PathologySessionProp> {
                         )
                     )}
                 </ScrollView>
-                <View style={styles.controls}>
-                    <KntButton
-                        label={'Valider toute la séance'}
-                        type="success"
-                        style={styles.controlsValidate}
-                    />
-                    <KntButton
-                        label={'Passer à la phase suivante'}
-                        type="primary"
-                        style={styles.controlsNext}
-                    />
-                </View>
+                {/*----------------------------------------------------------------------------------*/}
+                {/*                         Controls                                                 */}
+                {/*----------------------------------------------------------------------------------*/}
+                {!this.props.session.readOnly && (
+                    <View style={styles.controls}>
+                        <KntButton
+                            label={'Valider toute la séance'}
+                            type="success"
+                            style={styles.controlsValidate}
+                            onPress={() => this.props.onExerciseAllSelected()}
+                        />
+                        <KntButton
+                            label={"Passer à l'évaluation"}
+                            type="primary"
+                            style={styles.controlsNext}
+                            onPress={() => this.props.onSessionValidated()}
+                        />
+                    </View>
+                )}
             </View>
         );
     }

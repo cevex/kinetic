@@ -15,13 +15,22 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10
     },
+    headerTitle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        width: '100%'
+    },
+    headerTitleIcon: {
+        marginLeft: 10
+    },
     headerText: {
         color: globalVariables.color.primary,
         marginLeft: 10,
         fontSize: globalVariables.fontSize.big,
         fontWeight: '700'
     },
-    selectProgress: {
+    headerProgress: {
         marginTop: 10,
         marginLeft: 10
     },

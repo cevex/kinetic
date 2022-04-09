@@ -42,7 +42,6 @@ class AppComponent extends Component {
             if (this.isHealthcheckRouter(storeState)) {
                 this.listenForHealthcheck();
             }
-            // console.log('[AppComponent] => New state :', storeState);
             if (storeState.onGoingHealthcheck) {
                 HealthcheckService.printTasks(storeState.onGoingHealthcheck);
             }
@@ -59,7 +58,6 @@ class AppComponent extends Component {
 
     private listenForHealthcheck() {
         if (this.healthcheckChangeUnsub) return;
-        console.log('[AppComponent] => LISTEN healthcheck');
         this.healthcheckChangeUnsub = KineticStore.store.subscribe(() => {
             const currentHealthcheck = KineticStore.store.getState().onGoingHealthcheck;
             // When Healthcheck is over, Stop listening
@@ -67,7 +65,6 @@ class AppComponent extends Component {
                 this.healthcheckChangeUnsub();
                 this.healthcheckChangeUnsub = null;
                 RootNavigation.navigate(PathologyRouter.routes.dashboard);
-                console.log('[AppComponent] => LISTEN-STOP healthcheck listening');
             } else {
                 // When Healthcheck is on going, handle navigation here
                 HealthcheckRouter.rootToTask(currentHealthcheck);

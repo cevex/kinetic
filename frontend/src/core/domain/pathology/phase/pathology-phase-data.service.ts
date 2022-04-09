@@ -1,4 +1,6 @@
 import { cloneDeep, first, last } from 'lodash-es';
+import moment from 'moment';
+import { DateTimeService } from '../../../common/date-time.service';
 import { Healthcheck } from '../../healthcheck/healthcheck.model';
 import { TreatmentService } from '../../treatment/treatment.service';
 import { PathologySessionData } from '../session/pathology-session-data.model';
@@ -18,10 +20,16 @@ export class PathologyPhaseDataService {
 
     public static generatePhases(healthcheck: Healthcheck): PathologyPhaseData[] {
         const treatment = TreatmentService.getTreatmentForHealthcheck(healthcheck);
+        let phaseStartDate = DateTimeService.getTodayStart();
         return treatment.phasesWorkList.map(phasesWorkList => {
+            const sessions = PathologySessionDataService.generateSessions(
+                phasesWorkList.phase,
+                phaseStartDate
+            );
+            phaseStartDate = moment(phaseStartDate).add(sessions.length, 'days').toDate();
             return {
                 treatmentPhase: phasesWorkList.phase.id,
-                sessions: PathologySessionDataService.generateSessions(phasesWorkList.phase)
+                sessions: sessions
             };
         });
     }
@@ -69,7 +77,7 @@ export class PathologyPhaseDataService {
         const indexToCheck = phases?.findIndex(
             phase => phase.treatmentPhase === phaseToCheck.treatmentPhase
         );
-        return phases[indexToCheck];
+        return indexToCheck < phases.length - 1 ? phases[indexToCheck + 1] : phases[indexToCheck];
     }
 
     public static findPreviousPhase(
@@ -79,7 +87,7 @@ export class PathologyPhaseDataService {
         const indexToCheck = phases?.findIndex(
             phase => phase.treatmentPhase === phaseToCheck.treatmentPhase
         );
-        return phases[indexToCheck - 1];
+        return indexToCheck >= 0 ? phases[indexToCheck - 1] : phases[indexToCheck];
     }
 
     // ===============================================================

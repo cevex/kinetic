@@ -13,18 +13,20 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: globalVariables.color.white
+        backgroundColor: globalVariables.color.white,
+        padding: 10
     },
     headerTitle: {
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
         // flex: 1,
-        paddingTop: 15
+        paddingTop: 5,
+        paddingBottom: 10
     },
     headerTitleText: {
         color: globalVariables.color.primary,
-        fontSize: globalVariables.fontSize.xbig,
+        fontSize: globalVariables.fontSize.big,
         fontWeight: '600',
         marginLeft: 10
     },

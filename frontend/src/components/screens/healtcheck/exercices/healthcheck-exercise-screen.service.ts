@@ -6,7 +6,7 @@ import { UiItem } from '../../../ui/core/ui-item.model';
 import { ExerciseScreenState } from './healthcheck-exercise-screen.model';
 
 export class HealthcheckExerciseScreenService {
-    private static dualChoiceItem = [
+    public static dualChoiceItem = [
         {
             id: 'no',
             label: I18n.t('global.no'),
@@ -19,7 +19,7 @@ export class HealthcheckExerciseScreenService {
         }
     ];
 
-    private static tripleChoiceItem = [
+    public static tripleChoiceItem = [
         {
             id: 'less',
             label: I18n.t('pain.assessment.less'),

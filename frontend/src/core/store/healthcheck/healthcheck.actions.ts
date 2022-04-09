@@ -49,7 +49,6 @@ export interface EndHealthcheckAction extends HealthcheckAction {
 
 export class HealthcheckActionner {
     public static startHealthcheck(): StartHealthcheckAction {
-        console.log('Building actions');
         return { type: 'START_HEALTHCHECK' };
     }
 

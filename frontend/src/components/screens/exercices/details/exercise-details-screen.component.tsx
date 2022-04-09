@@ -34,13 +34,7 @@ class ExerciseDetailsScreen extends Component<ExerciseDetailsScreenProp, Exercis
                 </View>
 
                 <View style={styles.videoPlayer}>
-                    <KntYoutubePlayer
-                        videoId={this.state.exercise?.videoId}
-                        playing={true}
-                        onPlayChange={event => {
-                            console.log('YoutubePlayer onPlayChange : ', event);
-                        }}
-                    />
+                    <KntYoutubePlayer videoId={this.state.exercise?.videoId} playing={true} />
                     <Text style={globalStyles.cardMessage}>{this.state.exercise?.advice}</Text>
                 </View>
                 <KntButton

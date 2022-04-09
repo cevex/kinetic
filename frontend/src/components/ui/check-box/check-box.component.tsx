@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { globalVariables } from '../../styles';
+import styles from './check-box.style';
 
 interface CheckBoxProp {
     checked: boolean;
@@ -17,7 +18,11 @@ class KntCheckBox extends Component<CheckBoxProp, CheckBoxProp> {
 
     render() {
         return (
-            <TouchableOpacity style={styles.imagesContainer}>
+            <TouchableOpacity
+                style={styles.imagesContainer}
+                onPress={() =>
+                    this.props.onCheckChange && this.props.onCheckChange(!this.props.checked)
+                }>
                 <Icon
                     name={this.props.checked ? 'check-circle' : 'circle'}
                     size={25}
@@ -31,12 +36,5 @@ class KntCheckBox extends Component<CheckBoxProp, CheckBoxProp> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    imagesContainer: {
-        height: 45,
-        width: 45
-    }
-});
 
 export default KntCheckBox;

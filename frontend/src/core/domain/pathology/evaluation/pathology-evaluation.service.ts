@@ -1,11 +1,13 @@
-import { PathologyEvaluation, PathologyEvaluationFeeling } from './pathology-evaluation.model';
+import { PathologyEvaluationData, PathologyEvaluationFeeling } from './pathology-evaluation.model';
 
 export class PathologyEvaluationService {
     constructor() {}
 
-    public static isEvaluationEmpty(evaluation: PathologyEvaluation): boolean {
+    public static isEvaluationEmpty(evaluation: PathologyEvaluationData): boolean {
         return (
-            !evaluation || !evaluation.globalAssessment || this.isFeelingEmpty(evaluation.feeling)
+            !evaluation ||
+            !evaluation.exercisesAssessment ||
+            this.isFeelingEmpty(evaluation.todayFeeling)
         );
     }
 

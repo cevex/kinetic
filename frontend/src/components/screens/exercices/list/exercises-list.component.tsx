@@ -20,11 +20,11 @@ class ExerciseList extends Component<ExerciseListProp> {
     render() {
         return (
             <View style={styles.container}>
-                {this.props.exercises.map((exercise: Exercise, index: number) => (
+                {this.props.exercises.map((exercise: Exercise) => (
                     <ExerciseItem
                         key={exercise.id}
                         exercise={exercise}
-                        selected={index % 2 === 0}
+                        selected={this.props.selectedExercises?.includes(exercise.id)}
                         showCheck={this.props.showCheck}
                         onExerciseSelected={this.props.onExerciseSelected}
                         onExerciseNavigate={this.props.onExerciseNavigate}

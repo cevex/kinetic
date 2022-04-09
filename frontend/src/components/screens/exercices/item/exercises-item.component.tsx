@@ -19,17 +19,22 @@ class ExerciseItem extends Component<ExerciseItemProp> {
                 <View style={styles.left}>
                     {this.props.showCheck && (
                         <View style={styles.box}>
-                            <KntCheckBox checked={this.props.selected} />
+                            <KntCheckBox
+                                checked={this.props.selected}
+                                onCheckChange={() =>
+                                    this.props.onExerciseSelected(this.props.exercise)
+                                }
+                            />
                         </View>
                     )}
-                    <Text style={[styles.text, !this.props.showCheck && styles.textAlone]}>
+                    <Text
+                        style={[styles.text, !this.props.showCheck && styles.textAlone]}
+                        onPress={() => this.props.onExerciseNavigate(this.props.exercise)}>
                         {this.props.exercise.label}
                     </Text>
                 </View>
                 <TouchableOpacity
-                    onPress={() => {
-                        this.props.onExerciseNavigate(this.props.exercise);
-                    }}>
+                    onPress={() => this.props.onExerciseNavigate(this.props.exercise)}>
                     <Image
                         style={styles.img}
                         source={require('../../../../assets/images/play-button.png')}

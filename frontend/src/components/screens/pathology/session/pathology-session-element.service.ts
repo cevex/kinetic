@@ -7,13 +7,15 @@ import { PathologySessionElement } from '../session/pathology-session-element.mo
 export class PathologySessionElementService {
     public static mapPathologySession(
         pathologySession: PathologySessionData,
-        exercisesForPhase: Exercise[]
+        exercisesForPhase: Exercise[],
+        sessionReadOnly: boolean
     ): PathologySessionElement {
         // getExercicesToDo()
         // getExersiseOfType('posture')
         // --> GRoup By
 
         return {
+            readOnly: sessionReadOnly,
             exercisesGroups: [this.mapTodoExercisesGroup(pathologySession, exercisesForPhase)],
             evaluation: null
         };

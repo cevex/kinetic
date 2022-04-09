@@ -90,8 +90,6 @@ export class HealthcheckReducer {
 
     private static getTaskToTreat(choiceAreas: BodyAreaType[]): ChangeLocationHealthcheckTask {
         const bodyAreaToTreat = BodyAreaDataService.getMainArea(choiceAreas);
-        console.log('[HealthCheckReducer] selectLocation - choiceAreas', choiceAreas);
-        console.log('[HealthCheckReducer] selectLocation - bodyAreaToTreat', bodyAreaToTreat.type);
         return HealthcheckTaskService.getTaskByType('change-location')
             .map(changeLocationTask => <ChangeLocationHealthcheckTask>changeLocationTask)
             .find(task => task.bodyArea === bodyAreaToTreat.type);

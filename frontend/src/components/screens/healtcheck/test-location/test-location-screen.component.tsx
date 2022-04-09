@@ -22,7 +22,6 @@ class TestLocationScreen extends Component<TestLocationScreenProp, TestLocationS
     constructor(props: TestLocationScreenProp) {
         super(props);
         this.state = TestLocationScreenService.initScreen(this.props.taskId);
-        console.log('[TestLocationScreen} this.state', this.state);
     }
 
     render() {

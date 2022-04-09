@@ -12,7 +12,6 @@ export class I18nService {
         };
         I18n.locale = 'fr';
         getLanguages().then(userLanguages => {
-            console.log('Validated Locale : ', this.getValidatedLocale(userLanguages));
             I18n.locale = 'fr';
             // I18n.locale = this.getValidatedLocale(userLanguages);
         });

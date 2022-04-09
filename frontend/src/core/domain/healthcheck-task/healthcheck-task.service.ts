@@ -59,17 +59,12 @@ export class HealthcheckTaskService {
 
     public static getBodyAreas(testLocationTask: TestLocationHealthcheckTask): BodyArea[] {
         const painChoicesIds = testLocationTask && testLocationTask.painChoices;
-        console.log('[getBodyAreas] testLocationTask', testLocationTask);
-        console.log('[getBodyAreas] painChoicesIds', painChoicesIds);
         const bodyAreasTypes = painChoicesIds.map(painChoicesId => {
             const changeLocationTask = <ChangeLocationHealthcheckTask>(
                 HealthcheckTaskService.findTaskById(painChoicesId)
             );
-            console.log('[getBodyAreas] changeLocationTask', changeLocationTask);
-
             return changeLocationTask.bodyArea;
         });
-        console.log('[getBodyAreas] bodyAreasTypes', bodyAreasTypes);
         return BodyAreaDataService.getBodyAreasByTypes(bodyAreasTypes);
     }
 

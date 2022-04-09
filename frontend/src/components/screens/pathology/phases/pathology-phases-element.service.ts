@@ -27,6 +27,8 @@ export class PathologyPhasesElementService {
             treatment,
             treatmentPhase.id
         );
+
+        const sessionReadOnly = DateTimeService.isInFuture(new Date(currentSession.dateUTC));
         return {
             phaseName: this.getPhaseTitle(treatmentPhase, currentPhase, currentSession),
             hasPrevious: hasPrevious,
@@ -37,7 +39,8 @@ export class PathologyPhasesElementService {
 
             sessionElement: PathologySessionElementService.mapPathologySession(
                 currentSession,
-                exercisesForPhases
+                exercisesForPhases,
+                sessionReadOnly
             )
         };
     }

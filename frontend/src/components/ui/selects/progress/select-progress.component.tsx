@@ -53,7 +53,10 @@ class KntSelectProgress extends Component<SelectProgressProp> {
                                 {
                                     color: SelectProgressService.getButtonStyle(item.status)
                                         .textColor
-                                }
+                                },
+                                this.props.selectedItemId === item.id
+                                    ? styles.selectButtonTextSelected
+                                    : styles.selectButtonText
                             ]}>
                             {item.label}
                         </Text>

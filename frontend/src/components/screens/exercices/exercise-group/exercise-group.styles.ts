@@ -26,9 +26,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     exerciseGroupHeaderTitleText: {
-        fontSize: globalVariables.fontSize.medium,
+        fontSize: globalVariables.fontSize.big,
         color: globalVariables.color.primary,
-        marginLeft: 10
+        marginLeft: 10,
+        fontWeight: '600'
     },
     exerciseGroupHeaderAside: {
         color: globalVariables.color.accent,

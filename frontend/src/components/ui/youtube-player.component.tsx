@@ -5,12 +5,12 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 interface YoutubePlayerProp {
     videoId: string;
     playing: boolean;
-    onPlayChange: (playing: boolean) => void;
+    onPlayChange?: (playing: boolean) => void;
 }
 
 class KntYoutubePlayer extends Component<YoutubePlayerProp> {
     private onStateChange = (state: string) => {
-        if (state === 'ended') {
+        if (state === 'ended' && this.props.onPlayChange) {
             this.props.onPlayChange(false);
         }
     };

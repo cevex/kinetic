@@ -8,7 +8,6 @@ This project in the root node of the @kinetic projects.
 
 🕶️ Mobile app : [Kinetic - React Native](./frontend/README.md)
 
----
 ## 📖 Docs
 
 ```bash

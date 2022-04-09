@@ -1,3 +1,4 @@
+import { Logger } from '../../../core/common/log.service';
 import { HealthcheckTaskService } from '../../../core/domain/healthcheck-task/healthcheck-task.service';
 import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model';
 import { RootNavigation } from '../../common/root-navigator';
@@ -23,7 +24,7 @@ export class HealthcheckRouter {
 
     public static rootToTask(healthcheck: Healthcheck) {
         const screenPath = this.getHealthcheckRoot(healthcheck);
-        console.log('[HealthcheckRouter] => ROUTE to', screenPath);
+        Logger.log('[HealthcheckRouter] => ROUTE to', screenPath);
         RootNavigation.navigate(screenPath);
     }
 

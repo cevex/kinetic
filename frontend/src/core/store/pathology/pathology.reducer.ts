@@ -1,4 +1,5 @@
 import { cloneDeep } from 'lodash-es';
+import { Logger } from '../../common/log.service';
 import { Healthcheck } from '../../domain/healthcheck/healthcheck.model';
 import { Pathology } from '../../domain/pathology/pathology.model';
 import { PathologyService } from '../../domain/pathology/pathology.service';
@@ -48,7 +49,6 @@ export class PathologyReducer {
     };
 
     public static startPathology(pathology: Pathology, healthcheck: Healthcheck): Pathology {
-        console.log('[PathologyReducer] => startPathology', healthcheck);
         const newPathology = cloneDeep(pathology);
         newPathology.originalHealthcheck = healthcheck;
         newPathology.phases = PathologyPhaseDataService.generatePhases(healthcheck);

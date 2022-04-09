@@ -8,9 +8,9 @@ export declare type EvaluationFeelingPlace =
     | 'home'
     | 'bed';
 
-export interface PathologyEvaluation {
-    feeling: PathologyEvaluationFeeling;
-    globalAssessment: PainAssessChoiceTripleType;
+export interface PathologyEvaluationData {
+    todayFeeling: PathologyEvaluationFeeling;
+    exercisesAssessment: PainAssessChoiceTripleType;
 }
 
 export interface PathologyEvaluationFeeling {
