@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 import ExerciseGroup from '../../exercices/exercise-group/exercise-group.component';
 import { ExerciseGroupElement } from '../../exercices/exercise-group/exercise-group.model';
 import { PathologySessionElement } from './pathology-session-element.model';

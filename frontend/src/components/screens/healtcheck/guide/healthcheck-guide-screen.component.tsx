@@ -6,7 +6,7 @@ import { HealthcheckActionner } from '../../../../core/store/healthcheck/healthc
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
 import { globalStyles, globalVariables } from '../../../styles';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 
 interface HealthcheckGuideScreenProp extends ScreenProp {
     seeDisclaimer: () => void;

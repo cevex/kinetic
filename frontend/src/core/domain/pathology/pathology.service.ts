@@ -1,15 +1,8 @@
-import { cloneDeep, last, range } from 'lodash-es';
-import moment from 'moment';
-import { Healthcheck } from '../healthcheck/healthcheck.model';
-import { HealthcheckService } from '../healthcheck/healthcheck.service';
-import { TreatmentPhase, TreatmentPhaseType } from '../treatment/phase/treatment-phase.model';
-import { Treatment } from '../treatment/treatment.model';
-import { TreatmentService } from '../treatment/treatment.service';
+import { cloneDeep, last } from 'lodash-es';
+import { Pathology } from './pathology.model';
 import { PathologyPhaseData } from './phase/pathology-phase-data.model';
 import { PathologyPhaseDataService } from './phase/pathology-phase-data.service';
 import { PathologySessionData } from './session/pathology-session-data.model';
-import { Pathology } from './pathology.model';
-import { PathologySessionDataService } from './session/pathology-session-data.service';
 
 export class PathologyService {
     constructor() {}
@@ -22,24 +15,19 @@ export class PathologyService {
         return last(pathology.phases);
     }
 
-    public static getCurrentSession(pathology: Pathology): PathologySessionData {
-        const currentPhase = PathologyService.getCurrentPhase(pathology);
-        return PathologyPhaseDataService.getCurrentSession(currentPhase);
-    }
-
     // ===============================================================
     //              Setter
     // ===============================================================
 
-    public static setCurrentSession(
-        pathology: Pathology,
-        newSession: PathologySessionData
-    ): Pathology {
-        const newPathology = cloneDeep(pathology);
-        const currentPhase = this.getCurrentPhase(pathology);
+    public static setSession(pathology: Pathology, newSession: PathologySessionData): Pathology {
+        const phaseToUpdate = PathologyPhaseDataService.findPhaseBySession(
+            pathology.phases,
+            newSession
+        );
 
-        const newPhase = PathologyPhaseDataService.setCurrentSession(currentPhase, newSession);
-        newPathology.phases = PathologyPhaseDataService.setCurrentPhase(pathology.phases, newPhase);
+        const newPhase = PathologyPhaseDataService.setSession(phaseToUpdate, newSession);
+        const newPathology = cloneDeep(pathology);
+        newPathology.phases = PathologyPhaseDataService.setPhase(pathology.phases, newPhase);
         return newPathology;
     }
 }

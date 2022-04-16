@@ -1,4 +1,3 @@
-import { cloneDeep } from 'lodash-es';
 import { PainAssessChoiceTripleType } from '../../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
 import {
     EvaluationFeelingPlace,
@@ -36,21 +35,25 @@ export class PathologyEvaluationElementService {
         }
     ];
 
+    // =======================================================================
+    //               Mapping
+    // =======================================================================
+
     public static mapState(evaluationData: PathologyEvaluationData): PathologyEvaluationState {
         const assesChoice = HealthcheckExerciseScreenService.tripleChoiceItem;
         const locationChoice = this.placeItems;
         return {
             firstStep: true,
             assessmentChoices: assesChoice,
-            exercisesChoice: assesChoice.find(
-                choice => choice.id === evaluationData.exercisesAssessment
-            ),
+            exercisesChoice:
+                !!evaluationData?.exercisesAssessment &&
+                assesChoice.find(choice => choice.id === evaluationData.exercisesAssessment),
             todayChoice:
-                !!evaluationData.todayFeeling &&
+                !!evaluationData?.todayFeeling &&
                 assesChoice.find(choice => choice.id === evaluationData.todayFeeling.assessment),
             locationChoices: locationChoice,
             locationChoice:
-                !!evaluationData.todayFeeling &&
+                !!evaluationData?.todayFeeling &&
                 locationChoice.find(choice => choice.id === evaluationData.todayFeeling.place)
         };
     }
@@ -65,36 +68,28 @@ export class PathologyEvaluationElementService {
         };
     }
 
-    public static goNextStep(currentState: PathologyEvaluationState): PathologyEvaluationState {
-        const newState = cloneDeep(currentState);
-        newState.firstStep = false;
-        return newState;
-    }
+    // =======================================================================
+    //               UPDATE
+    // =======================================================================
 
     public static selectTodayAssessments(
         currentState: PathologyEvaluationState,
         item: UiItem
     ): PathologyEvaluationState {
-        const newState = cloneDeep(currentState);
-        newState.todayChoice = item;
-        return newState;
-    }
-
-    public static selectExercisesAssessments(
-        currentState: PathologyEvaluationState,
-        item: UiItem
-    ): PathologyEvaluationState {
-        const newState = cloneDeep(currentState);
-        newState.exercisesChoice = item;
-        return newState;
+        return { ...currentState, todayChoice: item };
     }
 
     public static selectLocation(
         currentState: PathologyEvaluationState,
         item: UiItem
     ): PathologyEvaluationState {
-        const newState = cloneDeep(currentState);
-        newState.locationChoice = item;
-        return newState;
+        return { ...currentState, locationChoice: item };
+    }
+
+    public static selectExercisesAssessments(
+        currentState: PathologyEvaluationState,
+        item: UiItem
+    ): PathologyEvaluationState {
+        return { ...currentState, exercisesChoice: item };
     }
 }

@@ -14,7 +14,7 @@ export class Logger {
     }
 
     private static getMessage(printable?: any, value?: any): string {
-        const valueStr = value && JSON.stringify(value, null, 2);
+        const valueStr = value ? ' =>' + JSON.stringify(value, null, 2) : '';
         const now = DateTimeService.getNow().toISOString().trim();
         return '[' + now + '] ' + printable + valueStr;
     }

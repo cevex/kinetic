@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
 import { globalStyles } from '../../../styles';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 import styles from './consult-screen.style';
 
 class ConsultScreen extends Component<ScreenProp> {

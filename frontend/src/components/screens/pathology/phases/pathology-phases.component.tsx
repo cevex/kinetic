@@ -3,7 +3,7 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectProgress from '../../../ui/selects/progress/select-progress.component';
+import KntSelectProgress from '../../../ui/form/selects/progress/select-progress.component';
 import PathologySession from '../session/pathology-session.component';
 import { PathologyPhaseElement } from './pathology-phases-element.model';
 import styles from './pathology-phases.styles';

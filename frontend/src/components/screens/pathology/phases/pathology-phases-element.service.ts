@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash-es';
 import { DateTimeService } from '../../../../core/common/date-time.service';
 import { PathologyEvaluationService } from '../../../../core/domain/pathology/evaluation/pathology-evaluation.service';
 import { PathologyPhaseData } from '../../../../core/domain/pathology/phase/pathology-phase-data.model';
@@ -6,8 +7,9 @@ import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-
 import { TreatmentPhase } from '../../../../core/domain/treatment/phase/treatment-phase.model';
 import { TreatmentPhaseService } from '../../../../core/domain/treatment/phase/treatment-phase.service';
 import { TreatmentService } from '../../../../core/domain/treatment/treatment.service';
-import { SelectProgressItem } from '../../../ui/selects/progress/select-progress.component';
-import { SelectProgressStatus } from '../../../ui/selects/progress/select-progress.service';
+import { SelectProgressItem } from '../../../ui/form/selects/progress/select-progress.component';
+import { SelectProgressStatus } from '../../../ui/form/selects/progress/select-progress.service';
+import { PathologyDashboardState } from '../dashboard/pathology-dashboard.model';
 import { PathologySessionElementService } from '../session/pathology-session-element.service';
 import { PathologyPhaseElement } from './pathology-phases-element.model';
 
@@ -86,5 +88,13 @@ export class PathologyPhasesElementService {
         const evaluationDone = PathologyEvaluationService.isEvaluationEmpty(session.evaluation);
 
         return hasDoneExercises && evaluationDone ? 'validated' : 'not-validated';
+    }
+
+    public static setEvaluation(
+        pathologyDashboard: PathologyDashboardState
+    ): PathologyDashboardState {
+        const newState = cloneDeep(pathologyDashboard);
+        newState.showEvaluation = true;
+        return newState;
     }
 }

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { globalVariables } from '../../../styles';
+import { globalVariables } from '../../../../styles';
 
 const styles = StyleSheet.create({
     container: {
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     itemText: {
+        color: globalVariables.color.primary,
         fontSize: globalVariables.fontSize.medium,
         marginTop: 10
     }

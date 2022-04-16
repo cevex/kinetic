@@ -3,26 +3,23 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { Logger } from '../../../../core/common/log.service';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import { ExercisesService } from '../../../../core/domain/exercices/exercises.service';
-import { PainAssessChoiceTripleType } from '../../../../core/domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { Healthcheck } from '../../../../core/domain/healthcheck/healthcheck.model';
 import { HealthcheckService } from '../../../../core/domain/healthcheck/healthcheck.service';
-import {
-    PathologyEvaluationData,
-    PathologyEvaluationFeeling
-} from '../../../../core/domain/pathology/evaluation/pathology-evaluation.model';
+import { PathologyEvaluationData } from '../../../../core/domain/pathology/evaluation/pathology-evaluation.model';
 import { Pathology } from '../../../../core/domain/pathology/pathology.model';
+import { PathologySessionData } from '../../../../core/domain/pathology/session/pathology-session-data.model';
 import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-area.model';
 import { KineticState } from '../../../../core/store/kinetic.state';
 import { PathologyActionner } from '../../../../core/store/pathology/pathology.actions';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
-import { globalStyles } from '../../../styles';
-import KntSelectSwitch from '../../../ui/selects/switch/select-switch.component';
+import KntModal from '../../../ui/content/modal/modal.component';
+import KntSelectSwitch from '../../../ui/form/selects/switch/select-switch.component';
 import ExerciseList from '../../exercices/list/exercises-list.component';
 import PathologyEvaluation from '../evaluation/pathology-evaluation.component';
 import PathologyPhase from '../phases/pathology-phases.component';
+import { PathologySessionElementService } from '../session/pathology-session-element.service';
 import { DashboardMode, PathologyDashboardState } from './pathology-dashboard.model';
 import { PathologyDashboardService } from './pathology-dashboard.service';
 import styles from './pathology-dashboard.style';
@@ -32,9 +29,9 @@ interface PathologyDashboardProp extends ScreenProp {
     pathology: Pathology;
 
     startPathology: (healthcheck: Healthcheck) => void;
-    markExerciseAsSeen: (exercisesId: string[], seen: boolean) => void;
-    evaluateFeelingSession: (evaluationFeeling: PathologyEvaluationFeeling) => void;
-    evaluateGlobalSession: (globalAssessment: PainAssessChoiceTripleType) => void;
+    markAllExerciseAsSeen: (session: PathologySessionData, exercisesId: string[]) => void;
+    markExerciseAsSeen: (session: PathologySessionData, exercisesId: string) => void;
+    evaluateSession: (session: PathologySessionData, evaluation: PathologyEvaluationData) => void;
 }
 
 class PathologyDashboardScreen extends Component<PathologyDashboardProp, PathologyDashboardState> {
@@ -45,7 +42,6 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
             this.props.pathology,
             'phase'
         );
-        Logger.log('[PathologyDashboardScreen] INIT state ==>', this.state);
     }
 
     componentDidUpdate(
@@ -53,6 +49,10 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
         prevState: Readonly<PathologyDashboardState>
     ) {
         if (prevProps.pathology !== this.props.pathology) {
+            // Logger.log(
+            //     '[PathologyDashboardScreen] Updating screen',
+            //     this.props.pathology.phases[0]
+            // );
             this.setState(
                 PathologyDashboardService.updateScreen(
                     this.state,
@@ -107,8 +107,12 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
     }
 
     private validateSession() {
-        Logger.log('validateSession');
-        this.setState(PathologyDashboardService.selectExercise(this.state, exercise));
+        this.setState(PathologyDashboardService.showEvaluation(this.state));
+    }
+
+    private setEvaluation(evaluation: PathologyEvaluationData) {
+        this.setState(PathologyDashboardService.hideEvaluation(this.state));
+        this.props.evaluateSession(this.state.currentSession, evaluation);
     }
 
     // =======================================================================
@@ -121,16 +125,15 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
         });
     }
 
+    private selectAllExercises() {
+        const allExercises = PathologySessionElementService.getCheckableExercises(
+            this.state.pathologyPhase.sessionElement
+        ).map(e => e.id);
+        this.props.markAllExerciseAsSeen(this.state.currentSession, allExercises);
+    }
+
     private selectExercise(exercise: Exercise) {
-        this.setState(PathologyDashboardService.selectExercise(this.state, exercise));
-    }
-
-    private setEvaluation(evaluation: PathologyEvaluationData) {
-        // this.setState();
-    }
-
-    private toggleExercises() {
-        Logger.log('toggleExercises');
+        this.props.markExerciseAsSeen(this.state.currentSession, exercise.id);
     }
 
     // =======================================================================
@@ -175,7 +178,7 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
                                 onSessionSelected={sessionIndex => this.showSession(sessionIndex)}
                                 onSessionValidated={() => this.validateSession()}
                                 selectedExercises={this.state.currentSession.doneExercisesId}
-                                onExerciseAllSelected={() => this.toggleExercises()}
+                                onExerciseAllSelected={() => this.selectAllExercises()}
                                 onExerciseNavigate={exercise => this.showExercise(exercise)}
                                 onExerciseSelected={exercise => this.selectExercise(exercise)}
                             />
@@ -204,16 +207,14 @@ class PathologyDashboardScreen extends Component<PathologyDashboardProp, Patholo
                 {/*                         Modal                                                    */}
                 {/*----------------------------------------------------------------------------------*/}
                 {!!this.state.showEvaluation && (
-                    <View style={globalStyles.modalContainer}>
-                        <View style={globalStyles.modal}>
-                            <PathologyEvaluation
-                                evaluation={this.state.currentSession.evaluation}
-                                onEvaluationSet={() =>
-                                    this.setEvaluation(this.state.currentSession.evaluation)
-                                }
-                            />
-                        </View>
-                    </View>
+                    <KntModal>
+                        <PathologyEvaluation
+                            evaluation={this.state.currentSession.evaluation}
+                            onEvaluationSet={() =>
+                                this.setEvaluation(this.state.currentSession.evaluation)
+                            }
+                        />
+                    </KntModal>
                 )}
             </View>
         );
@@ -230,14 +231,14 @@ export default connect(
         pathology: state.pathology
     }),
     (dispatch: Dispatch) => ({
-        markExerciseAsSeen: (exercisesId: string[], seen: boolean) => {
-            dispatch(PathologyActionner.markExerciseAsSeen(exercisesId, seen));
+        markAllExerciseAsSeen: (session: PathologySessionData, exercisesId: string[]) => {
+            dispatch(PathologyActionner.markAllExerciseAsSeen(session, exercisesId));
         },
-        evaluateFeelingSession: (evaluationFeeling: PathologyEvaluationFeeling) => {
-            dispatch(PathologyActionner.evaluateFeelingSession(evaluationFeeling));
+        markExerciseAsSeen: (session: PathologySessionData, exercisesId: string) => {
+            dispatch(PathologyActionner.markExerciseAsSeen(session, exercisesId));
         },
-        evaluateGlobalSession: (globalAssessment: PainAssessChoiceTripleType) => {
-            dispatch(PathologyActionner.evaluateGlobalSession(globalAssessment));
+        evaluateSession: (session: PathologySessionData, evaluation: PathologyEvaluationData) => {
+            dispatch(PathologyActionner.evaluateSession(session, evaluation));
         }
     })
 )(PathologyDashboardScreen);

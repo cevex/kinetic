@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { UiItem } from '../../core/ui-item.model';
+import { UiItem } from '../../../core/ui-item.model';
 import { SelectProp } from '../select-prop.model';
 import { SelectProgressService, SelectProgressStatus } from './select-progress.service';
 import styles from './select-progress.style';

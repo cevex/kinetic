@@ -5,7 +5,7 @@ import { Healthcheck } from '../../../core/domain/healthcheck/healthcheck.model'
 import { KineticState } from '../../../core/store/kinetic.state';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
-import KntButton from '../../ui/button/button.component';
+import KntButton from '../../ui/actions/button/button.component';
 import styles from './home-screen.style';
 
 export interface HomeScreenProp extends ScreenProp {

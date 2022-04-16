@@ -9,7 +9,7 @@ import { PathologyActionner } from '../../../../core/store/pathology/pathology.a
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
 import { globalStyles } from '../../../styles';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 import { DiagnosisScreenState } from './diagnosis-screen.model';
 import { DiagnosisScreenService } from './diagnosis-screen.service';
 import styles from './diagnosis-screen.style';

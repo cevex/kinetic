@@ -48,4 +48,10 @@ export class PathologySessionElementService {
         const now = DateTimeService.getNow();
         return 'A faire ' + DateTimeService.formatDayDuration(new Date(session.dateUTC), now);
     }
+
+    public static getCheckableExercises(session: PathologySessionElement): Exercise[] {
+        return session.exercisesGroups.reduce((allExercices, group) => {
+            return group.exercises?.length ? allExercices.concat(group.exercises) : allExercices;
+        }, []);
+    }
 }

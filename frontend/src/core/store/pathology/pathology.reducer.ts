@@ -1,13 +1,12 @@
 import { cloneDeep } from 'lodash-es';
-import { Logger } from '../../common/log.service';
 import { Healthcheck } from '../../domain/healthcheck/healthcheck.model';
 import { Pathology } from '../../domain/pathology/pathology.model';
 import { PathologyService } from '../../domain/pathology/pathology.service';
 import { PathologyPhaseDataService } from '../../domain/pathology/phase/pathology-phase-data.service';
 import { PathologySessionDataService } from '../../domain/pathology/session/pathology-session-data.service';
 import {
-    EvaluateFeelingSessionAction,
-    EvaluateGlobalSessionAction,
+    EvaluateSessionAction,
+    MarkAllExerciseAsSeenAction,
     MarkExerciseAsSeenAction,
     PathologyAction,
     StartPathologyAction
@@ -37,12 +36,12 @@ export class PathologyReducer {
         switch (action.type) {
             case 'START_PATHOLOGY':
                 return this.startPathology(state, (<StartPathologyAction>action).healthcheck);
+            case 'MARK_ALL_EXERCISES_SEEN':
+                return this.markAllExerciseAsSeen(state, <MarkAllExerciseAsSeenAction>action);
             case 'MARK_EXERCISE_SEEN':
                 return this.markExerciseAsSeen(state, <MarkExerciseAsSeenAction>action);
-            case 'EVALUATE_FEELING_SESSION':
-                return this.evaluateFeelingSession(state, <EvaluateFeelingSessionAction>action);
-            case 'EVALUATE_GLOBAL_SESSION':
-                return this.evaluateGlobalSession(state, <EvaluateGlobalSessionAction>action);
+            case 'EVALUATE_SESSION':
+                return this.evaluateSession(state, <EvaluateSessionAction>action);
             default:
                 return state;
         }
@@ -55,31 +54,33 @@ export class PathologyReducer {
         return newPathology;
     }
 
+    public static markAllExerciseAsSeen(
+        pathology: Pathology,
+        action: MarkAllExerciseAsSeenAction
+    ): Pathology {
+        const newSession = PathologySessionDataService.addAllExercises(
+            action.session,
+            action.exercisesIds
+        );
+        return PathologyService.setSession(pathology, newSession);
+    }
+
     public static markExerciseAsSeen(
         pathology: Pathology,
         action: MarkExerciseAsSeenAction
     ): Pathology {
-        const currentSession = PathologyService.getCurrentSession(pathology);
-        const newSession = PathologySessionDataService.toggleExercises(
-            currentSession,
-            action.exercisesId,
-            action.seen
+        const newSession = PathologySessionDataService.toggleExercise(
+            action.session,
+            action.exercisesId
         );
-        return PathologyService.setCurrentSession(pathology, newSession);
+        return PathologyService.setSession(pathology, newSession);
     }
 
-    public static evaluateFeelingSession(
-        pathology: Pathology,
-        action: EvaluateFeelingSessionAction
-    ): Pathology {
-        return pathology;
-    }
-
-    public static evaluateGlobalSession(
-        pathology: Pathology,
-        action: EvaluateGlobalSessionAction
-    ): Pathology {
-        // action.globalAssessment
-        return pathology;
+    public static evaluateSession(pathology: Pathology, action: EvaluateSessionAction): Pathology {
+        const newSession = PathologySessionDataService.setEvaluation(
+            action.session,
+            action.evaluation
+        );
+        return PathologyService.setSession(pathology, newSession);
     }
 }

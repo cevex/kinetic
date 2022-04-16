@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { PathologyEvaluationData } from '../../../../core/domain/pathology/evaluation/pathology-evaluation.model';
 import { globalStyles } from '../../../styles';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 import { UiItem } from '../../../ui/core/ui-item.model';
-import KntSelectFlat from '../../../ui/selects/flat/select-flat.component';
-import KntSelectRadio from '../../../ui/selects/radio/select-radio.component';
+import KntSelectFlat from '../../../ui/form/selects/flat/select-flat.component';
+import KntSelectRadio from '../../../ui/form/selects/radio/select-radio.component';
 import { PathologyEvaluationElementService } from './pathology-evaluation-element.service';
 import { PathologyEvaluationState } from './pathology-evaluation-state.model';
 import styles from './pathology-evaluation.styles';
@@ -19,6 +19,13 @@ class PathologyEvaluation extends Component<PathologyEvaluationProp, PathologyEv
     constructor(props: PathologyEvaluationProp) {
         super(props);
         this.state = PathologyEvaluationElementService.mapState(this.props?.evaluation);
+    }
+
+    private validateFirst() {
+        this.setState({
+            ...this.state,
+            firstStep: false
+        });
     }
 
     private validateEvaluation() {
@@ -35,7 +42,7 @@ class PathologyEvaluation extends Component<PathologyEvaluationProp, PathologyEv
                 {/*                         Today                                                    */}
                 {/*----------------------------------------------------------------------------------*/}
                 {this.state.firstStep && (
-                    <View style={globalStyles.card}>
+                    <ScrollView style={styles.content}>
                         <Text style={globalStyles.cardMessage}>
                             {'Comment vous sentez-vous aujourd’hui ?'}
                         </Text>
@@ -53,8 +60,8 @@ class PathologyEvaluation extends Component<PathologyEvaluationProp, PathologyEv
                             }}
                         />
                         <KntSelectRadio
-                            style={styles.places}
                             items={this.state.locationChoices}
+                            selectedItemId={this.state.locationChoice.id}
                             onSelected={(item: UiItem) => {
                                 this.setState(
                                     PathologyEvaluationElementService.selectLocation(
@@ -65,26 +72,26 @@ class PathologyEvaluation extends Component<PathologyEvaluationProp, PathologyEv
                             }}
                         />
                         <KntButton
-                            label={"Passer à l'évaluation"}
+                            label={'Valider'}
                             type="primary"
                             style={styles.controls}
-                            onPress={() => this.validateEvaluation()}
+                            onPress={() => this.validateFirst()}
                         />
-                    </View>
+                    </ScrollView>
                 )}
 
                 {/*----------------------------------------------------------------------------------*/}
                 {/*                         Today                                                    */}
                 {/*----------------------------------------------------------------------------------*/}
                 {!this.state.firstStep && (
-                    <View style={globalStyles.card}>
+                    <ScrollView style={styles.content}>
                         <Text style={globalStyles.cardMessage}>
                             {'Après les exercices je me sens ?'}
                         </Text>
                         <KntSelectFlat
                             style={styles.assessment}
                             items={this.state.assessmentChoices}
-                            selectedItemId={this.state.todayChoice?.id}
+                            selectedItemId={this.state.exercisesChoice?.id}
                             onSelected={(item: UiItem) => {
                                 this.setState(
                                     PathologyEvaluationElementService.selectExercisesAssessments(
@@ -94,7 +101,13 @@ class PathologyEvaluation extends Component<PathologyEvaluationProp, PathologyEv
                                 );
                             }}
                         />
-                    </View>
+                        <KntButton
+                            label={'Valider'}
+                            type="primary"
+                            style={styles.controls}
+                            onPress={() => this.validateEvaluation()}
+                        />
+                    </ScrollView>
                 )}
             </View>
         );

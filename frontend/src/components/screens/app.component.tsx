@@ -42,7 +42,7 @@ class AppComponent extends Component {
             if (this.isHealthcheckRouter(storeState)) {
                 this.listenForHealthcheck();
             }
-            if (storeState.onGoingHealthcheck) {
+            if (!storeState.onGoingHealthcheck?.treatmentEnded) {
                 HealthcheckService.printTasks(storeState.onGoingHealthcheck);
             }
         });

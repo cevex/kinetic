@@ -1,6 +1,6 @@
-import { PainAssessChoiceTripleType } from '../../domain/healthcheck-task/choice/pain-assessment-choice.model';
 import { Healthcheck } from '../../domain/healthcheck/healthcheck.model';
-import { PathologyEvaluationFeeling } from '../../domain/pathology/evaluation/pathology-evaluation.model';
+import { PathologyEvaluationData } from '../../domain/pathology/evaluation/pathology-evaluation.model';
+import { PathologySessionData } from '../../domain/pathology/session/pathology-session-data.model';
 
 // =======================================================================
 //               Actions
@@ -10,8 +10,7 @@ export declare type PathologyActionType =
     | 'START_PATHOLOGY'
     | 'MARK_EXERCISE_SEEN'
     | 'MARK_ALL_EXERCISES_SEEN'
-    | 'EVALUATE_FEELING_SESSION'
-    | 'EVALUATE_GLOBAL_SESSION'
+    | 'EVALUATE_SESSION'
     | 'END_SESSION';
 
 export interface PathologyAction {
@@ -23,20 +22,23 @@ export interface StartPathologyAction extends PathologyAction {
     healthcheck: Healthcheck;
 }
 
+export interface MarkAllExerciseAsSeenAction extends PathologyAction {
+    type: 'MARK_ALL_EXERCISES_SEEN';
+    session: PathologySessionData;
+    exercisesIds: string[];
+}
+
 export interface MarkExerciseAsSeenAction extends PathologyAction {
     type: 'MARK_EXERCISE_SEEN';
-    exercisesId: string[];
-    seen: boolean;
+    session: PathologySessionData;
+    exercisesId: string;
+    seen?: boolean;
 }
 
-export interface EvaluateFeelingSessionAction extends PathologyAction {
-    type: 'EVALUATE_FEELING_SESSION';
-    evaluationFeeling: PathologyEvaluationFeeling;
-}
-
-export interface EvaluateGlobalSessionAction extends PathologyAction {
-    type: 'EVALUATE_GLOBAL_SESSION';
-    globalAssessment: PainAssessChoiceTripleType;
+export interface EvaluateSessionAction extends PathologyAction {
+    type: 'EVALUATE_SESSION';
+    session: PathologySessionData;
+    evaluation: PathologyEvaluationData;
 }
 
 export interface EndSessionAction extends PathologyAction {
@@ -52,22 +54,32 @@ export class PathologyActionner {
         return { type: 'START_PATHOLOGY', healthcheck: healthcheck };
     }
 
+    public static markAllExerciseAsSeen = (
+        session: PathologySessionData,
+        exercisesId: string[]
+    ): MarkAllExerciseAsSeenAction => {
+        return {
+            type: 'MARK_ALL_EXERCISES_SEEN',
+            session: session,
+            exercisesIds: exercisesId
+        };
+    };
+
     public static markExerciseAsSeen = (
-        exercisesId: string[],
-        seen: boolean
+        session: PathologySessionData,
+        exercisesId: string
     ): MarkExerciseAsSeenAction => {
-        return { type: 'MARK_EXERCISE_SEEN', exercisesId: exercisesId, seen: seen };
+        return {
+            type: 'MARK_EXERCISE_SEEN',
+            session: session,
+            exercisesId: exercisesId
+        };
     };
 
-    public static evaluateFeelingSession = (
-        evaluationFeeling: PathologyEvaluationFeeling
-    ): EvaluateFeelingSessionAction => {
-        return { type: 'EVALUATE_FEELING_SESSION', evaluationFeeling: evaluationFeeling };
-    };
-
-    public static evaluateGlobalSession = (
-        globalAssessment: PainAssessChoiceTripleType
-    ): EvaluateGlobalSessionAction => {
-        return { type: 'EVALUATE_GLOBAL_SESSION', globalAssessment: globalAssessment };
+    public static evaluateSession = (
+        session: PathologySessionData,
+        evaluation: PathologyEvaluationData
+    ): EvaluateSessionAction => {
+        return { type: 'EVALUATE_SESSION', session: session, evaluation: evaluation };
     };
 }

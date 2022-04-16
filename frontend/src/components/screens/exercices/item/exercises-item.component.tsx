@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Exercise } from '../../../../core/domain/exercices/exercise.model';
-import KntCheckBox from '../../../ui/check-box/check-box.component';
+import KntCheckBox from '../../../ui/form/check-box/check-box.component';
 import styles from './exercises-item.style';
 
 interface ExerciseItemProp {

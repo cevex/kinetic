@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { globalVariables } from '../../styles';
+import { globalVariables } from '../../../styles';
 import styles from './check-box.style';
 
 interface CheckBoxProp {

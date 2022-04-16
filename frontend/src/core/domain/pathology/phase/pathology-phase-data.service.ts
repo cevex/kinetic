@@ -14,10 +14,6 @@ export class PathologyPhaseDataService {
     //              Getter
     // ===============================================================
 
-    public static getCurrentSession(pathologyPhase: PathologyPhaseData): PathologySessionData {
-        return last(pathologyPhase.sessions);
-    }
-
     public static generatePhases(healthcheck: Healthcheck): PathologyPhaseData[] {
         const treatment = TreatmentService.getTreatmentForHealthcheck(healthcheck);
         let phaseStartDate = DateTimeService.getTodayStart();
@@ -38,22 +34,22 @@ export class PathologyPhaseDataService {
     //              Setter
     // ===============================================================
 
-    public static setCurrentPhase(
-        pathologyPhase: PathologyPhaseData[],
+    public static setPhase(
+        pathologyPhases: PathologyPhaseData[],
         newPhase: PathologyPhaseData
     ): PathologyPhaseData[] {
-        const newPhases = cloneDeep(pathologyPhase);
-        newPhases.pop();
-        newPhases.push(newPhase);
-        return newPhases;
+        if (!pathologyPhases) return [];
+        return pathologyPhases.map(phase => {
+            return phase.treatmentPhase === newPhase.treatmentPhase ? newPhase : phase;
+        });
     }
 
-    public static setCurrentSession(
+    public static setSession(
         pathologyPhase: PathologyPhaseData,
         newSession: PathologySessionData
     ): PathologyPhaseData {
         const newPhase = cloneDeep(pathologyPhase);
-        newPhase.sessions = PathologySessionDataService.setCurrentSession(
+        newPhase.sessions = PathologySessionDataService.setSession(
             pathologyPhase.sessions,
             newSession
         );
@@ -63,6 +59,16 @@ export class PathologyPhaseDataService {
     // ===============================================================
     //              Find
     // ===============================================================
+
+    public static findPhaseBySession(
+        phases: PathologyPhaseData[],
+        sessionToFind: PathologySessionData
+    ): PathologyPhaseData {
+        if (!phases) return;
+        return phases.find(phase => {
+            return phase.sessions.some(session => session.dateUTC === sessionToFind.dateUTC);
+        });
+    }
 
     public static findTodayPhase(phases: PathologyPhaseData[]): PathologyPhaseData {
         return phases?.find(

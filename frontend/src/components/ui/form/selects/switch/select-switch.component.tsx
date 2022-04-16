@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { UiItem } from '../../core/ui-item.model';
+import { UiItem } from '../../../core/ui-item.model';
 import { SelectProp } from '../select-prop.model';
 import styles from './select-switch.style';
 

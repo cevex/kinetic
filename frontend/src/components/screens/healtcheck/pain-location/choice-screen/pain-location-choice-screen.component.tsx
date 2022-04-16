@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
 import I18n from '../../../../i18n';
-import KntButton from '../../../../ui/button/button.component';
+import KntButton from '../../../../ui/actions/button/button.component';
 import { PainLocationChoiceScreenState } from './pain-location-choice-screen.model';
 import { PainLocationChoiceScreenService } from './pain-location-choice-screen.service';
 import styles from './pain-location-choice-screen.style';

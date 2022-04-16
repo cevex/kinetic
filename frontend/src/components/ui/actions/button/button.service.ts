@@ -1,4 +1,4 @@
-import { globalVariables } from '../../styles';
+import { globalVariables } from '../../../styles';
 import { ButtonState, ButtonType } from './button.model';
 
 export class ButtonService {

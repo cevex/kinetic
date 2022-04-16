@@ -7,7 +7,7 @@ import { HealthcheckActionner } from '../../../../core/store/healthcheck/healthc
 import { KineticState } from '../../../../core/store/kinetic.state';
 import { ScreenProp } from '../../../common/navigable-screen-prop.model';
 import I18n from '../../../i18n';
-import KntButton from '../../../ui/button/button.component';
+import KntButton from '../../../ui/actions/button/button.component';
 import { UiItem } from '../../../ui/core/ui-item.model';
 import { TestLocationScreenState } from './test-location-screen.model';
 import { TestLocationScreenService } from './test-location-screen.service';

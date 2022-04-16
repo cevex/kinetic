@@ -8,9 +8,9 @@ import { HealthcheckActionner } from '../../../../../core/store/healthcheck/heal
 import { KineticState } from '../../../../../core/store/kinetic.state';
 import { ScreenProp } from '../../../../common/navigable-screen-prop.model';
 import I18n from '../../../../i18n';
-import KntButton from '../../../../ui/button/button.component';
+import KntButton from '../../../../ui/actions/button/button.component';
 import { UiItem } from '../../../../ui/core/ui-item.model';
-import KntSelectSwitch from '../../../../ui/selects/switch/select-switch.component';
+import KntSelectSwitch from '../../../../ui/form/selects/switch/select-switch.component';
 import PainLocationSelector from '../selector/pain-location-selector.component';
 import { PainLocationScreenState } from './pain-location-screen.model';
 import { PainLocationScreenService } from './pain-location-screen.service';

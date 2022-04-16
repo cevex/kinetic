@@ -1,4 +1,4 @@
-import { SelectProgressItem } from '../../../ui/selects/progress/select-progress.component';
+import { SelectProgressItem } from '../../../ui/form/selects/progress/select-progress.component';
 import { PathologySessionElement } from '../session/pathology-session-element.model';
 
 export interface PathologyPhaseElement {

@@ -7,9 +7,9 @@ import { HealthcheckActionner } from '../../../core/store/healthcheck/healthchec
 import { KineticState } from '../../../core/store/kinetic.state';
 import { ScreenProp } from '../../common/navigable-screen-prop.model';
 import I18n from '../../i18n';
-import KntBreadcrumb from '../../ui/breadcrumb/breadcrumb.component';
-import KntButton from '../../ui/button/button.component';
-import { ButtonType } from '../../ui/button/button.model';
+import KntBreadcrumb from '../../ui/actions/breadcrumb/breadcrumb.component';
+import KntButton from '../../ui/actions/button/button.component';
+import { ButtonType } from '../../ui/actions/button/button.model';
 import { WelcomeScreenState } from './welcome-screen.model';
 import { WelcomeScreenService } from './welcome-screen.service';
 import styles from './welcome-screen.style';

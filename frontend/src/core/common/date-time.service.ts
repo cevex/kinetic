@@ -67,7 +67,7 @@ export class DateTimeService {
             if (duration > -1) return "aujourd'hui";
             if (duration > -2) return 'hier';
             if (duration > -3) return 'avant hier';
-            else return ' il y a ' + Math.round(duration) + ' jours';
+            else return ' il y a ' + Math.round(-duration) + ' jours';
         }
     }
 }

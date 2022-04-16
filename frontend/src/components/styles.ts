@@ -66,30 +66,5 @@ export const globalStyles = StyleSheet.create({
         textAlign: 'center',
         fontSize: globalVariables.fontSize.big,
         fontWeight: '600'
-    },
-    modalContainer: {
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    modal: {
-        position: 'absolute',
-        backgroundColor: globalVariables.color.white,
-        borderRadius: 6,
-        padding: 10,
-        width: '90%',
-        marginTop: 15,
-        marginBottom: 15,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: 'black',
-        shadowRadius: 2,
-        shadowOpacity: 0.5,
-        shadowOffset: {
-            width: 25,
-            height: 25
-        }
     }
 });

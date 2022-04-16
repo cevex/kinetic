@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { globalVariables } from '../../styles';
+import { globalVariables } from '../../../styles';
 
 const breadcrumbStyles = StyleSheet.create({
     breadcrumbContainer: {

@@ -1,4 +1,4 @@
-import { globalVariables } from '../../../styles';
+import { globalVariables } from '../../../../styles';
 
 export declare type SelectProgressStatus = 'validated' | 'not-validated' | 'empty' | 'highlighted';
 

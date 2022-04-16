@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash-es';
-import { Exercise } from '../../../../core/domain/exercices/exercise.model';
 import { Pathology } from '../../../../core/domain/pathology/pathology.model';
+import { PathologyPhaseData } from '../../../../core/domain/pathology/phase/pathology-phase-data.model';
 import { PathologyPhaseDataService } from '../../../../core/domain/pathology/phase/pathology-phase-data.service';
 import { PathologySessionDataService } from '../../../../core/domain/pathology/session/pathology-session-data.service';
 import { TreatmentArea } from '../../../../core/domain/treatment-area/treatment-area.model';
@@ -21,7 +21,7 @@ export class PathologyDashboardService {
     ];
 
     // =======================================================================
-    //               Sessions
+    //               SCREEN
     // =======================================================================
 
     public static initScreen(
@@ -60,40 +60,48 @@ export class PathologyDashboardService {
         treatmentArea: TreatmentArea,
         pathology: Pathology
     ): PathologyDashboardState {
-        const newState = cloneDeep(currentState);
-        // const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
-        // const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
-        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+        const currentPhase = PathologyPhaseDataService.findTodayPhase(pathology.phases);
+        const currentSession = PathologySessionDataService.findTodaySession(currentPhase.sessions);
+        const pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
             treatmentArea,
             currentState.currentPhase,
             currentState.currentSession,
             !PathologyPhaseDataService.isFirstPhase(pathology.phases, currentState.currentPhase),
             !PathologyPhaseDataService.isLastPhase(pathology.phases, currentState.currentPhase)
         );
+        return {
+            ...currentState,
+            currentPhase,
+            currentSession,
+            pathologyPhase
+        };
+    }
+
+    public static setDashboardMode(
+        pathologyDashboard: PathologyDashboardState,
+        dashboardMode: DashboardMode
+    ): PathologyDashboardState {
+        const newState = cloneDeep(pathologyDashboard);
+        newState.selectedDashboardMode = this.dashboardModeOptions.find(
+            item => item.id === dashboardMode
+        );
         return newState;
     }
+
+    // =======================================================================
+    //               Phases
+    // =======================================================================
 
     public static goNextPhase(
         currentState: PathologyDashboardState,
         treatmentArea: TreatmentArea,
         pathology: Pathology
     ): PathologyDashboardState {
-        const newState = cloneDeep(currentState);
-        // Data
-        newState.currentPhase = PathologyPhaseDataService.findNextPhase(
+        const newPhase = PathologyPhaseDataService.findNextPhase(
             pathology.phases,
             currentState.currentPhase
         );
-        newState.currentSession = newState.currentPhase.sessions[0];
-        // Element
-        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
-            treatmentArea,
-            newState.currentPhase,
-            newState.currentSession,
-            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newState.currentPhase),
-            !PathologyPhaseDataService.isLastPhase(pathology.phases, newState.currentPhase)
-        );
-        return newState;
+        return this.setPhase(currentState, newPhase, treatmentArea, pathology);
     }
 
     public static goPreviousPhase(
@@ -101,21 +109,38 @@ export class PathologyDashboardService {
         treatmentArea: TreatmentArea,
         pathology: Pathology
     ): PathologyDashboardState {
-        const newState = cloneDeep(currentState);
-        newState.currentPhase = PathologyPhaseDataService.findPreviousPhase(
+        const newPhase = PathologyPhaseDataService.findPreviousPhase(
             pathology.phases,
             currentState.currentPhase
         );
-        newState.currentSession = newState.currentPhase.sessions[0];
-        newState.pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
-            treatmentArea,
-            newState.currentPhase,
-            newState.currentSession,
-            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newState.currentPhase),
-            !PathologyPhaseDataService.isLastPhase(pathology.phases, newState.currentPhase)
-        );
-        return newState;
+        return this.setPhase(currentState, newPhase, treatmentArea, pathology);
     }
+
+    private static setPhase(
+        currentState: PathologyDashboardState,
+        newPhase: PathologyPhaseData,
+        treatmentArea: TreatmentArea,
+        pathology: Pathology
+    ): PathologyDashboardState {
+        const newSession = newPhase.sessions[0];
+        const pathologyPhase = PathologyPhasesElementService.mapPathologyPhase(
+            treatmentArea,
+            newPhase,
+            newSession,
+            !PathologyPhaseDataService.isFirstPhase(pathology.phases, newPhase),
+            !PathologyPhaseDataService.isLastPhase(pathology.phases, newPhase)
+        );
+        return {
+            ...currentState,
+            currentPhase: newPhase,
+            currentSession: newSession,
+            pathologyPhase
+        };
+    }
+
+    // =======================================================================
+    //               Sessions
+    // =======================================================================
 
     public static goToSession(
         currentState: PathologyDashboardState,
@@ -135,38 +160,15 @@ export class PathologyDashboardService {
         return newState;
     }
 
-    public static setDashboardMode(
-        pathologyDashboard: PathologyDashboardState,
-        dashboardMode: DashboardMode
-    ): PathologyDashboardState {
-        const newState = cloneDeep(pathologyDashboard);
-        newState.selectedDashboardMode = this.dashboardModeOptions.find(
-            item => item.id === dashboardMode
-        );
-        return newState;
-    }
-
-    public static selectExercise(
-        pathologyDashboard: PathologyDashboardState,
-        exercise: Exercise
-    ): PathologyDashboardState {
-        const newState = cloneDeep(pathologyDashboard);
-        return newState;
-    }
-
     public static showEvaluation(
         pathologyDashboard: PathologyDashboardState
     ): PathologyDashboardState {
-        const newState = cloneDeep(pathologyDashboard);
-        newState.showEvaluation = true;
-        return newState;
+        return { ...pathologyDashboard, showEvaluation: true };
     }
 
-    public static setEvaluation(
+    public static hideEvaluation(
         pathologyDashboard: PathologyDashboardState
     ): PathologyDashboardState {
-        const newState = cloneDeep(pathologyDashboard);
-        newState.showEvaluation = true;
-        return newState;
+        return { ...pathologyDashboard, showEvaluation: false };
     }
 }

@@ -4,26 +4,25 @@ import { globalVariables } from '../../../styles';
 const styles = StyleSheet.create({
     container: {
         backgroundColor: globalVariables.color.white,
-        flex: 1,
         width: '100%',
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    content: {
+        flex: 1,
+        width: '100%'
     },
     assessment: {
         backgroundColor: globalVariables.color.white,
         // flex: 1,
         width: '100%',
-        padding: 10
-    },
-    places: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        width: '100%'
+        marginBottom: 25
     },
     controls: {
         flexDirection: 'row',
-        width: '100%'
+        width: '100%',
+        marginTop: 25
     }
 });
 
